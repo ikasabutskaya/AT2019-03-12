@@ -94,51 +94,44 @@ public class Test_at04 {
     }
 
     @Test(timeout = 5000)
-    public void testTaskC1_mergeSort__TaskC() throws Exception {
-        Test_at04 ok = run("", false);
-        Method m = checkMethod(ok.aClass.getSimpleName(), "static mergeSort", double[].class);
-        double[] act = new double[15];
-        double[] exp = new double[15];
-        for (int i = 0; i < act.length; i++) {
-            act[i] = Math.random() * 31 - 15;
-            exp[i] = act[i];
-        }
-        m.invoke(null, act);  //тестируемая сортировка
-        Arrays.sort(exp);        //ожидаемая сортировка
-        System.out.println("   Yours array:" + Arrays.toString(act));
-        System.out.println("Expected array:" + Arrays.toString(exp));
-        assertArrayEquals("Сортировка работает неверно", exp, act, 1e-10);
-        System.out.println("Проверка сортировки завершена");
+    public void testTaskC1__TaskC() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При a=0,00 Сумма y = 6,****48e+00\n" +
+                "При a=0,20 Сумма y = 9,****87e+00\n" +
+                "При a=0,40 Сумма y = 1,****09e+01\n" +
+                "При a=0,60 Сумма y = 1,****22e+01\n" +
+                "При a=0,80 Сумма y = 2,****31e+01\n" +
+                "При a=1,00 Сумма y = 4,****65e+01\n" +
+                "При a=1,20 Сумма y = 6,****12e+01\n" +
+                "При a=1,40 Сумма y = 9,****72e+01\n" +
+                "При a=1,60 Сумма y = 1,****77e+02\n" +
+                "При a=1,80 Сумма y = 1,****33e+02\n" +
+                "При a=2,00 Сумма y = 2,****56e+02\n");
+        run("").include("2756");
     }
 
     @Test(timeout = 5000)
-    public void testTaskC2_binarySearch__TaskC() throws Exception {
-        Test_at04 ok = run("", false);
-
-        Method m = checkMethod(ok.aClass.getSimpleName(), "static binarySearch", double[].class, double.class);
-        double[] d = new double[15];
-        for (int i = 0; i < d.length; i++) {
-            d[i] = Math.random() * 31 - 15;
-        }
-        Arrays.sort(d);
-        System.out.println("Test massiv:" + Arrays.toString(d));
-        for (int i = 0; i < d.length; i++) {
-
-            int expected = Arrays.binarySearch(d, d[i]);
-            int actual = (int) m.invoke(null, d, d[i]);
-            assertEquals("Поиск работает неверно", expected, actual);
-
-        }
-        System.out.println("Проверка бинарного поиска завершена");
-
-        m = checkMethod(ok.aClass.getSimpleName(), "static buildOneDimArray", String.class);
-        m.invoke(null, "123 99 88 77 66 5 4 3 1 0 2");
-        ok.include("V[").include("]=0").include("]=123");
-        ok.include("first element=10");
-        ok.include("last element=2");
-        System.out.println("Проверка buildOneDimArray завершена");
-
+    public void testTaskC2__TaskC() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При x/2=-2,75 вычисления не определены\n" +
+                "При x/2=-2,50 вычисления не определены\n" +
+                "При x/2=-2,25 вычисления не определены\n" +
+                "При x/2=-2,00 вычисления не определены\n" +
+                "При x/2=-1,75 a = 3,****62e-01\n" +
+                "При x/2=-1,50 a = 4,****25e-01\n" +
+                "При x/2=-1,25 a = 4,****95e-01\n" +
+                "При x/2=-1,00 a = 2,****60e-01\n" +
+                "При x/2=-0,75 a = 3,****82e-01\n" +
+                "При x/2=-0,50 a = 5,****39e-01\n" +
+                "При x/2=-0,25 a = 5,****66e-01\n" +
+                "При x/2=0,00 a = 5,****16e-01\n" +
+                "При x/2=0,25 вычисления не определены\n" +
+                "При x/2=0,50 вычисления не определены\n" +
+                "При x/2=0,75 вычисления не определены");
+        run("").include("8540");
     }
+
+
 
     /*
 ===========================================================================================================
