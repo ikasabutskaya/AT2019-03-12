@@ -1,4 +1,6 @@
-package by.it._tasks_.at05;
+package by.it.lugansky.at05;
+
+import by.it._tasks_.at05.Poem;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

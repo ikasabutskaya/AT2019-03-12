@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TaskB {
 
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
+        Scanner scanner = new Scanner(System.in);
 
             int people = scanner.nextInt();
             scanner.nextInt();
@@ -31,4 +31,3 @@ public class TaskB {
 
 
     }
-}
