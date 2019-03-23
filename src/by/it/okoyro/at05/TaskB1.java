@@ -4,8 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskB1 {
-//	public static final char[] VOWELS = new char[]{'а', 'я', 'у', 'ю', 'и', 'ы', 'э', 'е', 'о', 'ё'};
-	//	public static final char[] CONSONANTS = new char[]{'n', 'я', 'у', 'ю', 'и', 'ы', 'э', 'е', 'о', 'ё'};
 
 	private static final String CONSONANTS = "бвгджзйклмнпрстфхцчшщБВГДЖЗЙКЛМНПРСТФХЦЧШЩ";
 	private static final String VOWELS = "АаЯяЫыИиУуЮюЭэЕеЁёОо";
