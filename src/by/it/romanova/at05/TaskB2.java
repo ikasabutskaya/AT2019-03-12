@@ -30,7 +30,6 @@ public class TaskB2 {
         StringBuilder stringBuilder = new StringBuilder(text);
         Pattern sentence_pattern = Pattern.compile("([а-яА-ЯёЁ\\s-,!:\n]+)(\\.+)");
 
-
         Matcher matcher = sentence_pattern.matcher(stringBuilder);
         int i = 0;
         String[] mas = new String[0];
