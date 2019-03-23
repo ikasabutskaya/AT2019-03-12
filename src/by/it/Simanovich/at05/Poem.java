@@ -1,4 +1,4 @@
-package by.it.Simanovich;
+package by.it.Simanovich.at05;
 
 class Poem {
     static final String text=
