@@ -7,7 +7,7 @@ class Helper {
     static void sort(double[ ] arr){
         Arrays.sort(arr);
 
-        
+
     }
 
 }
