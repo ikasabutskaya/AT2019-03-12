@@ -1,3 +1,4 @@
+/*
 package by.it.gut.at05;
 
 import java.util.regex.Matcher;
@@ -43,3 +44,4 @@ public class TaskB1 {
         }
     }
 }
+*/
