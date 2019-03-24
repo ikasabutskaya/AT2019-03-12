@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Vector extends  Var {
     private double[] value;
 
-    public Vector(double[] value) {
-        this.value = Arrays.copyOf(value, value.length);
+    public Vector(double[] base) {
+        this.value = Arrays.copyOf(base, base.length);
     }
 
     public Vector(String strVector) {
