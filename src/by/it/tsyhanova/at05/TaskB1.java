@@ -4,7 +4,7 @@ package by.it.tsyhanova.at05;
 public class TaskB1 {
     public static void main(String[] args) {
         char[] vowels=new char[]{'а','е','ё','и','о','у','ы','э','ю','я','А','Е','Ё','И','О','У','Ы','Э','Ю','Я'};
-        char[] consonants=new char[]{'б','в','г','д','ж','з','й','к','л','м','н','п','р','с','т','ф','х','ц','ч','ш','щ'};
+        char[] consonants=new char[]{'б','в','г','д','ж','з','й','к','л','м','н','п','р','с','т','ф','х','ц','ч','ш','щ','З','Б','В','Г','Д','Ж','Й','К','Л','М','Н','П','Р','С','Т','Ф','Х','Ц','Ч','Ш','Щ'};
         char[] delimiters = new char[]{'.', ',', ' ', '?', '!', '-', '\t', '\n', '\r'};
         //создаем билдер для получения возможности изменять строку
         StringBuilder sb=new StringBuilder(Poem.text);
@@ -41,14 +41,14 @@ public class TaskB1 {
 
         for (int i = 0; i < lexeme.length; i++) {
             boolean searchWord=false;
-            for(int j=0;j<vowels.length;j++){
-                if (lexeme[i].charAt(0) ==vowels[j]) {
+            for(int j=0;j<consonants.length;j++){
+                if (lexeme[i].charAt(0) ==consonants[j]) {
                     searchWord=true;
                 }
             }
             if(searchWord){
-                for(int j=0;j<consonants.length;j++){
-                    if (lexeme[i].charAt(lexeme[i].length()-1) ==consonants[j]){
+                for(int j=0;j<vowels.length;j++){
+                    if (lexeme[i].charAt(lexeme[i].length()-1) ==vowels[j]){
                         System.out.println(lexeme[i]);
                     }
                 }

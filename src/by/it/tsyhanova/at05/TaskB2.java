@@ -26,7 +26,7 @@ public class TaskB2 {
         while (matcher1.find()) {
             int start = matcher1.start();
         }
-
+        //+ дает возможность выбрать и многоточие
         Pattern pattern = Pattern.compile("[\\.!?]+");
         String[] sent = pattern.split(sb);
         for(int i=0;i<sent.length;i++){
