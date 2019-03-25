@@ -1,6 +1,5 @@
 package by.it.lugansky.at05;
 
-import by.it._tasks_.at05.Poem;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
