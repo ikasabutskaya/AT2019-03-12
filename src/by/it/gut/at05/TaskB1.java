@@ -17,11 +17,22 @@ public class TaskB1 {
 
         private static boolean check (String word){
             boolean first = vow.indexOf(word.charAt(0))<0;
-
-
+            boolean last = vow.indexOf(word.charAt(word.length()-1))>-1;
+            return first;
         }
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 
     //получить текст
