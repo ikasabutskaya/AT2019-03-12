@@ -1,4 +1,4 @@
-package by.it._tasks_.at06;
+package by.it.okoyro.at06;
 
 public class Scalar extends Var {
 	private double value;
