@@ -6,8 +6,8 @@ public class Vector extends Var {
 
     private double [] value;
 
-    public Vector(double[] value) {
-        this.value = Arrays.copyOf(value, value.length);
+    public Vector(double[] base) {
+        this.value = Arrays.copyOf(base, base.length);
     }
 
     public Vector(String strVector) {
@@ -20,6 +20,12 @@ public class Vector extends Var {
     }
 
     public Vector(Vector vector) {
-        this.value = Arrays.copyOf(vector.value, vector.value.length);
+        this(vector.value);
+        //this.value = Arrays.copyOf(vector.value, vector.value.length);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(value).replace('[','{').replace(']', '}');
     }
 }
