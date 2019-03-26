@@ -21,7 +21,7 @@ public class TaskA {
             if (min > mas[i]) min = mas[i];
             if (max < mas[i]) max = mas[i];
         }
-        System.out.println(min + "  " + max);
+        System.out.println(min + " " + max);
     }
 
 
@@ -31,10 +31,12 @@ public class TaskA {
             avg = avg + element;
         }
         avg = avg / mas.length;
+        System.out.println(avg);
         for (int element : mas) {
             if (element < avg)
                 System.out.print(element + " ");
         }
+        System.out.println();
     }
 
     private static void step3(int[] mas) {
