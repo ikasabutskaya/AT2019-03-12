@@ -1,7 +1,5 @@
 package by.it.agrinkevich.at07;
 
-import by.it.agrinkevich.at06.Var;
-
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

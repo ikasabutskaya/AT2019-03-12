@@ -1,9 +1,7 @@
 package by.it.agrinkevich.at07;
 
-import java.util.Arrays;
-
 public class Vector extends  Var {
-    private double[] value;
+   /* private double[] value;
 
     public Vector(double[] base) {
         this.value = Arrays.copyOf(base, base.length);
@@ -37,4 +35,5 @@ public class Vector extends  Var {
     public String toString() {
         return Arrays.toString(value).replace('[','{').replace(']', '}');
     }
+    */
 }
