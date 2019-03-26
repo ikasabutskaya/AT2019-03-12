@@ -2,15 +2,16 @@ package by.it.agrinkevich.at05;
 
 public class TaskC1 {
     public static void main(String[] args) {
-        String poem = new String(Poem.text);
+        //String poem = new String(Poem.text);
         ///poem = poem.replaceAll("\\\\S*\\\\s\\\\S*", " ");
-        String[] sentences = poem.split("\n");
+        /*String[] sentences = poem.split("\n");
         int maxLength = sentences[0].length();
         for (int i = 0; i < sentences.length; i++) {
             if (sentences[i].length() > maxLength){
                 maxLength = sentences[i].length();
             }
         }
+
         for (int i = 0; i < sentences.length; i++) {
             if (sentences[i].length() < maxLength){
                 StringBuilder str = new StringBuilder(sentences[i]);
@@ -29,6 +30,7 @@ public class TaskC1 {
         }
         String result = String.join("\n", sentences);
         System.out.println(result);
+        */
     }
 }
 
