@@ -1,4 +1,4 @@
-package by.it.shchur.AT05;
+package by.it.udalyou.at05;
 
 class Poem {
     static final String text=
