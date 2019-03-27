@@ -6,12 +6,16 @@ class Vector extends Var{
 
     private double[] value;
 
+    public double[] getValue() {
+        return value;
+    }
+
     public Vector(double[] value) {
         this.value = Arrays.copyOf(value, value.length);
     }
 
     public Vector(String strVector){
-        String[] s = strVector.replace("{", "").replace("}", "").split(",\\s*");
+        String[] s = strVector.replace("{", "").replace("}", "").replaceAll(" ", "").split(",\\s*");
         value = new double[s.length];
         for (int i = 0; i < value.length; i++) {
             value[i] = Double.parseDouble(s[i]);

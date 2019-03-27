@@ -21,8 +21,8 @@ class Matrix extends Var{
 
     Matrix(String strMatrix){
         StringBuilder stringBuilder = new StringBuilder(strMatrix);
-        Pattern arrayPattern = Pattern.compile("\\{[0-9\\.,]+\\}");
-        Pattern commas = Pattern.compile("\\}[,]\\{");
+        Pattern arrayPattern = Pattern.compile("\\{[0-9(\\\\.)?,(\\s)?]+\\}");
+        Pattern commas = Pattern.compile("\\},\\s?\\{");
         Matcher rows = arrayPattern.matcher(stringBuilder);
         Matcher count = commas.matcher(stringBuilder);
 
@@ -35,7 +35,7 @@ class Matrix extends Var{
         int i=0;
         while (rows.find()){
             int j=0;
-            String row[] = rows.group().replace("{","").replace("}","").split(",");
+            String row[] = rows.group().replace("{","").replace("}","").replaceAll(" ","").split(",");
             for (String s : row) {
                 this.arr[i] = Arrays.copyOf(arr[i],j+1);
                 this.arr[i][j] = Double.parseDouble(s);
