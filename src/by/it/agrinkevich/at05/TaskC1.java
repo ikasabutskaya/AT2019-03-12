@@ -1,16 +1,10 @@
 package by.it.agrinkevich.at05;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class TaskC1 {
     public static void main(String[] args) {
         //String poem = new String(Poem.text);
-         String[] sentences = {"один два       три четыре",
-                              "пять,        шесть      семь     восемь,     девять",
-                              "десять       одиннадцать двенадцать тринадцать",
-                              "четырнадцать,       пятнадцать"};
-        //String[] sentences = poem.split("\n");
+        ///poem = poem.replaceAll("\\\\S*\\\\s\\\\S*", " ");
+        /*String[] sentences = poem.split("\n");
         int maxLength = sentences[0].length();
         for (int i = 0; i < sentences.length; i++) {
             if (sentences[i].length() > maxLength){
@@ -18,14 +12,25 @@ public class TaskC1 {
             }
         }
 
-        Pattern pattern = Pattern.compile("\\s");
         for (int i = 0; i < sentences.length; i++) {
-            Matcher matcher = pattern.matcher(sentences[i]);
-            while (matcher.find()){
-
+            if (sentences[i].length() < maxLength){
+                StringBuilder str = new StringBuilder(sentences[i]);
+                while (str.length() != maxLength) {
+                    for (int j = 0; j < str.length(); j++) {
+                        if (str.charAt(j) != ' ') continue;
+                        if (str.charAt(j) == ' ') {
+                            str.insert(j, ' ');
+                            j++;
+                        }
+                        if (str.length() == maxLength) break;
+                    }
+                }
+                sentences[i] = str.toString();
             }
         }
-
-
+        String result = String.join("\n", sentences);
+        System.out.println(result);
+        */
     }
 }
+
