@@ -1,7 +1,7 @@
-package by.it._tasks_.at05;
+package by.it.lugansky.at05;
 
 public class Poem {
-    public static final String text=
+    static final String text=
             "У лукоморья дуб зелёный,\n" +
             "Златая цепь на дубе том.\n" +
             "И днём и ночью кот учёный\n" +
