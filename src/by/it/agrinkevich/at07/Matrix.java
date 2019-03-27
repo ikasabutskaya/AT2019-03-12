@@ -120,25 +120,29 @@ public class Matrix extends Var {
                 matrix[i] = Arrays.copyOf(value[i], value[i].length);
             }
             double[] res = new double[value.length];
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[0].length; j++) {
-                    res[j] = res[j] + (matrix[i][j] * ((Vector)other).value[j]);
+            for (int j = 0; j < value[0].length; j++) {
+                for (int i = 0; i < value.length; i++) {
+                    res[j] += matrix[j][i] * ((Vector)other).value[i];
                 }
             }
             return new Vector(res);
 
         }
-        /*if (other instanceof Matrix){
-            double[][] res = new double[value.length][value[0].length];
+        if (other instanceof Matrix){
+            double[][] matrix = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
-                res[i] = Arrays.copyOf(value[i], value[i].length);
+                matrix[i] = Arrays.copyOf(value[i], value[i].length);
             }
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[0].length; j++) {
-                    //res[i][j] =
+            double[][] res = new double[value.length][value[0].length];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[0].length; j++) {
+                    for (int k = 0; k < matrix.length; k++) {
+                        res[i][j] += matrix[i][k] * ((Matrix) other).value[k][j];
+                    }
                 }
             }
-        }*/
+           return new Matrix(res);
+        }
         return super.mul(other);
     }
 
