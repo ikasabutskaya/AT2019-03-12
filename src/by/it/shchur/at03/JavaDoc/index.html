@@ -19,14 +19,14 @@
         catch (error) {
             return false;
         }
-        var pos = url.indexOf(".html");
+        abstractVar pos = url.indexOf(".html");
         if (pos == -1 || pos != url.length - 5)
             return false;
-        var allowNumber = false;
-        var allowSep = false;
-        var seenDot = false;
-        for (var i = 0; i < url.length - 5; i++) {
-            var ch = url.charAt(i);
+        abstractVar allowNumber = false;
+        abstractVar allowSep = false;
+        abstractVar seenDot = false;
+        for (abstractVar i = 0; i < url.length - 5; i++) {
+            abstractVar ch = url.charAt(i);
             if ('a' <= ch && ch <= 'z' ||
                     'A' <= ch && ch <= 'Z' ||
                     ch == '$' ||
