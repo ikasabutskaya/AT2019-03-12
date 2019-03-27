@@ -1,4 +1,4 @@
-package by.it.shchur.AT01;
+package by.it.shchur.at01;
 
 class Args {
     private String[] args;
