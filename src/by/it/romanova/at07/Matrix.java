@@ -79,7 +79,34 @@ class Matrix extends Var{
 
     @Override
     public Var sub(Var other) {
-        return super.sub(other);
+        if (other instanceof Scalar){
+            double[][] array = new double[this.arr.length][this.arr[0].length];
+            for (int i = 0; i < array.length; i++) {
+                array[i] = Arrays.copyOf(this.arr[i], this.arr[i].length);
+            }
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) {
+                    array[i][j] = array[i][j] - ((Scalar) other).getValue();
+                }
+            }
+            return new Matrix(array);
+        }
+        if (other instanceof Matrix){
+            double[][] array = new double[this.arr.length][this.arr[0].length];
+            for (int i = 0; i < array.length; i++) {
+                array[i] = Arrays.copyOf(this.arr[i], this.arr[i].length);
+            }
+
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) {
+                    array[i][j] = array[i][j] - ((Matrix) other).arr[i][j];
+                }
+            }
+            return new Matrix(array);
+
+        }
+        else
+            return super.sub(other);
     }
 
     @Override
