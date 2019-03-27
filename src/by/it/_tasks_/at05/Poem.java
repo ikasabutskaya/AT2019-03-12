@@ -1,6 +1,6 @@
 package by.it._tasks_.at05;
 
-public class Poem {
+class Poem {
     public static final String text=
             "У лукоморья дуб зелёный,\n" +
             "Златая цепь на дубе том.\n" +
