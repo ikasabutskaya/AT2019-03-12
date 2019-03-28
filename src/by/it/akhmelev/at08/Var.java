@@ -2,9 +2,18 @@ package by.it.akhmelev.at08;
 
 public abstract class Var implements Operation{
 
-//    static Var createVar(String strVar){
-//        //strVar.matches()
-//    }
+   static Var createVar(String strVar){
+       strVar=strVar.replace(" ","");
+       if (strVar.matches(Patterns.SCALAR))
+           return new Scalar(strVar);
+       else if (strVar.matches(Patterns.VECTOR))
+           return new Vector(strVar);
+       else if (strVar.matches(Patterns.MATRIX))
+           return new Matrix(strVar);
+       else
+           //TODO create error
+           return null;
+   }
 
 
     @Override
