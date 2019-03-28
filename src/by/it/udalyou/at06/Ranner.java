@@ -1,4 +1,4 @@
-package by.it.udalyou.at01_06;
+package by.it.udalyou.at06;
 
 /**
  * Created by user on 23.03.2019.
@@ -15,10 +15,9 @@ public class Ranner {
         Var var3 = new Scalar("3333.");
         System.out.println(var3);
 
-        //Var var4=new Scalar("{1,2,3,4,5}");
-        //System.out.println(var4);
-        Var var5 = new Vector(new double[]{1, 2, 3, 4, 5});
-        System.out.println(var5);
+
+        Var var4 = new Vector(new double[]{1, 2, 3, 4, 5});
+        System.out.println(var4);
     }
 
 }

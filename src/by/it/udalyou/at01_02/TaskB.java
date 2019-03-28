@@ -74,14 +74,13 @@ public class TaskB {
     private static void step3(double a, double b, double c) {
         double ds = b * b - 4 * a * c;
         if (ds < 0)
-            System.out.println("корня нет");
+            System.out.println("корней нет");
         else if (ds == 0) {
-            double x = -b /( 2 * a);
+            double x = -b/( 2 * a);
             System.out.println(x);
         } else {
-            double x1 = (-b - Math.sqrt(ds)) / (2 * a);
-            double x2 = (-b + Math.sqrt(ds)) / (2 * a);
-
+            double x1 = (-b + Math.sqrt(ds))/(2 * a);
+            double x2 = (-b - Math.sqrt(ds))/(2 * a);
             System.out.println(x1 + " " + x2);
         }
     }

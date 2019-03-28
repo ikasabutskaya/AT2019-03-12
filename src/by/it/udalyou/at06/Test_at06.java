@@ -1,4 +1,4 @@
-package by.it.udalyou.at01_06;
+package by.it.udalyou.at06;
 
 
 import org.junit.Test;

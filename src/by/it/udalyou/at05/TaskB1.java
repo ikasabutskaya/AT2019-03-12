@@ -1,4 +1,4 @@
-package by.it.udalyou.at01_05;
+package by.it.udalyou.at05;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
