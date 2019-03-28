@@ -1,4 +1,4 @@
-package by.it.shchur.AT01;
+package by.it.vshchur.at01;
 
 class Hello {
     private String slogan="Hello world";
