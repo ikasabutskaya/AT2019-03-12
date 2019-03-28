@@ -28,7 +28,9 @@ public class Scalar extends Var {
 	public Var add(Var other) {  // тип переменной, которая придет в метод, неизвестен
 		if (other instanceof Scalar) {  // поэтому надо проверить, является ли этот объект Scalar
 			double sum = this.value + ((Scalar) other).value;
-			return new Scalar(sum); //????
+			return new Scalar(sum); /* поскольку метод add возвращает Var other, а Var это
+			абстрактный класс и его экземпляр вернуть невозможно, то должны вернуть экземпляр его потомка,
+			 в данном случае Scalar*/
 		}
 		return other.add(this); /* в зависимости от типа объекта other (мы уже знаем, что не Scalar,
 		если пришли в эту точку), метод add будет использован из Vector или из Matrix */
