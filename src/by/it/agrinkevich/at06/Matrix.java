@@ -49,7 +49,7 @@ public class Matrix extends Var {
         for (int i = 0; i < valueLength; i++) {
             sb.append(Arrays.toString(value[i]).replace('[','{').replace(']', '}'));
             if (i != valueLength - 1){
-                sb.append(",");
+                sb.append(", ");
             }
         }
         sb.append("}");
