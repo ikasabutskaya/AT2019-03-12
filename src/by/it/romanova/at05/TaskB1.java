@@ -18,9 +18,10 @@ public class TaskB1 {
 
     }
 
+    private static final String glas = "аоиеёэыуюя";
+    private static final String soglas = "бвгджзйклмнпрстфхцчшщ";
+
     private static boolean stringMatch(String word){
-        String glas = "аоиеёэыуюя";
-        String soglas = "бвгджзйклмнпрстфхцчшщ";
 
         String first = Character.toString(word.charAt(0));
         String last = Character.toString(word.charAt(word.length()-1));
