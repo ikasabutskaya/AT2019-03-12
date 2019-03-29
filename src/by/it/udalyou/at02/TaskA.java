@@ -1,4 +1,4 @@
-package by.it.udalyou.at01_02;
+package by.it.udalyou.at02;
 
 import java.util.Scanner;
 

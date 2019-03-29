@@ -1,4 +1,4 @@
-package by.it.udalyou.at01_01;
+package by.it.udalyou.at01;
 
 class Args {
      private String [] args;

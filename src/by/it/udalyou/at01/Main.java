@@ -1,4 +1,4 @@
-package by.it.udalyou.at01_01;
+package by.it.udalyou.at01;
 
 public class Main {
 
