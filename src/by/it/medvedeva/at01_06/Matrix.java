@@ -2,7 +2,7 @@ package by.it.medvedeva.at01_06;
 
 import java.util.Arrays;
 
-class Matrix extends AbstractVar {
+class Matrix extends Var {
     private double[][] value;
 
     Matrix(double[][] value) {

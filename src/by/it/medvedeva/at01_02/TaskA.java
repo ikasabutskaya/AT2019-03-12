@@ -11,11 +11,11 @@ public class TaskA {
             mas[i]=scanner.nextInt();
 
         }
-        step1 (mas);
+        step1(mas);
         step2(mas);
         step3(mas);
 
-	// write your code here
+
     }
 
     static void step1(int[] mas){

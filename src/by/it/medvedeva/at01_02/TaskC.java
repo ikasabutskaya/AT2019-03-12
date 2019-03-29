@@ -1,72 +1,69 @@
 package by.it.medvedeva.at01_02;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class TaskC {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите размерность матрицы");
-        int n = scanner.nextInt();
 
-        int[][] mas;
-        mas = step1(n);
-        step2(mas, n);
-        //step3
+        int[][] arr = {
+                {1, 2, 3, 4, 5, 6},
+                {1, 9, 3, 4, 5, 6},
+                {1, 9, 3, 4, 9, 6},
+                {6, 5, 4, 3, 2, 1}
+        };
+
+        int[][] res = step3(arr);
+        for (int[] row : res) {
+            System.out.println(Arrays.toString(row));
+        }
 
 
     }
 
-    static int[][] step1(int n) {
-        int[][] mas = new int[n][n];
+    static int[][] step3(int[][] arr) {
 
+        //MAX
+        int max = Integer.MIN_VALUE;
+        for (int[] row : arr) {
+            for (int element : row) {
+                if (element > max)
+                    max = element;
+            }
+        }
 
-        int min = mas[0][0];
-        int max = mas[0][0];
-        while (min != -n && max != n) {
-            fillInMatrix(n, mas);
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (mas[i][j] < min) min = mas[i][j];
-                    if (mas[i][j] > max) max = mas[i][j];
+        //Массивы с признаками удаления
+        boolean[] delRow = new boolean[arr.length];
+        boolean[] delCol = new boolean[arr[0].length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == max) {
+                    delRow[i] = true;
+                    delCol[j] = true;
                 }
             }
         }
-        printMatrix(mas, n);
 
-        return mas;
-    }
+        int rowCount = 0;
+        for (boolean del : delRow) if (!del) rowCount++;
 
-    static int step2(int[ ][ ] mas, int n) {
-        int y=0;
-        for (int i = 0; i < n; i++) {
-             for (int j = 0; j < n; j++) {
-                if (mas[i][j] >0) {
-                    y=mas[i][j];
+        int colCount = 0;
+        for (boolean del : delCol) if (!del) colCount++;
 
+        int[][] res = new int[rowCount][colCount];
+        int ires = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (delRow[i] == false) {
+                int jres = 0;
+                for (int j = 0; j < arr[i].length; j++) {
+                    if (delCol[j]==false){
+                        res[ires][jres]=arr[i][j];
+                        jres++;
+                    }
                 }
+                ires++;
             }
         }
-        return y;
-    }
-
-    private static void fillInMatrix(int n, int[][] mas) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                mas[i][j] = new Random().nextInt(2 * n + 1) - n;
-            }
-
-        }
-    }
-
-    public static void printMatrix(int[][] mas, int n) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(mas[i][j] + " ");
-            }
-            System.out.println();
-
-        }
+        return res;
     }
 }
