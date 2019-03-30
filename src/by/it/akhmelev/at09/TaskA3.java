@@ -21,6 +21,7 @@ public class TaskA3 {
             else
                 list.add(posZero++, i);
         }
+
         System.out.println(list);
     }
 }
