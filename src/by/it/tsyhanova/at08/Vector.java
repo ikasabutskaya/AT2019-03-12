@@ -1,4 +1,4 @@
-package by.it.tsyhanova.at07;
+package by.it.tsyhanova.at08;
 
 import java.util.Arrays;
 
@@ -82,7 +82,7 @@ public class Vector extends Var {
         }
         return super.mul(other);
     }
-//vector is dividing by scalar or vector
+
     @Override
     public Var div(Var other) {
         if (other instanceof Scalar){
