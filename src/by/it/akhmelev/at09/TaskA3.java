@@ -12,17 +12,14 @@ public class TaskA3 {
 
         for (; ; ) {
             String s = scanner.next();
-            if (s.equals("end"))
-                break;
+            if (s.equals("end")) break;
             Integer i = Integer.valueOf(s);
             if (i < 0)
                 list.add(i);
             else if (i == 0)
                 list.add(posZero, i);
-            else {
-                list.add(posZero, i);
-                posZero++;
-            }
+            else
+                list.add(posZero++, i);
         }
         System.out.println(list);
     }
