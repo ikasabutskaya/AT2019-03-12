@@ -2,7 +2,7 @@ package by.it.tsyhanova.at08;
 
 import java.util.Scanner;
 
-public class Runner {
+public class ConsoleRunner {
     public static void main(String[] args) {
 
         Parser parser=new Parser();
