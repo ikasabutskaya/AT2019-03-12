@@ -106,7 +106,7 @@ public class TaskC {
         int mas[][]=new int[n][n];
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
-              int num=(int)(Math.random()*(2*n+1)-n);
+              int num=(int)(Math.random()*(2*n+2)-(n+1));
               mas[i][j]=num;
             }
         }
