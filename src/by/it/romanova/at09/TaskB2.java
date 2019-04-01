@@ -16,8 +16,8 @@ public class TaskB2 {
 
     static String process(ArrayList<String> people){
         int count = people.size();
+        int i = 1;
         do {
-            int i = 1;
             Iterator iterator = people.iterator();
             while (iterator.hasNext()) {
                 iterator.next();
@@ -35,8 +35,8 @@ public class TaskB2 {
 
     static String process(LinkedList<String> people){
         int count = people.size();
+        int i = 1;
         do {
-            int i = 1;
             Iterator iterator = people.iterator();
             while (iterator.hasNext()) {
                 iterator.next();
