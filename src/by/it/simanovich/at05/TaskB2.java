@@ -1,4 +1,4 @@
-package by.it.Simanovich.at05;
+package by.it.simanovich.at05;
 
 public class TaskB2 {
 
