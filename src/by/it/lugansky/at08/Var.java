@@ -1,10 +1,16 @@
 package by.it.lugansky.at08;
 
+
 abstract class Var implements Operation {
 
-   static Var createVar(String strVar){
-       //       strVar.matches()
-   return null;
+    static Var createVar(String operand) {
+        operand=operand.trim().replace("\\s+", "");
+        if (operand.matches(Patterns.SCALAR))
+            return new Scalar(operand);
+        if (operand.matches(Patterns.VECTOR))
+            return new Vector(operand);
+
+        return null;
    }
 
     @Override

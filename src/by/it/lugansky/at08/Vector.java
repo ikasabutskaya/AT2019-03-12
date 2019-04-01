@@ -10,7 +10,7 @@ class Vector extends Var {
         this.value = value;
     }
 
-    public Vector() {
+    public Vector(String operand) {
 
     }
 
