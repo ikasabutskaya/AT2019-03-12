@@ -1,4 +1,4 @@
-package by.it.okoyro.at07;
+package by.it.okoyro.at08;
 
 public class Scalar extends Var {
 	private double value;
@@ -25,8 +25,9 @@ public class Scalar extends Var {
 	}
 
 	@Override
-	public Var add(Var other) {  // тип переменной, которая придет в метод, неизвестен
-		if (other instanceof Scalar) {  // поэтому надо проверить, является ли этот объект Scalar
+	public Var add(Var other) {  /* тип переменной, которая придет в метод, неизвестен
+	поэтому надо проверить, является ли этот объект Scalar*/
+		if (other instanceof Scalar) {
 			double sum = this.value + ((Scalar) other).value;
 			return new Scalar(sum); /* поскольку метод add возвращает Var other, а Var это
 			абстрактный класс и его экземпляр вернуть невозможно, то должны вернуть экземпляр его потомка,
