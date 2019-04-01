@@ -15,12 +15,6 @@ class Vector extends Var{
     }
 
 
-
-
-
-
-
-
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder("{");
@@ -33,5 +27,6 @@ class Vector extends Var{
         sb.append("}");
         return sb.toString();
     }
+
 
 }
