@@ -1,8 +1,5 @@
 package by.it.vshchur.at06;
 
-import by.it.medvedeva.at01_04.InOut;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

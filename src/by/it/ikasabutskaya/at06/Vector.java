@@ -1,7 +1,5 @@
 package by.it.ikasabutskaya.at06;
 
-import java.util.Arrays;
-
 class Vector extends Var{
 
     private double[] value;
@@ -11,7 +9,15 @@ class Vector extends Var{
     }
 
     Vector(Vector vector) {
-        this.value = vector.value;
+        this.value=vector.value;
+    }
+
+    Vector(String strVector) {
+        String[] strVectorNew = strVector.substring(1, strVector.length()-1).split(",");
+        this.value = new double[strVectorNew.length];
+        for (int i = 0; i < value.length; i++) {
+            this.value[i] = Double.parseDouble(strVectorNew[i].trim());
+        }
     }
 
 
@@ -19,14 +25,11 @@ class Vector extends Var{
     public String toString() {
         StringBuilder sb=new StringBuilder("{");
         String delimiter="";
-        for (int i = 0; i < value.length; i++) {
-            double element = value[i];
+        for (double element : value) {
             sb.append(delimiter).append(element);
-            delimiter = ", ";
+            delimiter=", ";
         }
         sb.append("}");
         return sb.toString();
     }
-
-
 }
