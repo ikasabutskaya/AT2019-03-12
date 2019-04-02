@@ -1,4 +1,4 @@
-package by.it.Simanovich.at06;
+package by.it.simanovich.at07;
 
 import java.util.Arrays;
 
