@@ -21,11 +21,12 @@ public class TaskA {
             String myClassName = element.getClassName();
             int lineNumber = element.getLineNumber();
             if (myClassName.equals(TaskA.class.getName())) {
-                System.out.printf(
-                        " name: %s\n" +
-                        "class: %s\n" +
-                        " line: %d\n",
-                        name,myClassName,lineNumber);
+                System.out.printf("" +
+                                " name: %s\n" +
+                                "class: %s\n" +
+                                " line: %d\n",
+                        name, myClassName, lineNumber
+                );
             }
         }
     }
