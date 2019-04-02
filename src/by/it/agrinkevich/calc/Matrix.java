@@ -87,6 +87,8 @@ public class Matrix extends Var {
         }
         if (other instanceof Matrix){
             double[][] res = new double[value.length][value[0].length];
+            if (res.length != ((Matrix) other).value[0].length)
+                throw new CalcException("Матрицы разных рамеров");
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
             }

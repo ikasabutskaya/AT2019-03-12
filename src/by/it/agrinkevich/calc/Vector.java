@@ -32,6 +32,8 @@ public class Vector extends Var {
         }
         else if (other instanceof Vector){
             double[] res=Arrays.copyOf(value,value.length);
+            if (res.length != ((Vector) other).value.length)
+                throw new CalcException("Вектора разных размеров");
             for (int i = 0; i < res.length; i++) {
                 res[i]=res[i] + ((Vector) other).value[i];
             }
@@ -52,6 +54,8 @@ public class Vector extends Var {
         }
         else if (other instanceof Vector){
             double[] res=Arrays.copyOf(value,value.length);
+            if (res.length != ((Vector) other).value.length)
+                throw new CalcException("Вектора разных размеров");
             for (int i = 0; i < res.length; i++) {
                 res[i]=res[i] - ((Vector) other).value[i];
             }
