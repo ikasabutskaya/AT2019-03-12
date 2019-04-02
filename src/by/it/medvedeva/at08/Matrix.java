@@ -13,7 +13,7 @@ public class Matrix extends Var {
         this.value = matrix.value;
     }
 
-    Matrix(String strMatrix) {
+    public Matrix(String strMatrix) {
         strMatrix.trim();
         String strMatrix1 = strMatrix.substring(1, strMatrix.length() - 1);
         String[] strArr = strMatrix1.split("},");
