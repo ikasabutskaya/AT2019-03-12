@@ -147,7 +147,7 @@ public class Test_at06 {
         System.out.println("было выполнено успешно. \nТестирование вывода значения {{1,2},{3,4}} через метод toString()");
         System.out.flush();
         assertEquals("Не было получено ожидаемое значение {{1.0, 2.0}, {3.0, 4.0}}", matrix.toString().replaceAll(" ",""), "{{1.0,2.0},{3.0,4.0}}");
-        System.out.println("выполнено успешно. Matrix="+matrix);
+        System.out.println("выполнено успешно.  ="+matrix);
     }
 
 
