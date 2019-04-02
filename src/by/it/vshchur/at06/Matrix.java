@@ -16,10 +16,10 @@ class Matrix extends AbstractVar {
     Matrix(String strMatrix) {
         String[] rows = strMatrix.replace("{{", "{").replace("}}", "}").split(",\\{");
         value = new double[rows.length][];
-        for (int i = 0; i < rows.length; i++) {
+        for (int i = 0; i < rows.length-1; i++) {
             String[] row = rows[i].replace("{", "").replace("}", "").split(",\\s*");
             value[i] = new double[rows[i].length()];
-            for (int j = 0; j < rows[i].length(); j++) {
+            for (int j = 0; j < rows[i].length()-1; j++) {
                 value[i][j] = Double.parseDouble(row[j]);
             }
         }
@@ -35,11 +35,11 @@ class Matrix extends AbstractVar {
             String delimeterRow = "";
             for (int j = 0; j < value[i].length; j++) {
                 sbRow.append(delimeterRow).append(value[i][j]);
-                delimeterRow = ", ";
+                delimeterRow = ",";
             }
             sbRow.append("}");
             sbColumn.append(delimeterColumn).append(sbRow);
-            delimeterColumn = ", ";
+            delimeterColumn = ",";
         }
         sbColumn.append("}");
         return sbColumn.toString();
