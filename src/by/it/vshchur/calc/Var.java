@@ -11,32 +11,32 @@ public abstract class Var implements Operation {
        else if (strVar.matches(Patterns.MATRIX))
            return new Matrix(strVar);
        else
-           throw new CalcException(" неизвестное выражение "+strVar);
+           throw new CalcException("Неизвестное выражение, невозможно создать "+strVar);
    }
 
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("сложение "+this+" + "+other+" невозможно!");
+        throw new CalcException("Сложение "+this+" + "+other+" невозможно!");
     }
 
     @Override
     public Var sub(Var other)  throws CalcException {
-        throw new CalcException("вычитание "+this+" - "+other+" невозможно!");
+        throw new CalcException("Вычитание "+this+" - "+other+" невозможно!");
     }
 
     @Override
     public Var mul(Var other)  throws CalcException {
-        throw new CalcException("умножение "+this+" * "+other+" невозможно!");
+        throw new CalcException("Умножение "+this+" * "+other+" невозможно!");
     }
 
     @Override
     public Var div(Var other)  throws CalcException {
-        throw new CalcException("деление "+this+" + "+other+" невозможно!");
+        throw new CalcException("Деление "+this+" + "+other+" невозможно!");
     }
 
-    @Override
-    public String toString() {
-        return "Это абстрактная переменная";
-    }
+//    @Override
+//    public String toString() {
+//        return "Это абстрактная переменная";
+//    }
 }

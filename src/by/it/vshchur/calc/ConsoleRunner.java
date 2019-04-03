@@ -2,12 +2,13 @@ package by.it.vshchur.calc;
 
 import java.util.Scanner;
 
-public class ConsoleRunner {
+class ConsoleRunner {
     public static void main(String[] args) {
-
-        Parser parser=new Parser();
         Printer printer=new Printer();
+        Parser parser=new Parser();
+
         Scanner scanner=new Scanner(System.in);
+
         for(;;){
             String expression=scanner.nextLine();
             if (expression.equals("end"))
@@ -15,11 +16,12 @@ public class ConsoleRunner {
             Var var = null;
             try {
                 var = parser.calc(expression);
+                printer.print(var);
             } catch (CalcException e) {
                 System.out.println("Ошибка в "+expression);
                 System.out.println(e.getMessage());
             }
-            printer.print(var);
+
         }
     }
 }
