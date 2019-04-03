@@ -32,6 +32,19 @@ public class TaskB {
             }
             sumWagePerson[i]=sumPerson;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
         double medianWage=(double)sum/(num*4);
         System.out.println("---------------------------------------------------------");
         System.out.printf("%-9s%-10s%-10s%-10s%-10s%-10s%n","Фамилия","Квартал 1","Квартал 2","Квартал 3","Квартал 4","Итого");
