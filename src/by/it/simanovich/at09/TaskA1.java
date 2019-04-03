@@ -7,35 +7,26 @@ import java.util.List;
 
 public class TaskA1 {
 
-    private List <Integer> list = new ArrayList <> ();
+    private List<Integer> grades =new ArrayList<>();
 
-    private void clearBad(List<Integer> grades){
+    public static void main(String[] args) {
+        TaskA1 instance=new TaskA1();
+        for (int i = 0; i < 20; i++) {
+            int grade=(int)(Math.random()*10)+1;
+            instance.grades.add(grade);
+        }
+        System.out.println("Before:"+instance.grades);
+        instance.clearBad(instance.grades);
+        System.out.println("After:"+instance.grades);
+    }
+
+    private void clearBad(List<Integer> grades) {
         Iterator<Integer> iterator = grades.iterator();
-        while (iterator.hasNext()) {
-            int grade = iterator.next();
-            if (grade<5)
+        while (iterator.hasNext()){
+            Integer grade = iterator.next();
+            if (grade<4)
                 iterator.remove();
         }
 
     }
-
-    public static void main(String[] args) {
-
-        TaskA1 task = new TaskA1();
-
-        for (int i = 0; i <25 ; i++) {
-
-
-            task.list.add((int) Math.ceil(Math.random() * 10));
-           }
-
-        System.out.println(task.list);
-
-        task.clearBad(task.list);
-        System.out.println(task.list);
-
-        }
-
-
-
 }

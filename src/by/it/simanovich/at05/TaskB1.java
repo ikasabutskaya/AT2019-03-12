@@ -5,18 +5,16 @@ import java.util.regex.Pattern;
 
 public class TaskB1 {
     public static void main(String[] args) {
-        String poem = new String(Poem.text);
-        //words = (String[]) toString().split("[\\s,.:!?]+");
-        String [] words = poem.split("[\\s,.:!?]+");
-        Pattern pattern = Pattern.compile("^[йцкнгшщзхъфвпрлджчсмтьб].*[уеыаоэяию]$");
-        for (int i = 0; i < words.length; i++) {
-            Matcher matcher = pattern.matcher(words[i]);
-            if (matcher.find()){
-                System.out.println(words[i]);
+        String vowels = "ёуеыаоэяиюЁУЕЫАОЭЯИЮ";
+        String consonants = "йцкнгшщзхфвпрлджчсмтбЙЦКНГШЩЗХФВПРЛДЖЧСМТБ";
+        StringBuilder sb = new StringBuilder(Poem.text);
+        Pattern pattern = Pattern.compile("[а-яА-яёЁ]+");
+        Matcher matcher = pattern.matcher(sb);
+        while (matcher.find()){
+            String word = matcher.group();
+            if (consonants.contains(word.substring(0,1)) && vowels.contains(word.substring(word.length() - 1))){
+                System.out.println(word);
             }
-
-
-
         }
     }
 }

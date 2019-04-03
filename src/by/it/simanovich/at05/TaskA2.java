@@ -5,42 +5,39 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskA2 {
-    private static String [] w = {};
-    private static int [] count = {};
 
-    private static int pos (String word){
-        for (int i = 0; i <w.length ; i++) {
-            if (w[i].equals(word) )
+    private static String[] words = {};
+    private static int[] count = {};
+
+    private static int pos(String word){
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(word))
                 return i;
-
         }
         return -1;
     }
 
-
     public static void main(String[] args) {
-        String stih = Poem.text;
-        StringBuilder sb = new StringBuilder(stih);
-        Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]{4,}");
-        Matcher matcher = pattern.matcher(stih);
+        Pattern pattern = Pattern.compile("[а-яА-яёЁ]+");
+        Matcher matcher = pattern.matcher(Poem.text);
         while (matcher.find()) {
             String word = matcher.group();
             int p = pos(word);
-            if (p>0){
+            if( p >= 0){
                 count[p]++;
             }
-            else{
-                int last = w.length;
-                w = Arrays.copyOf(w, last +1);
-                w[last]=word;
-                count = Arrays.copyOf(count, last + 1);
-                count [last] = 1;
+            else {
+                int last = words.length;
+                words = Arrays.copyOf(words, last+1);
+                words[last] = word;
+                count = Arrays.copyOf(count, last+1);
+                count[last]=1;
             }
         }
-        for (int i = 0; i <w.length ; i++) {
-            System.out.println(w[i] + "=" + count[i]);
-            
-        }
+        for (int i = 0; i < words.length; i++) {
+            System.out.println(words[i] + "=" +count[i]);
         }
 
-        }
+    }
+}
+
