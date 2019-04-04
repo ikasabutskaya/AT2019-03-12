@@ -1,4 +1,4 @@
-package by.it.calc;
+package by.it.romanova.calc;
 
 abstract class Var implements Operation {
 

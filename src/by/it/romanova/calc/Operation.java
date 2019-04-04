@@ -1,4 +1,4 @@
-package by.it.calc;
+package by.it.romanova.calc;
 
 interface Operation {
     Var add(Var other) throws CalcException;

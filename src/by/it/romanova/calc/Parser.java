@@ -1,4 +1,4 @@
-package by.it.calc;
+package by.it.romanova.calc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
