@@ -31,8 +31,9 @@ public class TaskA {
         }
         avg=avg/mas.length;
         for (int element : mas) {
-            if (element<avg) System.out.println(element+ " ");
+            if (element<avg) System.out.print(element+ " ");
         }
+        System.out.println();
 
     }
     static void step3(int[ ] mas){
