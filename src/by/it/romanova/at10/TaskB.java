@@ -7,20 +7,24 @@ public class TaskB {
         double sum = 0, value = 0, sqrt =0;
         try {
             Scanner sc = new Scanner(System.in);
-            for (;;){
+            for (;;) {
                 String txt = sc.nextLine();
-                if(txt.equals("End"))
+                if (txt.equals("END"))
                     break;
                 value = Double.parseDouble(txt);
                 sum = sum + value;
+                if (sum < 0)
+                    throw new ArithmeticException();
+                else {
+                    sqrt = Math.sqrt(sum);
+                    System.out.println(value + " " + sqrt);
+                }
+
             }
         }
         catch (RuntimeException e){
             printIfRuntimeException(e);
         }
-
-        sqrt = Math.sqrt(sum);
-        System.out.println(value + " " + sqrt);
 
     }
 
