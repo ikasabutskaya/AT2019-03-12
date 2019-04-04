@@ -7,10 +7,16 @@ class Parser {
     Var calc(String expression) throws CalcException {
         //2.0*2.0
         String[] operands = expression.split(Patterns.OPERATION);
-        Var one = Var.createVar(operands[0]);
         Var two = Var.createVar(operands[1]);
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
         Matcher matcherOperation = patternOperation.matcher(expression);
+        //String operation=matcherOperation.find() ? matcherOperation.group() : "error";
+        /*if(operation.equals("=")){
+            String name = "";
+            Var.saveVar(name,two);
+            return
+        }*/
+        Var one = Var.createVar(operands[0]);
         if (matcherOperation.find()){
             String operation = matcherOperation.group();
             switch (operation){
