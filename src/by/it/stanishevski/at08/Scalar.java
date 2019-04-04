@@ -4,7 +4,7 @@ public class Scalar extends Var {
 
     private double value;
 
-    private Scalar(double value) {this.value = value;}
+     Scalar(double value) {this.value = value;}
 
 
     @Override
