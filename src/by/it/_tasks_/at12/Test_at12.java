@@ -15,15 +15,15 @@ import static org.junit.Assert.fail;
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_15 {
+public class Test_at12 {
 
     @Test(timeout = 1500)
     public void testTaskA() throws Exception {
-        Test_jd01_15 run = run("");
+        Test_at12 run = run("");
         StringBuilder sb = new StringBuilder();
         //читаем файл с числами
         try (BufferedReader inp = new BufferedReader(
-                (new FileReader(dir(Test_jd01_15.class) + "matrix.txt"))
+                (new FileReader(dir(Test_at12.class) + "matrix.txt"))
         );
         ) {
             String line;
@@ -70,7 +70,7 @@ public class Test_jd01_15 {
     public void testTaskC() throws Exception {
         run("dir\n" +
                 "end\n").include("TaskC.java")
-                .include("Test_jd01_15.java");
+                .include("Test_at12.java");
         run("cd ..\n" +
                 "cd ..\n" +
                 "dir\n" +
@@ -79,11 +79,11 @@ public class Test_jd01_15 {
                 "dir\n" +
                 "end\n")
                 .include("_tasks_")
-                .include("Test_jd01_15.java");
+                .include("Test_at12.java");
     }
 
     private String getText(String fn) throws Exception {
-        Scanner scanner = new Scanner(new File(dir(Test_jd01_15.class) + fn));
+        Scanner scanner = new Scanner(new File(dir(Test_at12.class) + fn));
         StringBuilder sb = new StringBuilder();
         while (scanner.hasNext()) sb.append(scanner.nextLine() + "\n");
         scanner.close();
@@ -160,11 +160,11 @@ public class Test_jd01_15 {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static Test_jd01_15 run(String in) {
+    private static Test_at12 run(String in) {
         return run(in, true);
     }
 
-    private static Test_jd01_15 run(String in, boolean runMain) {
+    private static Test_at12 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -182,10 +182,10 @@ public class Test_jd01_15 {
         System.out.println("\n---------------------------------------------");
         System.out.println("Старт теста для " + clName + "\ninput:" + in);
         System.out.println("---------------------------------------------");
-        return new Test_jd01_15(clName, in, runMain);
+        return new Test_at12(clName, in, runMain);
     }
 
-    public Test_jd01_15() {
+    public Test_at12() {
         //Конструктор тестов
     }
 
@@ -197,7 +197,7 @@ public class Test_jd01_15 {
     Class<?> aClass;
 
     //Основной конструктор тестов
-    private Test_jd01_15(String className, String in, boolean runMain) {
+    private Test_at12(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -230,18 +230,18 @@ public class Test_jd01_15 {
     }
 
     //проверка вывода
-    private Test_jd01_15 is(String str) {
+    private Test_at12 is(String str) {
         assertTrue("Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 stringWriter.toString().equals(str));
         return this;
     }
 
-    private Test_jd01_15 include(String str) {
+    private Test_at12 include(String str) {
         assertTrue("Строка не найдена: " + str + "\n", stringWriter.toString().contains(str));
         return this;
     }
 
-    private Test_jd01_15 exclude(String str) {
+    private Test_at12 exclude(String str) {
         assertTrue("Лишние данные в выводе: " + str + "\n", !stringWriter.toString().contains(str));
         return this;
     }
