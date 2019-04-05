@@ -3,7 +3,7 @@ package by.it.vshchur.at08;
 import java.util.Scanner;
 
 class ConsoleRunner {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         String line;
 

@@ -6,9 +6,10 @@ import java.util.Scanner;
 class TaskC {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите N (размерность массива n x n): ");
         int n = scanner.nextInt();
         int[][] mas = new int[n][n];
-        step1(n);
+        mas = step1(n);
         step2(mas);
         step3(mas);
     }
@@ -16,14 +17,16 @@ class TaskC {
     static int[][] step1(int n) {
 
         int[][] matrix = new int[n][n];
-        int nPreseceInMatrix = 0;
-        while (nPreseceInMatrix < 2) {
-            nPreseceInMatrix = 0;
+        boolean isPositiveNPresented = false;
+        boolean isNegativeNPresented = false;
+        while (!(isPositiveNPresented && isNegativeNPresented)) {
+            isPositiveNPresented = false;
+            isNegativeNPresented = false;
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix.length; j++) {
                     matrix[i][j] = (int) (Math.random() * (2 * n + 2) - n - 1);
-                    if (matrix[i][j] == n) nPreseceInMatrix++;
-                    if (matrix[i][j] == -1 * n) nPreseceInMatrix++;
+                    if (matrix[i][j] == n) isPositiveNPresented = true;
+                    if (matrix[i][j] == -1 * n) isNegativeNPresented = true;
                 }
             }
         }
@@ -31,7 +34,6 @@ class TaskC {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++)
                 System.out.print(matrix[i][j] + " ");
-
             System.out.println();
         }
         return matrix;
@@ -43,18 +45,17 @@ class TaskC {
         for (int i = 0; i < mas.length; i++) {
             int rowPositiveElemCounter = 0;
             int sumRow = 0;
+            int sumGroup = 0;
             for (int j = 0; j < mas.length; j++) {
-                int sumGroup = 0;
                 if (mas[i][j] > 0) rowPositiveElemCounter++;
-                if (rowPositiveElemCounter == 1 && mas[i][j] < 0) sumGroup =sumGroup+mas[i][j];
-                if (rowPositiveElemCounter == 2) sumRow=sumRow+sumGroup;
+                if (rowPositiveElemCounter == 1 && mas[i][j] < 0) sumGroup = sumGroup + mas[i][j];
+                if (rowPositiveElemCounter == 2) sumRow = sumRow + sumGroup;
             }
-            sum=sum+sumRow;
+            sum = sum + sumRow;
         }
-        System.out.println("Сумма значений между 1-м и 2-м полож числами в каждом ряду:"+sum);
+        System.out.println("Сумма значений между 1-м и 2-м положительными числами в каждом ряду:" + sum);
         return sum;
     }
-
 
 
     static int[][] step3(int[][] arr) {
@@ -82,7 +83,7 @@ class TaskC {
         for (boolean del : delRow) if (!del) rowCount++;
 
         int colCount = 0;
-        for (boolean del : delCol) if (!del) rowCount++;
+        for (boolean del : delCol) if (!del) colCount++;
 
         int[][] res = new int[rowCount][colCount];
         int ires = 0;
@@ -92,10 +93,12 @@ class TaskC {
                 for (int j = 0; j < arr[i].length; j++) {
                     if (delCol[j] == false) {
                         res[ires][jres] = arr[i][j];
+                        System.out.print(res[ires][jres] + "  ");
                         jres++;
                     }
                 }
                 ires++;
+                System.out.println();
             }
         }
         return res;
