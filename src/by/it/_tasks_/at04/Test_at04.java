@@ -1,4 +1,4 @@
-package by.it.akhmelev.at11;
+package by.it._tasks_.at04;
 
 
 import org.junit.Test;
@@ -6,100 +6,139 @@ import org.junit.Test;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.Scanner;
+import java.util.Arrays;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_at11 {
+public class Test_at04 {
 
-    @Test(timeout = 1500)
-    public void testTaskA() throws Exception {
-        Test_at11 run = run("");
-        StringBuilder sb = new StringBuilder();
-        //читаем файл с числами
-        try (DataInputStream inp = new DataInputStream
-                (new BufferedInputStream
-                        (new FileInputStream(dir(Test_at11.class) + "dataTaskA.bin"))
-                );
-        ) {
-            double sum = 0;
-            double count = 0;
-            while (inp.available() > 0) {
-                int i = inp.readInt();
-                sb.append(i + " ");
-                sum = sum + i;
-                count++;
-            }
-            run.include(sb.toString().trim()); //проверка строки из 20 чисел
-            run.include("avg=" + sum / count); //проверка вывода среднего арифметического
+    @Test(timeout = 5000)
+    public void testTaskA1_printMulTable__TaskA() throws Exception {
+        Test_at04 ok = run("", false);
+        Method m = checkMethod(ok.aClass.getSimpleName(), "static printMulTable");
+        m.setAccessible(true);
+        m.invoke(null);
+        ok
+                .include("2*2=4  2*3=6  2*4=8  2*5=10 2*6=12 2*7=14 2*8=16 2*9=18")
+                .include("3*2=6  3*3=9  3*4=12 3*5=15 3*6=18 3*7=21 3*8=24 3*9=27")
+                .include("4*2=8  4*3=12 4*4=16 4*5=20 4*6=24 4*7=28 4*8=32 4*9=36")
+                .include("5*2=10 5*3=15 5*4=20 5*5=25 5*6=30 5*7=35 5*8=40 5*9=45")
+                .include("6*2=12 6*3=18 6*4=24 6*5=30 6*6=36 6*7=42 6*8=48 6*9=54")
+                .include("7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 7*8=56 7*9=63")
+                .include("8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 8*9=72")
+                .include("9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81");
 
-            Scanner scanner = new Scanner(new File(dir(Test_at11.class) + "resultTaskA.txt"));
-            //проверка соответсвия вывода и содержимого файла отчета resultTaskA.txt
-            while (scanner.hasNext()) {
-                run.include(scanner.nextLine());
-            }
-            scanner.close();
-        }
+        System.out.println("Проверка таблицы умножения завершена");
     }
 
-    @Test(timeout = 1500)
-    public void testTaskB() throws Exception {
-        Test_at11 run = run("");
-        run.include("words=157"); //слов должно быть 157
-        run.include("marks=32");  //знаков должно быть 32 (исправлено 21.01.2018)
-        StringBuilder sb = new StringBuilder();
-        //читаем файл с числами
-        Scanner scanner = new Scanner(new File(dir(Test_at11.class) + "resultTaskB.txt"));
-        //проверка соответствия вывода и содержимого файла отчета resultTaskB.txt
-        while (scanner.hasNext()) {
-            run.include(scanner.nextLine());
-        }
-        scanner.close();
+    @Test(timeout = 5000)
+    public void testTaskA2_buildOneDimArray__TaskA() throws Exception {
+        Test_at04 ok = run("", false);
+        Method m = checkMethod(ok.aClass.getSimpleName(), "static buildOneDimArray", String.class);
+        m.invoke(null, "123 99 88 77 66 5 4 3 1 0 2");
+        ok.include("V[").include("]=0").include("]=123");
+        ok.include("first element=10");
+        ok.include("last element=2");
+        System.out.println("Проверка обработки массива завершена");
     }
 
-    @Test(timeout = 1500)
-    public void testTaskC() throws Exception {
-        Test_at11 run = run("");
-        showDir(dir(Test_at11.class)+ "",run);
-        Scanner scanner = new Scanner(new File(dir(Test_at11.class) + "resultTaskC.txt"));
-        //проверка соответствия вывода и содержимого файла отчета resultTaskC.txt
-        scanner.nextLine(); //пропуск потенциально возможного dir:..
-        while (scanner.hasNext()) {
-            run.include(scanner.nextLine());
-        }
-        scanner.close();
+    @Test(timeout = 5000)
+    public void testTaskA3_run_main__TaskA() throws Exception {
+        Test_at04 ok = run("123 99 88 77 66 5 4 3 1 0 2");
+        ok
+                .include("2*2=4  2*3=6  2*4=8  2*5=10 2*6=12 2*7=14 2*8=16 2*9=18")
+                .include("3*2=6  3*3=9  3*4=12 3*5=15 3*6=18 3*7=21 3*8=24 3*9=27")
+                .include("4*2=8  4*3=12 4*4=16 4*5=20 4*6=24 4*7=28 4*8=32 4*9=36")
+                .include("5*2=10 5*3=15 5*4=20 5*5=25 5*6=30 5*7=35 5*8=40 5*9=45")
+                .include("6*2=12 6*3=18 6*4=24 6*5=30 6*6=36 6*7=42 6*8=48 6*9=54")
+                .include("7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 7*8=56 7*9=63")
+                .include("8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 8*9=72")
+                .include("9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81");
+        ok.include("V[").include("]=0").include("]=123");
+        ok.include("first element=10");
+        ok.include("last element=2");
+        System.out.println("Проверка метода main завершена");
     }
 
-    private static void showDir(String path, Test_at11 run) {
-        File p = new File(path);
-        String name = p.getName();
-        if (p.isFile()) {
-            run.include("file:" + name); //имя файла (должно быть с расширением)
-        } else if (p.isDirectory()) {
-            if (!name.equals("") && !name.equals("")) //fix
-                run.include("dir:" + name); //имя каталога, .git - тоже каталог
-            File[] paths = p.listFiles();
-            if (paths != null)
-                for (File iterator : paths) {
-                    showDir(iterator.getAbsolutePath(),run);
-                }
-        }
+    @Test(timeout = 5000)
+    public void testTaskB1_inputSalary__TaskB() throws Exception {
+        run("3\n" +
+                "Ivanov\n" +
+                "Petrov\n" +
+                "Sidorov\n" +
+                "11 11 13 15\n" +
+                "15 16 17 18 \n" +
+                "19 20 11 12 \n")
+                .include("Ivanov").include("Petrov").include("Sidorov")
+                .include("11").include("13").include("13").include("13")
+                .include("15").include("16").include("17").include("18")
+                .include("19").include("20").include("11").include("12")
+        ;
     }
 
-    static String dir(Class cl) {
-        return System.getProperty("user.dir") + "/src/" + cl.getName().replace(cl.getSimpleName(), "").replace('.', '/');
+    @Test(timeout = 5000)
+    public void testTaskB2_sumAndAvg__TaskB() throws Exception {
+        run("3\n" +
+                "Ivanov\n" +
+                "Petrov\n" +
+                "Sidorov\n" +
+                "11 11 13 15\n" +
+                "15 16 17 18 \n" +
+                "19 20 11 12 \n")
+                .include("178")
+                .include("14").include("833")
+        ;
     }
+
+    @Test(timeout = 5000)
+    public void testTaskC1__TaskC() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При a=0,00 Сумма y = 6,****48e+00\n" +
+                "При a=0,20 Сумма y = 9,****87e+00\n" +
+                "При a=0,40 Сумма y = 1,****09e+01\n" +
+                "При a=0,60 Сумма y = 1,****22e+01\n" +
+                "При a=0,80 Сумма y = 2,****31e+01\n" +
+                "При a=1,00 Сумма y = 4,****65e+01\n" +
+                "При a=1,20 Сумма y = 6,****12e+01\n" +
+                "При a=1,40 Сумма y = 9,****72e+01\n" +
+                "При a=1,60 Сумма y = 1,****77e+02\n" +
+                "При a=1,80 Сумма y = 1,****33e+02\n" +
+                "При a=2,00 Сумма y = 2,****56e+02\n");
+        run("").include("2756");
+    }
+
+    @Test(timeout = 5000)
+    public void testTaskC2__TaskC() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При x/2=-2,75 вычисления не определены\n" +
+                "При x/2=-2,50 вычисления не определены\n" +
+                "При x/2=-2,25 вычисления не определены\n" +
+                "При x/2=-2,00 вычисления не определены\n" +
+                "При x/2=-1,75 a = 3,****62e-01\n" +
+                "При x/2=-1,50 a = 4,****25e-01\n" +
+                "При x/2=-1,25 a = 4,****95e-01\n" +
+                "При x/2=-1,00 a = 2,****60e-01\n" +
+                "При x/2=-0,75 a = 3,****82e-01\n" +
+                "При x/2=-0,50 a = 5,****39e-01\n" +
+                "При x/2=-0,25 a = 5,****66e-01\n" +
+                "При x/2=0,00 a = 5,****16e-01\n" +
+                "При x/2=0,25 вычисления не определены\n" +
+                "При x/2=0,50 вычисления не определены\n" +
+                "При x/2=0,75 вычисления не определены");
+        run("").include("8540");
+    }
+
+
 
     /*
-     ===========================================================================================================
-     НИЖЕ ВСПОМОГАТЕЛЬНЫЙ КОД ТЕСТОВ. НЕ МЕНЯЙТЕ В ЭТОМ ФАЙЛЕ НИЧЕГО.
-     Но изучить как он работает - можно, это всегда будет полезно.
-     ===========================================================================================================
-      */
+===========================================================================================================
+НИЖЕ ВСПОМОГАТЕЛЬНЫЙ КОД ТЕСТОВ. НЕ МЕНЯЙТЕ В ЭТОМ ФАЙЛЕ НИЧЕГО.
+Но изучить как он работает - можно, это всегда будет полезно.
+===========================================================================================================
+ */
     //-------------------------------  методы ----------------------------------------------------------
     private Class findClass(String SimpleName) {
         String full = this.getClass().getName();
@@ -140,7 +179,7 @@ public class Test_at11 {
         try {
             return cl.getDeclaredMethod(name, param);
         } catch (NoSuchMethodException e) {
-            fail("\nERROR:Тест не пройден. Метод " + cl.getName() + "" + name + " не найден\n");
+            fail("\nERROR:Тест не пройден. Метод " + cl.getName() + "." + name + " не найден\n");
         }
         return null;
     }
@@ -159,11 +198,11 @@ public class Test_at11 {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static Test_at11 run(String in) {
+    private static Test_at04 run(String in) {
         return run(in, true);
     }
 
-    private static Test_at11 run(String in, boolean runMain) {
+    private static Test_at04 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -182,11 +221,11 @@ public class Test_at11 {
         System.out.println("Старт теста для " + clName);
         if (!in.isEmpty()) System.out.println("input:" + in);
         System.out.println("---------------------------------------------");
-        return new Test_at11(clName, in, runMain);
+        return new Test_at04(clName, in, runMain);
     }
 
     //-------------------------------  тест ----------------------------------------------------------
-    public Test_at11() {
+    public Test_at04() {
         //Конструктор тестов
     }
 
@@ -198,7 +237,7 @@ public class Test_at11 {
     private StringWriter strOut = new StringWriter(); //накопитель строки вывода
 
     //Основной конструктор тестов
-    private Test_at11(String className, String in, boolean runMain) {
+    private Test_at04(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -206,7 +245,7 @@ public class Test_at11 {
             this.className = className;
 
         } catch (ClassNotFoundException e) {
-            fail("ERROR:Не найден класс " + className + "\n");
+            fail("ERROR:Не найден класс " + className + "/n");
         }
         InputStream reader = new ByteArrayInputStream(in.getBytes());
         System.setIn(reader);   //перехват стандартного ввода
@@ -223,20 +262,19 @@ public class Test_at11 {
             }
     }
 
-
     //проверка вывода
-    private Test_at11 is(String str) {
+    private Test_at04 is(String str) {
         assertTrue("ERROR:Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 strOut.toString().equals(str));
         return this;
     }
 
-    private Test_at11 include(String str) {
+    private Test_at04 include(String str) {
         assertTrue("ERROR:Строка не найдена: " + str + "\n", strOut.toString().contains(str));
         return this;
     }
 
-    private Test_at11 exclude(String str) {
+    private Test_at04 exclude(String str) {
         assertTrue("ERROR:Лишние данные в выводе: " + str + "\n", !strOut.toString().contains(str));
         return this;
     }
@@ -250,9 +288,8 @@ public class Test_at11 {
 
             @Override
             public void write(int b) throws IOException {
-                if (pos == 0 && b == '\r') //пропуск \r (чтобы win mac и linux одинаково работали
+                if (pos==0 && b=='\r') //пропуск \r (чтобы win mac и linux одинаково работали
                     return;
-                //ок. теперь можно делать разбор
                 if (pos == 0) { //определим кодировку https://ru.wikipedia.org/wiki/UTF-8
                     if ((b & 0b11110000) == 0b11110000) bytes = new byte[4];
                     else if ((b & 0b11100000) == 0b11100000) bytes = new byte[3];
@@ -266,6 +303,7 @@ public class Test_at11 {
                     oldOut.append(s); //копию в обычный вывод
                     pos = 0; //готовим новый символ
                 }
+
             }
         });
     }
