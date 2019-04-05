@@ -7,7 +7,8 @@ import java.io.PrintWriter;
 
 public class TaskB {
     public static void main(String[] args) {
-        String path = System.getProperty("user.dir") + "/src/by/it/tsyhanova/at11/";
+        String sep=System.getProperty("file.separator");
+        String path = System.getProperty("user.dir") + sep+"src"+sep+"by"+sep+"it"+sep+"tsyhanova"+sep+"at11"+sep;
         StringBuilder sb=new StringBuilder();
         try (FileReader reader = new FileReader(path+"text.txt")) {
             // читаем посимвольно  сохраняем в StringBuffer
