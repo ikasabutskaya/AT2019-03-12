@@ -7,31 +7,33 @@ import java.util.List;
 public class TaskA {
     public static void main(String[] args){
         String path = System.getProperty("user.dir")+"/src/by/it/agrinkevich/at11/";
-
+        System.out.println(path);
         writeInt(path);
-        List<Integer> list = readInt(path);
 
-        try(FileWriter fw=new FileWriter(path + "resultTaskA.txt");
-            PrintWriter pw=new PrintWriter(fw))
+        List<Integer> list = new ArrayList<>();
+        readInt(path, list);
+        printInt(path, list);
+    }
+
+    private static void printInt(String path, List<Integer> list) {
+        try (FileWriter fw=new FileWriter(path+"resultTaskA.txt");
+             PrintWriter pw=new PrintWriter(fw))
         {
-            //printInt
             double sum=0;
             for (Integer element : list) {
                 System.out.print(element+" ");
-                //txt.p
+                pw.print(element+" ");
                 sum=sum+element;
             }
             System.out.println("\navg="+sum/list.size());
+            pw.println("\navg="+sum/list.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    private static List<Integer> readInt(String path) {
-        List<Integer> list = new ArrayList<>();
-        try(FileInputStream fis=new FileInputStream(path + "dataTaskA.bin");
+    private static void readInt(String path, List<Integer> list) {
+        try(FileInputStream fis=new FileInputStream(path+"dataTaskA.bin");
             BufferedInputStream bis=new BufferedInputStream(fis);
             DataInputStream dis=new DataInputStream(bis))
         {
@@ -41,11 +43,10 @@ public class TaskA {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list;
     }
 
     private static void writeInt(String path) {
-        try (FileOutputStream fos = new FileOutputStream(path + "dataTaskA.bin");
+        try (FileOutputStream fos = new FileOutputStream(path+"dataTaskA.bin");
              BufferedOutputStream bos = new BufferedOutputStream(fos);
              DataOutputStream dos = new DataOutputStream(bos))
         {
