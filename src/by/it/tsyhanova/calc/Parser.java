@@ -18,7 +18,7 @@ class Parser {
         String operation = matcher.find() ? matcher.group() : "error";
         if (operation.equals("=")){
             String name=operands[0];
-            System.out.print(name.toUpperCase()+"=");
+            //System.out.print(name.toUpperCase()+"=");
             Var.saveVar(name, two);
             return two;
 

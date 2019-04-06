@@ -1,11 +1,17 @@
 package by.it.tsyhanova.calc;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class Var implements Operation {
 
     private static Map<String,Var> vars=new HashMap<>();
+    private static String filename=System.getProperty("user.dir")+
+            "/src/by/it/tsyhanova/calc/vars.txt";
 
     static Var createVar(String strVar) throws CalcException {
         strVar=strVar.replace(" ","");
@@ -21,6 +27,34 @@ public abstract class Var implements Operation {
                 throw new CalcException(" неизвестное выражение "+strVar);
             else
                 return var;
+        }
+    }
+
+    public static void saveToFile() {
+        try ( PrintWriter out=new PrintWriter(new FileWriter(filename))){
+            Set<Map.Entry<String, by.it.tsyhanova.calc.Var>> entries = vars.entrySet();
+            for (Map.Entry<String, by.it.tsyhanova.calc.Var> entry : entries) {
+                out.println(entry.getKey()+"="+entry.getValue());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void loadFromFile(){
+        Parser p=new Parser();
+        try(BufferedReader r=new BufferedReader(new FileReader(filename))){
+            while (true){
+                String line=r.readLine();
+                if (line==null)
+                    break;
+                p.calc(line);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        } catch (CalcException e) {
+            e.printStackTrace();
         }
     }
 
