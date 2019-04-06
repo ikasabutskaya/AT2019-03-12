@@ -6,55 +6,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskA {
+   private static String dir(Class<?> cl){
+       String path=System.getProperty("user.dir")+File.separator+"src"+File.separator;
+       String clDir=cl.getName().replace(cl.getSimpleName(),"").replace(".",File.separator);
+       return path+clDir;
+   }
+
     public static void main(String[] args) {
-        String path=System.getProperty("user.dir")+ "/src/by/it/tsyhanova/at11/";
-        writeInt(path);
-
-        List<Integer> list=new ArrayList<>();
-        readInt(path, list);
-        printInt(path, list);
-    }
-
-    private static void printInt(String path, List<Integer> list) {
-        try (FileWriter fw=new FileWriter(path+"resultTaskA.txt");
-             PrintWriter txt=new PrintWriter(fw))
-        {
-            double sum=0;
-            for (Integer element : list) {
-                System.out.print(element+" ");
-                txt.print(element+" ");
-                sum=sum+element;
+        DataOutputStream dos=null;
+        try{
+            dos=new DataOutputStream(
+                    new BufferedOutputStream(
+                            new FileOutputStream(dir(TaskA.class)+"dataTaskA.bin")));
+            for (int i = 0; i <20 ; i++) {
+                dos.writeInt((int)(Math.random()*25));
             }
-            System.out.println("\navg="+sum/list.size());
-            txt.println("\navg="+sum/list.size());
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
-    }
+        finally {
+            if(dos!=null){
+                try {
+                    dos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
-    private static void readInt(String path, List<Integer> list) {
-        try (FileInputStream fis=new FileInputStream(path+"dataTaskA.bin");
-             BufferedInputStream bis=new BufferedInputStream(fis);
-             DataInputStream dis=new DataInputStream(bis)
+
+
+        try(DataInputStream inp=new DataInputStream
+                (new BufferedInputStream(
+                        new FileInputStream(dir(TaskA.class)+"dataTaskA.bin")));
+        PrintWriter out2=new PrintWriter(new FileWriter(dir(TaskA.class)+"resultTaskA.txt"))
         ){
-            while (dis.available()>0){
-                list.add(dis.readInt());
+            double sum=0;
+            double count=0;
+            while(inp.available()>0){
+                int i=inp.readInt();
+                System.out.print(i+" ");
+                out2.print(i+" ");
+                sum=sum+i;
+                count++;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void writeInt(String path) {
-        try (FileOutputStream fos=new FileOutputStream(path+"dataTaskA.bin");
-             BufferedOutputStream bos=new BufferedOutputStream(fos);
-             DataOutputStream dos=new DataOutputStream(bos);
-             )
-        {
-            for (int i = 0; i < 20; i++) {
-                int value=(int)(Math.random()*100);
-                dos.writeInt(value);
-            }
+            System.out.println("\navg="+sum/count);
+            out2.print("\navg="+sum/count);
         } catch (IOException e) {
             e.printStackTrace();
         }

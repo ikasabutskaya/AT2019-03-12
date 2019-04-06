@@ -1,14 +1,19 @@
 package by.it.tsyhanova.at11;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class TaskB {
+    private static String dir(Class<?> cl){
+        String path=System.getProperty("user.dir")+ File.separator+"src"+File.separator;
+        String clDir=cl.getName().replace(cl.getSimpleName(),"").replace(".",File.separator);
+        return path+clDir;
+    }
+
+
     public static void main(String[] args) {
-        String sep=System.getProperty("file.separator");
-        String path = System.getProperty("user.dir") + sep+"src"+sep+"by"+sep+"it"+sep+"tsyhanova"+sep+"at11"+sep;
+       //String sep=System.getProperty("file.separator");
+        //String path = System.getProperty("user.dir") + sep+"src"+sep+"by"+sep+"it"+sep+"tsyhanova"+sep+"at11"+sep;
+        String path=dir(TaskB.class);
         StringBuilder sb=new StringBuilder();
         try (FileReader reader = new FileReader(path+"text.txt")) {
             // читаем посимвольно  сохраняем в StringBuffer
