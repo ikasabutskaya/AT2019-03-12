@@ -1,4 +1,4 @@
-package by.it.akhmelev.calc;
+package by.it.akhmelev.calc_12;
 
 public class Printer {
     void print(Var var){
