@@ -1,4 +1,4 @@
-package by.it.akhmelev.calc;
+package by.it.akhmelev.calc_11;
 
 
 import org.junit.Test;
