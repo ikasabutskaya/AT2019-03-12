@@ -1,6 +1,11 @@
 package by.it.akhmelev.calc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Var implements Operation {
+
+   private static Map<String,Var> vars=new HashMap<>();
 
    static Var createVar(String strVar) throws CalcException {
        strVar=strVar.replace(" ","");
@@ -10,8 +15,13 @@ public abstract class Var implements Operation {
            return new Vector(strVar);
        else if (strVar.matches(Patterns.MATRIX))
            return new Matrix(strVar);
-       else
-           throw new CalcException(" неизвестное выражение "+strVar);
+       else {
+           Var var = vars.get(strVar);
+           if (var==null)
+                throw new CalcException(" неизвестное выражение "+strVar);
+           else
+               return var;
+       }
    }
 
 
@@ -38,5 +48,9 @@ public abstract class Var implements Operation {
     @Override
     public String toString() {
         return "Это абстрактная переменная";
+    }
+
+    static void saveVar(String name, Var var) {
+       vars.put(name, var);
     }
 }
