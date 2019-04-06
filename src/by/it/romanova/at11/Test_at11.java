@@ -1,4 +1,4 @@
-package by.it.akhmelev.at11;
+package by.it.romanova.at11;
 
 
 import org.junit.Test;
@@ -91,7 +91,7 @@ public class Test_at11 {
     }
 
     static String dir(Class cl) {
-        return System.getProperty("user.dir") + "/src/" + cl.getName().replace(cl.getSimpleName(), "").replace('.', '/');
+        return System.getProperty("user.dir") + "/src/" + cl.getName().replace(cl.getSimpleName(), "").replace("", "/");
     }
 
     /*
