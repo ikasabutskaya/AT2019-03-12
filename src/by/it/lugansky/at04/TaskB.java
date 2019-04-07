@@ -27,7 +27,7 @@ public class TaskB {
             salary[i] = personSalary;
         }
     }
-    // calc metrics
+    // calc_11 metrics
 
 
 }
