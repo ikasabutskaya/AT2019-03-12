@@ -14,61 +14,77 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskA {
-	private static String dir(Class<?> cl) {
-		String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;    //File.separator для получения
-		//		уникальеого разделтиеля вместо "/" для Linux и "\\" для Windows
-		String clDir = cl.getName().replace(cl.getSimpleName(), "").replace(".", File.separator);
-		return path + clDir;
+	private static String getDirOfCurrentClass(Class<?> currentClassName) {
+		String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+		/* File.separator для получения уникального разделтиеля вместо "/" для Linux и "\\" для Windows
+	     System.getProperty("user.dir") + "/src/";  also works for Linux(MacOS) */
+		String classDirectory = currentClassName.getName().replace(currentClassName.getSimpleName(), "")
+				.replace(".", File.separator);
+		return path + classDirectory;
 
 	}
 
 	public static void main(String[] args) {
-		//		String path = System.getProperty("user.dir") + "/src/by/it/okoyro/at11/";    //File.separator can be used
 		List<Integer> list = new ArrayList<>();
-
+		System.out.println(getDirOfCurrentClass(TaskA.class));
 		writeInt();
 		readInt(list);
 		printInt(list);
 	}
 
-	private static void printInt(List<Integer> list) {
-		try (PrintWriter out = new PrintWriter(new FileWriter(dir(TaskA.class) + "resultTaskA.txt"))) {
-
-			double sum = 0;
-			for (Integer element : list) {
-				System.out.println(element + " ");
-				sum = sum + element;
-			}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private static void readInt(List<Integer> list) {
-		try (FileInputStream fis = new FileInputStream(dir(TaskA.class) + "resultTaskA.txt");
-			 BufferedInputStream bis = new BufferedInputStream(fis);
-			 DataInputStream dis = new DataInputStream(bis)) {
-			while (dis.available() > 0) {
-				list.add(dis.readInt());
-			}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	private static void writeInt() {
-		try (FileOutputStream fos = new FileOutputStream(dir(TaskA.class) + "resultTaskA.txt");
-			 BufferedOutputStream bos = new BufferedOutputStream(fos);
-			 DataOutputStream dos = new DataOutputStream(bos)) {
+		try (DataOutputStream dos = new DataOutputStream(
+				new BufferedOutputStream(
+						new FileOutputStream(getDirOfCurrentClass(TaskA.class) + "dataTaskA.bin")))) {
+
 			for (int i = 0; i < 20; i++) {
-				int value = (int) (Math.random() * 100);
-				dos.writeInt(value);
+				dos.writeInt((int) (Math.random() * 100));
 			}
 		}
 		catch (IOException e1) {
 			e1.printStackTrace();
+		}
+	}
+
+	private static void readInt(List<Integer> list) {
+		try (DataInputStream dis = new DataInputStream(
+				new BufferedInputStream(
+						new FileInputStream(getDirOfCurrentClass(TaskA.class) + "dataTaskA.bin")))) {
+
+			//			double sum = 0;
+			//			double quantity = 0;
+			while (dis.available() > 0) {
+				//				dis.readInt();
+				list.add(dis.readInt());
+				//				System.out.print(i);
+				//				sum = sum + i;
+				//				quantity++;
+			}
+			//			System.out.print("avg= " + sum / quantity);
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void printInt(List<Integer> list) {
+		try (PrintWriter out = new PrintWriter(
+				new FileWriter(getDirOfCurrentClass(TaskA.class) + "resultTaskA.txt"))) {
+
+			double sum = 0;
+			double quantity = 0;
+
+			for (Integer element : list) {
+				System.out.print(element + " ");
+				sum = sum + element;
+				quantity++;
+			}
+			System.out.print("\navg=" + sum / quantity);
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
