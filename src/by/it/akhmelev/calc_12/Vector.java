@@ -1,4 +1,4 @@
-package by.it.akhmelev.calc;
+package by.it.akhmelev.calc_12;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other)  throws CalcException{
+    public Var add(Var other)  throws CalcException {
         if (other instanceof Scalar){
             double[] res=Arrays.copyOf(value,value.length);
             for (int i = 0; i < res.length; i++) {
