@@ -1,4 +1,4 @@
-package by.it._tasks_.at11;
+package by.it.akhmelev.at11;
 
 
 import org.junit.Test;
