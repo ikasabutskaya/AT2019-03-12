@@ -1,7 +1,4 @@
-package by.it.vshchur.calc;
-
-import by.it.vshchur.calc.Scalar;
-import by.it.vshchur.calc.Var;
+package by.it.vshchur.calc_11;
 
 import java.util.Arrays;
 

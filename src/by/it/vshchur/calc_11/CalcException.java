@@ -1,4 +1,4 @@
-package by.it.vshchur.calc;
+package by.it.vshchur.calc_11;
 
 public class CalcException extends Exception {
     public CalcException() {
