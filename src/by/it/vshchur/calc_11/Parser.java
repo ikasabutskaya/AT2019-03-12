@@ -1,4 +1,4 @@
-package by.it.vshchur.calc;
+package by.it.vshchur.calc_11;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
