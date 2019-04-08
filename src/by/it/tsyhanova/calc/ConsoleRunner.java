@@ -8,10 +8,14 @@ public class ConsoleRunner {
         Parser parser=new Parser();
         Printer printer=new Printer();
         Scanner scanner=new Scanner(System.in);
+
+        Var.loadFromFile();
         for(;;){
             String expression=scanner.nextLine();
-            if (expression.equals("end"))
+            if (expression.equals("end")) {
+                Var.saveToFile();
                 break;
+            }
             Var var = null;
             try {
                 var = parser.calc(expression);
