@@ -16,8 +16,10 @@ public class TaskA {
 
     private static void printArray(String filename) {
         try (BufferedReader r = new BufferedReader(new FileReader(filename))) {
-            while (r.read()!=-1){
+            while (true){
                 String line = r.readLine();
+                if (line == null)
+                    break;
                 System.out.println(line);
             }
         } catch (IOException e) {
