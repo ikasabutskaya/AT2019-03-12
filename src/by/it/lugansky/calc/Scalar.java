@@ -2,7 +2,7 @@ package by.it.lugansky.calc;
 
 class Scalar extends Var {
 
-    private double value;
+    double value;
 
     Scalar(double value) {
         this.value = value;
