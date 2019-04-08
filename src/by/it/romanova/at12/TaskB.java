@@ -8,62 +8,55 @@ import java.io.*;
  * документации */
 
 public class TaskB {
-    // однострочный комментарий;
-    // еще один однострочный комментарий;
-    /* многостр
-    очный
-     комментарий */
-    private static final String
-            MULTILINE_START = "\u002F\u002A",
-            DOUBLE_SLASH = "\u002F\u002F",
-            MULTILINE_END = "\u002A\u002F";
 
+    private static char star = '\u002A';
+    private static char slash = '\u002F';
+    private static String inline = new String(new char[]{slash, slash});
+    private static String multiline_start = new String(new char[]{slash, star});
+    private static String multiline_end = new String(new char[]{star, slash});
 
     public static void main(String[] args) {
-        /* еще один многост
-        р
-        очн
-        ый
-     комментарий */
-
-        String srcFilePath = "/Users/elizabeth/AT2019-03-12/src/by/it/romanova/at12/TaskB.java";
-        String outFilePath = "/Users/elizabeth/AT2019-03-12/src/by/it/romanova/at12/TaskB.txt";
-
-        StringBuilder str = readFile(srcFilePath);
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outFilePath))){
-            bufferedWriter.write(str.toString());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(str);
-
+        String classFileName = System.getProperty("user.dir") + "/src/" + TaskB.class.getCanonicalName();
+        classFileName = classFileName.replace(".", "/") + ".java";
+        String txtFileName = classFileName.replace("TaskB.java", "TaskB.txt");
+        /*первый
+        многострочный
+        комментарий*/
+        copyFile(classFileName, txtFileName);
     }
 
-    private static StringBuilder readFile(String srcFilePath) {
-        StringBuilder str = new StringBuilder();
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(srcFilePath))){
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null){
-
-                if (line.contains(MULTILINE_START)){
-                    while (!(line.contains(MULTILINE_END))) {
-                        line = bufferedReader.readLine();
+    private static void copyFile(String classFileName, String txtFileName) {
+        try (FileInputStream rs = new FileInputStream(classFileName);
+             FileOutputStream rw = new FileOutputStream(txtFileName);
+             BufferedReader br = new BufferedReader(new InputStreamReader(rs));
+             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(rw))) {
+            boolean multiline = false;
+            while (br.ready()) {
+                //первый однострочный
+                String text = br.readLine();
+                //второй однострочный
+                String temp = text.trim();
+                if (!temp.startsWith(inline) && !temp.startsWith(multiline_start) && !temp.endsWith(multiline_end) && !multiline) {
+                    bw.write(text);
+                    bw.newLine();
+                } else if (temp.startsWith(multiline_start)) {
+                    if (!temp.endsWith(multiline_end)) {
+                        multiline = true;
                     }
+                    bw.write(text.replace(temp, ""));
+                    bw.newLine();
+                } else if (temp.startsWith(inline)) {
+                    bw.write(text.replace(temp, ""));
+                    bw.newLine();
+                } else if (temp.endsWith(multiline_end)) {
+                    multiline = false;
                 }
-                //line = bufferedReader.readLine();
-                else  if (!(line.contains(DOUBLE_SLASH)))
-                    str.append(line).append("\n");
-
+                /*второй
+        многострочный
+        комментарий*/
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return str;
     }
-
 }
