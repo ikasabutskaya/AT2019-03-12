@@ -8,9 +8,13 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         Scanner scan = new Scanner(System.in);
+        Var.loadFromFile();
         for (;;){
             String expression = scan.nextLine();
-            if (expression.equals("end")) break;
+            if (expression.equals("end")) {
+                Var.saveToFile();
+                break;
+            }
             Var var = null;
             try {
                 var = parser.calc(expression);
