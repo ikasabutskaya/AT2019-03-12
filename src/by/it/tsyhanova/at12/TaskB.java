@@ -33,6 +33,8 @@ public class TaskB {
             System.out.println(ex.getMessage());
         }
 
+
+
         /*
         преобразовываем StringBuilder в строку методом toString()
          */

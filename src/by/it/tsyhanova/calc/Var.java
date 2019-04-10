@@ -51,11 +51,11 @@ public abstract class Var implements Operation {
                 p.calc(line);
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (CalcException e) {
+       catch (IOException | CalcException e) {
             e.printStackTrace();
         }
+
+
     }
 
 
