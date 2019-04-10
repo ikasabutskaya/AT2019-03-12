@@ -8,8 +8,12 @@ class Parser {
 		//2.0*3.0 например выражение
 		String[] operands = expression.split(Patterns.OPERATION); /*строку, которая пришла из консоли,
 		разбиваем на массив строк используя паттерн*/
-		Var one = Var.createVar(operands[0]); /*в процессе вычисления учасивуют 2 опреанда, для них переменные*/
+
 		Var two = Var.createVar(operands[1]);
+		if (expression.contains("="))          /*проверка содержит ли выражение "=" т.е. присваивание*/
+			return Var.saveVar(operands[0],two);
+		Var one = Var.createVar(operands[0]); /*в процессе вычисления учасивуют 2 опреанда, для них переменные*/
+
 		if (one == null || two == null) {
 			return null; //TODO create error
 		}
