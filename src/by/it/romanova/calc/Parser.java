@@ -8,8 +8,11 @@ class Parser{
         //2.0*2.0
         String[] operands = expression.split(Patterns.OPERATION);
 
-        Var one = Var.createVar(operands[0]);
         Var two = Var.createVar(operands[1]);
+        if (expression.contains("=")){
+            return Var.saveVar(operands[0],two);
+        }
+        Var one = Var.createVar(operands[0]);
 
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
         Matcher matcherOperation = patternOperation.matcher(expression);
