@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class ParserTest {
 
     @Test
-    public void calcScalarAddTest() throws Exception {
+    public void calcScalarAddScalarTest() throws Exception {
         Parser p = new Parser();
         Var actual = p.calc("2+2");
 
@@ -17,7 +17,7 @@ public class ParserTest {
 
     }
     @Test
-    public void calcScalarSubTest() throws Exception {
+    public void calcScalarSubScalarTest() throws Exception {
         Parser p = new Parser();
         Var actual = p.calc("40-32");
 
@@ -27,7 +27,7 @@ public class ParserTest {
 
     }
     @Test
-    public void calcScalarMulTest() throws Exception {
+    public void calcScalarMulScalarTest() throws Exception {
         Parser p = new Parser();
         Var actual = p.calc("5*10");
 
@@ -37,7 +37,7 @@ public class ParserTest {
 
     }
     @Test
-    public void calcScalarDivTest() throws Exception {
+    public void calcScalarDivScalarTest() throws Exception {
         Parser p = new Parser();
         Var actual = p.calc("56/8");
 
@@ -98,16 +98,96 @@ public class ParserTest {
 
         assertEquals("Умножение работает неверно", expectedValue, actualValue);
     }
-/*    @Test
+    @Test
     public void calcVectorMulVectorTest() throws Exception {
         Parser p = new Parser();
         Var actual = p.calc("{1, 2, 3} * {2, 3, 4}");
 
+        double actualValue = Double.parseDouble(actual.toString());
+        double expectedValue = 20.0;
+
+        assertEquals("Умножение работает неверно", expectedValue, actualValue, 1e-10);
+    }
+    @Test
+    public void calcVectorDivScalarTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{2, 4, 6} / 2");
+
         String actualValue = actual.toString();
-        String expectedValue = "{3.0, 6.0, 9.0}";
+        String expectedValue = "{1.0, 2.0, 3.0}";
+
+        assertEquals("Деление работает неверно", expectedValue, actualValue);
+    }
+    @Test
+    public void calcMatrixAddScalarTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{1, 2, 3}, {1, 2, 3}} + 2");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{{3.0, 4.0, 5.0}, {3.0, 4.0, 5.0}}";
+
+        assertEquals("Сложение работает неверно", expectedValue, actualValue);
+    }
+    @Test
+    public void calcMatrixAddMatrixTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{1, 2, 3}, {1, 2, 3}} + {{1, 2, 3}, {1, 2, 3}}");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{{2.0, 4.0, 6.0}, {2.0, 4.0, 6.0}}";
+
+        assertEquals("Сложение работает неверно", expectedValue, actualValue);
+    }
+    @Test
+    public void calcMatrixSubScalarTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{2, 4, 6}, {2, 4, 6}} - 2");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{{0.0, 2.0, 4.0}, {0.0, 2.0, 4.0}}";
+
+        assertEquals("Вычитание работает неверно", expectedValue, actualValue);
+    }
+    @Test
+    public void calcMatrixSubMatrixTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{2, 4}, {2, 4}} - {{1, 2}, {1, 2}}");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{{1.0, 2.0}, {1.0, 2.0}}";
+
+        assertEquals("Вычитание работает неверно", expectedValue, actualValue);
+    }
+    @Test
+    public void calcMatrixMulScalarTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{2, 4}, {2, 4}} * 2");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{{4.0, 8.0}, {4.0, 8.0}}";
 
         assertEquals("Умножение работает неверно", expectedValue, actualValue);
-    }*/
+    }
+    @Test
+    public void calcMatrixMulVectorTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{2, 4}, {2, 4}} * {2, 4}");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{20.0, 20.0}";
+
+        assertEquals("Умножение работает неверно", expectedValue, actualValue);
+    }
+    @Test
+    public void calcMatrixMulMatrixTest() throws Exception {
+        Parser p = new Parser();
+        Var actual = p.calc("{{2, 4}, {2, 4}} * {{2, 4}, {2, 4}}");
+
+        String actualValue = actual.toString();
+        String expectedValue = "{{12.0, 24.0}, {12.0, 24.0}}";
+
+        assertEquals("Умножение работает неверно", expectedValue, actualValue);
+    }
 
 
 
