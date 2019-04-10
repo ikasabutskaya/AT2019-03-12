@@ -8,7 +8,7 @@ class Matrix extends Var {
 
     private double[][] arr;
 
-    Matrix(double[][] value){
+    private Matrix(double[][] value){
         this.arr = new double[value.length][value[0].length];
         for (int i = 0; i < value.length; i++) {
             this.arr[i] = Arrays.copyOf(value[i],value[i].length);
@@ -21,7 +21,7 @@ class Matrix extends Var {
 
     Matrix(String strMatrix){
         StringBuilder stringBuilder = new StringBuilder(strMatrix);
-        Pattern arrayPattern = Pattern.compile("\\{[0-9(\\\\.)?,(\\s)?]+\\}");
+        Pattern arrayPattern = Pattern.compile("\\{[- 0-9.,]+\\}");
         Pattern commas = Pattern.compile("\\},\\s?\\{");
         Matcher rows = arrayPattern.matcher(stringBuilder);
         Matcher count = commas.matcher(stringBuilder);

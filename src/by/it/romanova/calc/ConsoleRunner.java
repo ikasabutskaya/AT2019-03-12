@@ -15,8 +15,11 @@ public class ConsoleRunner {
                 break;
             Var var;
             try {
-                var = parser.calc(expression);
-                printer.print(var);
+                if(expression.contains("(") && expression.contains(")")){
+                    expression = parser.excludeBraces(expression);
+                }
+                    var = parser.calc(expression);
+                    printer.print(var);
             } catch (CalcException e) {
                 System.out.println("Ошибка в " + expression + "\n" + e.getMessage());
             }

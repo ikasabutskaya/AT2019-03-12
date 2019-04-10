@@ -12,7 +12,7 @@ class Parser{
         private List<String> operation = new ArrayList<>();
         private List<String> operand;
 
-        int getPosOperation(){
+        private int getPosOperation(){
             int level = -1, pos = -1, i = 0;
             for (String op : operation) {
                 int currentLevel = priority.indexOf(op);
@@ -28,8 +28,6 @@ class Parser{
 
 
     Var calc(String expression) throws CalcException {
-//        String calcOperands = excludeBraces(expression);
-//        System.out.println(calcOperands);
 
         String[] operands = expression.split(Patterns.OPERATION);
         operand = new ArrayList<>(Arrays.asList(operands));
@@ -53,20 +51,21 @@ class Parser{
         return res;
     }
 
-//    private String excludeBraces(String expression) {
-//            String res = expression;
-//            while ((res.contains("("))||(res.contains(")"))){
-//            Pattern p = Pattern.compile(Patterns.BRACES);
-//            Matcher m = p.matcher(res);
-//            while (m.find()){
-//                res = res.replace(m.group(),"x");
-//            }
-//
-//        }
-//        return res;
-//    }
+    String excludeBraces(String expression) throws CalcException {
+            String res = expression, calculation;
+            while ((res.contains("("))||(res.contains(")"))){
+            Pattern p = Pattern.compile(Patterns.BRACES);
+            Matcher m = p.matcher(res);
+            while (m.find()){
+                calculation = m.group().replace("(","").replace(")","");
+                res = res.replace(m.group(),calc(calculation).toString());
+            }
 
-    Var operationCalc(String v1, String operation, String v2) throws CalcException {
+        }
+        return res;
+    }
+
+    private Var operationCalc(String v1, String operation, String v2) throws CalcException {
         Var two = Var.createVar(v2);
         if (operation.equals("=")){
             return Var.saveVar(v1,two);
