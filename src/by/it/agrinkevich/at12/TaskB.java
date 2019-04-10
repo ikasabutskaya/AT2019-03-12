@@ -41,22 +41,35 @@ public class TaskB {
                 int indexOfComment3 = line.indexOf("*/");
 
                 if (indexOfComment2 != -1) {
-                    isMultipleComment = true;
-                    continue;
+                    char previousChar = line.charAt(indexOfComment2 - 1);
+                    if(previousChar != '"'){
+                        isMultipleComment = true;
+                        continue;
+                    }
                 }
 
                 if (indexOfComment3 != -1) {
-                    isMultipleComment = false;
-                    continue;
+                    char previousChar = line.charAt(indexOfComment3 - 1);
+                    if(previousChar != '"'){
+                        isMultipleComment = false;
+                        sb.append("\n");
+                        continue;
+                    }
                 }
 
                 if (isMultipleComment)
                     continue;
 
-                if (indexOfComment1 == -1)
-                    sb.append(line).append("\n");
+                if (indexOfComment1 == -1) {
+                        sb.append(line).append("\n");
+                }
                 else {
-                    sb.append(line.substring(0, indexOfComment1)).append("\n");
+                    char previousChar = line.charAt(indexOfComment1 - 1);
+                    if(previousChar == '"'){
+                        sb.append(line).append("\n");
+                    }else {
+                        sb.append(line, 0, indexOfComment1).append("\n");
+                    }
                 }
             }
             /*

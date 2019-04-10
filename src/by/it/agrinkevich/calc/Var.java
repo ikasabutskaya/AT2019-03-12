@@ -2,13 +2,30 @@ package by.it.agrinkevich.calc;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public abstract class Var implements Operation {
 
     private static String filename = System.getProperty("user.dir")+"/src/by/it/agrinkevich/calc/vars.txt";
     private static Map<String,Var> vars = new HashMap<>();
+
+    static void printVar(){
+        for (Map.Entry<String, Var> entry : vars.entrySet()) {
+            String key = entry.getKey();
+            Var value = entry.getValue();
+            System.out.println(key + "=" + value);
+        }
+    }
+
+    static void sortVar(){
+        vars = vars.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+    }
 
     static Var saveVar(String name, Var var){
         vars.put(name, var);
@@ -16,7 +33,7 @@ public abstract class Var implements Operation {
     }
 
     static Var createVar(String strVar) throws CalcException {
-        strVar.replace(" ", "");
+        strVar = strVar.replace(" ", "");
         if (strVar.matches(Patterns.SCALAR))
             return  new Scalar(strVar);
         else if (strVar.matches(Patterns.VECTOR))
@@ -26,7 +43,6 @@ public abstract class Var implements Operation {
         else if (vars.containsKey(strVar))
             return vars.get(strVar);
         else
-            //TODO create error
             throw new CalcException("Неизвестное выражение " + strVar);
     }
 
@@ -40,8 +56,11 @@ public abstract class Var implements Operation {
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
+            Logger.errorLog(e.getMessage());
         }
     }
+
 
     static void loadFromFile() {
         Parser p = new Parser();
@@ -52,8 +71,15 @@ public abstract class Var implements Operation {
                p.calc(line);
            }
         }
+        catch (FileNotFoundException e){
+            //e.printStackTrace();
+            System.out.println(e.getMessage());
+            Logger.errorLog(e.getMessage());
+        }
         catch (Exception e){
             e.printStackTrace();
+            System.out.println(e.getMessage());
+            Logger.errorLog(e.getMessage());
         }
     }
 
