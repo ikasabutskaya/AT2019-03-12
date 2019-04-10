@@ -1,4 +1,4 @@
-package by.it.vshchur.at13_calc_khmelov;
+package by.it.vshchur.at12_calc;
 
 import java.io.*;
 import java.util.HashMap;
@@ -7,9 +7,9 @@ import java.util.Set;
 
 public abstract class Var implements Operation {
 
-   private static Map<String, Var> vars=new HashMap<>();
-   private static String filename=System.getProperty("user.dir")+
-            "/src/by/it/akhmelev/calc_12/vars.txt";
+    private static Map<String, Var> vars = new HashMap<>();
+    private static String filename=System.getProperty("user.dir")+
+            "/src/by/it/vshchur/at12_calc/vars.txt";
 
    static Var createVar(String strVar) throws CalcException {
        strVar=strVar.replace(" ","");
@@ -19,14 +19,13 @@ public abstract class Var implements Operation {
            return new Vector(strVar);
        else if (strVar.matches(Patterns.MATRIX))
            return new Matrix(strVar);
-       else {
-           Var var = vars.get(strVar);
-           if (var==null)
-                throw new CalcException(" неизвестное выражение "+strVar);
-           else
-               return var;
-       }
+       else if (vars.containsKey(strVar))
+           return vars.get(strVar); //A=9, B=A
+
+       else
+           throw new CalcException("Неизвестное выражение, невозможно создать "+strVar);
    }
+
 
     public static void saveToFile() {
         try ( PrintWriter out=new PrintWriter(new FileWriter(filename))){
@@ -40,14 +39,14 @@ public abstract class Var implements Operation {
     }
 
     static void loadFromFile() {
-       Parser p=new Parser();
+        Parser p=new Parser();
         try ( BufferedReader r=new BufferedReader(new FileReader(filename))){
-           while (true){
-               String line=r.readLine();
-               if (line==null)
-                   break;
-               p.calc(line);
-           }
+            while (true){
+                String line=r.readLine();
+                if (line==null)
+                    break;
+                p.calc(line);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,30 +58,30 @@ public abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("сложение "+this+" + "+other+" невозможно!");
+        throw new CalcException("Сложение "+this+" + "+other+" невозможно!");
     }
 
     @Override
     public Var sub(Var other)  throws CalcException {
-        throw new CalcException("вычитание "+this+" - "+other+" невозможно!");
+        throw new CalcException("Вычитание "+this+" - "+other+" невозможно!");
     }
 
     @Override
     public Var mul(Var other)  throws CalcException {
-        throw new CalcException("умножение "+this+" * "+other+" невозможно!");
+        throw new CalcException("Умножение "+this+" * "+other+" невозможно!");
     }
 
     @Override
     public Var div(Var other)  throws CalcException {
-        throw new CalcException("деление "+this+" + "+other+" невозможно!");
+        throw new CalcException("Деление "+this+" + "+other+" невозможно!");
     }
 
-    @Override
-    public String toString() {
-        return "Это абстрактная переменная";
-    }
+//    @Override
+//    public String toString() {
+//        return "Это абстрактная переменная";
+//    }
 
-    static void saveVar(String name, Var var) {
-       vars.put(name, var);
-    }
+    static Var saveVar(String name, Var var){
+        vars.put(name, var);
+        return var;     }
 }

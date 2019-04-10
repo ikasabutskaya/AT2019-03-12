@@ -1,16 +1,14 @@
-package by.it.vshchur.calc_11;
+package by.it.vshchur.at11_calc;
 
 import java.util.Scanner;
 
 class ConsoleRunner {
     public static void main(String[] args) {
-        Printer printer=new Printer();
-        Parser parser=new Parser();
-
         Scanner scanner=new Scanner(System.in);
-
-        for(;;){
-            String expression=scanner.nextLine();
+        Parser parser=new Parser();
+        Printer printer=new Printer();
+        for (; ; ) {
+            String expression = scanner.nextLine();
             if (expression.equals("end"))
                 break;
             Var var = null;
@@ -18,10 +16,9 @@ class ConsoleRunner {
                 var = parser.calc(expression);
                 printer.print(var);
             } catch (CalcException e) {
-                System.out.println("Ошибка в "+expression);
+                System.out.println("Ошибка в " + expression);
                 System.out.println(e.getMessage());
             }
-
         }
     }
 }
