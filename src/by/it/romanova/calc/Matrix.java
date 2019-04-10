@@ -59,8 +59,9 @@ class Matrix extends Var {
             }
             return new Matrix(array);
         }
-        if (other instanceof Matrix){
-            double[][] array = new double[this.arr.length][this.arr[0].length];
+        if (other instanceof Matrix) {
+            if ((((Matrix) other).arr.length==this.arr.length) && (((Matrix) other).arr[0].length==this.arr.length)){
+                double[][] array = new double[this.arr.length][this.arr[0].length];
             for (int i = 0; i < array.length; i++) {
                 array[i] = Arrays.copyOf(this.arr[i], this.arr[i].length);
             }
@@ -71,6 +72,8 @@ class Matrix extends Var {
                 }
             }
             return new Matrix(array);
+            }
+            else throw new CalcException("матрицы должны быть одного размера");
 
         }
         else
@@ -92,17 +95,20 @@ class Matrix extends Var {
             return new Matrix(array);
         }
         if (other instanceof Matrix){
-            double[][] array = new double[this.arr.length][this.arr[0].length];
-            for (int i = 0; i < array.length; i++) {
-                array[i] = Arrays.copyOf(this.arr[i], this.arr[i].length);
-            }
-
-            for (int i = 0; i < array.length; i++) {
-                for (int j = 0; j < array[0].length; j++) {
-                    array[i][j] = array[i][j] - ((Matrix) other).arr[i][j];
+            if ((((Matrix) other).arr.length==this.arr.length) && (((Matrix) other).arr[0].length==this.arr.length)) {
+                double[][] array = new double[this.arr.length][this.arr[0].length];
+                for (int i = 0; i < array.length; i++) {
+                    array[i] = Arrays.copyOf(this.arr[i], this.arr[i].length);
                 }
+
+                for (int i = 0; i < array.length; i++) {
+                    for (int j = 0; j < array[0].length; j++) {
+                        array[i][j] = array[i][j] - ((Matrix) other).arr[i][j];
+                    }
+                }
+                return new Matrix(array);
             }
-            return new Matrix(array);
+            else throw new CalcException("матрицы должны быть одного размера");
 
         }
         else
@@ -121,20 +127,22 @@ class Matrix extends Var {
             return new Matrix(this.arr);
 
         } else if (other instanceof Matrix) {
-
-            double[][] resultMatrix = new double[this.arr.length][((Matrix) other).arr[0].length];
-            double sum = 0;
-            for (int i = 0; i < this.arr.length; i++) {
-                for (int j = 0; j < ((Matrix) other).arr[0].length; j++) {
-                    for (int k = 0; k < ((Matrix) other).arr.length; k++) {
-                        sum = sum + this.arr[i][k] * ((Matrix) other).arr[k][j];
+            if(this.arr[0].length == ((Matrix) other).arr.length) {
+                double[][] resultMatrix = new double[this.arr.length][((Matrix) other).arr[0].length];
+                double sum = 0;
+                for (int i = 0; i < this.arr.length; i++) {
+                    for (int j = 0; j < ((Matrix) other).arr[0].length; j++) {
+                        for (int k = 0; k < ((Matrix) other).arr.length; k++) {
+                            sum = sum + this.arr[i][k] * ((Matrix) other).arr[k][j];
+                        }
+                        resultMatrix[i][j] = sum;
+                        sum = 0;
                     }
-                    resultMatrix[i][j] = sum;
-                    sum = 0;
-                }
 
+                }
+                return new Matrix(resultMatrix);
             }
-            return new Matrix(resultMatrix);
+            else throw new CalcException("нельзя перемножить питрицы разного размера");
 
         } else if (other instanceof Vector) {
 
