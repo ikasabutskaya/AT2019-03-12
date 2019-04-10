@@ -105,6 +105,8 @@ class Vector extends Var {
     @Override
     public Var div(Var other) throws CalcException {
         if(other instanceof Scalar){
+            if (((Scalar) other).getValue()==0)
+                throw new CalcException("нельзя делить на 0");
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i] = result[i]/((Scalar)other).getValue();
