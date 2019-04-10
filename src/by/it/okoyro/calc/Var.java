@@ -1,18 +1,33 @@
 package by.it.okoyro.calc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Var implements Operation {
+
+	private static Map<String, Var> vars = new HashMap<>();
+
+	static Var saveVar(String name, Var var) {
+		vars.put(name, var);
+		return var;
+	}
 
 	static Var createVar(String strVar) throws CalcException {
 		strVar = strVar.trim().replace(" ", "");
-		if (strVar.matches(Patterns.SCALAR))
+		if (strVar.matches(Patterns.SCALAR)) {
 			return new Scalar(strVar);
+		}
 
-		if (strVar.matches(Patterns.VECTOR))
+		else if (strVar.matches(Patterns.VECTOR)) {
 			return new Vector(strVar);
+		}
 
-		//	if (strVar.matches(Patterns.MATRIX))     не реализовано
+		//	else if (strVar.matches(Patterns.MATRIX))     не реализовано
 		//			return new Matrix(strVar);
-
+		else if (vars.containsKey(strVar)) {
+			return vars.get(strVar);
+		}
+		
 		throw new CalcException("Невозможно создать " + strVar);
 	}
 
