@@ -124,9 +124,9 @@ int arr[][]=new int[n][n];
             for (int i = 0; i < arr.length; i++) {
                 for (int j = 0; j < arr[i].length; j++) {
                     arr[i][j] = (int) (Math.random() *( n * 2 + 1)) - n;
-                    if (!minus&&arr[i][j] == -n) ;
+                    if (!minus&&arr[i][j] == -n)
                     minus = true;
-                    if (!plus&&arr[i][j] == n) ;
+                    if (!plus&&arr[i][j] == n)
                    plus = true;
                 }
             }
