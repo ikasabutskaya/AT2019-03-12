@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Parser {
+public class Parser {
 
     private Map<String,Integer> priority;
 
@@ -56,7 +56,7 @@ class Parser {
         }
     }
 
-    Var calc(String expression) throws CalcException {
+    public Var calc(String expression) throws CalcException {
         //2.0*3.0
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = patternOperation.matcher(expression);
