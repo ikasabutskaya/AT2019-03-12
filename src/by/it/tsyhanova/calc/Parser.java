@@ -65,7 +65,7 @@ class Parser {
 
             while (!operations.isEmpty()) {
                 int index = getIndex(operations);
-                String operand1 = operands.get(index);
+                String operand1 = operands.remove(index);
                 String operand2 = operands.remove(index);
                 String operation = operations.remove(index);
                 Var result = oneOperation(operand1, operation, operand2);
