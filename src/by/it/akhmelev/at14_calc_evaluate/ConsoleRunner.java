@@ -1,17 +1,17 @@
-package by.it.agrinkevich.calc;
+package by.it.akhmelev.at14_calc_evaluate;
 
 import java.util.Scanner;
 
 public class ConsoleRunner {
     public static void main(String[] args) {
 
-        Parser parser = new Parser();
-        Printer printer = new Printer();
-        Scanner scan = new Scanner(System.in);
+        Parser parser=new Parser();
+        Printer printer=new Printer();
+        Scanner scanner=new Scanner(System.in);
         Var.loadFromFile();
-        for (;;){
-            String expression = scan.nextLine();
-            if (expression.equals("end")) {
+        for(;;){
+            String expression=scanner.nextLine();
+            if (expression.equals("end")){
                 Var.saveToFile();
                 break;
             }
@@ -19,7 +19,7 @@ public class ConsoleRunner {
             try {
                 var = parser.calc(expression);
             } catch (CalcException e) {
-                System.out.println("Ошибка в " + expression);
+                System.out.println("Ошибка в "+expression);
                 System.out.println(e.getMessage());
             }
             printer.print(var);
