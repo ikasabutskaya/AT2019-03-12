@@ -15,7 +15,7 @@ public abstract class Var implements Operation {
    private static String filename=System.getProperty("user.dir")+
             "/src/by/it/akhmelev/calc_12/vars.txt";
 
-   static Var createVar(String strVar) throws CalcException {
+   public static Var createVar(String strVar) throws CalcException {
        strVar=strVar.replace(" ","");
        if (strVar.matches(Patterns.SCALAR))
            return new Scalar(strVar);
