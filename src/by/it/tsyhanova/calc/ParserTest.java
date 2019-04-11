@@ -1,11 +1,14 @@
 package by.it.tsyhanova.calc;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class ParserTest {
-
+    //Для каждого отдельного случая суммирования, например, обычное сложение, сложение нулей, сложение более двух слагаемых
+    //нужно иметь параметризированные тесты, чтобы иметь возможность поймать соответствующую ошибку
+    //Параметризированный тест описывает множество случаем одного вида
     @Test
     public void calcScalarAddTest() throws CalcException {
         Parser p=new Parser();
@@ -14,7 +17,9 @@ public class ParserTest {
         double expectedValue=4.0;
         assertEquals("Сложение работает неверно!",expectedValue,actualValue,1e-10);
     }
-
+    //Assert.assertTrue - основной общий метод без конкретики по поводу ошибки.
+    // Лучше использовать более специализированные методы... см. Презентацию АТ14
+    //@Ignore аннотация, которая нужна для временного отключения теста
     @Test
     public void calcScalarSubTest() throws CalcException {
         Parser p=new Parser();
