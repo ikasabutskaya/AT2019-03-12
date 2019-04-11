@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Parser {
+public class Parser {
     private Map<String, Integer> priority;
 
     public Parser() {
@@ -52,7 +52,7 @@ class Parser {
         }
     }
 
-    Var calc(String expression) throws CalcException {
+    public Var calc(String expression) throws CalcException {
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = patternOperation.matcher(expression);
         List<String> operations = new ArrayList<>();

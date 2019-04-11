@@ -1,11 +1,11 @@
-package by.it.tsyhanova.at14_calc_evaluate.at14;
+package by.it.tsyhanova.calc.at14;
 
-import by.it.tsyhanova.at14_calc_evaluate.Var;
+import by.it.tsyhanova.calc.Var;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ScalarCreateTest {
-
+//тест на создание скаляра
 
     @Test()
     public void checkVarCreate() throws Exception{
