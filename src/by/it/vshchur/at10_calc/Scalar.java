@@ -1,4 +1,4 @@
-package by.it.vshchur.calc_11;
+package by.it.vshchur.at10_calc;
 
 public class Scalar extends Var {
 

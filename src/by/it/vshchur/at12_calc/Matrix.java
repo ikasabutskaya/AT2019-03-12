@@ -1,4 +1,4 @@
-package by.it.vshchur.at08;
+package by.it.vshchur.at12_calc;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -36,7 +36,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar){    //Это прибавление к каждому элементу матрицы некоего числа. Математического смысла в этом нет
             double[][] res = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
@@ -50,11 +50,13 @@ public class Matrix extends Var {
             return new Matrix(res);
         }
         if (other instanceof Matrix){     //Это сложение матриц у которых равное число строк и столбцов
+            if (!(value.length == ((Matrix) other).value.length && value[0].length == ((Matrix) other).value[0].length))
+                throw new CalcException("ERROR: операция невозможна с матрицами разной длины.");
+
             double[][] res = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
             }
-//            if (value.length == ((Matrix) other).value.length && res[0].length == ((Matrix) other).value[0].length)
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res[0].length; j++) {
                     res[i][j] = res[i][j] + ((Matrix) other).value[i][j];
@@ -66,7 +68,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
@@ -80,6 +82,9 @@ public class Matrix extends Var {
             return new Matrix(res);
         }
         if (other instanceof Matrix) {
+            if (!(value.length == ((Matrix) other).value.length && value[0].length == ((Matrix) other).value[0].length))
+                throw new CalcException("ERROR: операция невозможна с матрицами разной длины.");
+
             double[][] res = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
@@ -95,7 +100,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
@@ -123,6 +128,9 @@ public class Matrix extends Var {
 
         }
         if (other instanceof Matrix) {
+            if (!(value.length == ((Matrix) other).value[0].length && value[0].length == ((Matrix) other).value.length))
+                throw new CalcException("ERROR: операция невозможна с матрицами разной длины.");
+
             double[][] matrix = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
                 matrix[i] = Arrays.copyOf(value[i], value[i].length);
@@ -141,7 +149,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 

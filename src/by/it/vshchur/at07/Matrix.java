@@ -1,4 +1,4 @@
-package by.it.vshchur.at08;
+package by.it.vshchur.at07;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
