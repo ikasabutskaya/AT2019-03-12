@@ -1,4 +1,4 @@
-package by.it.vshchur.at14_calc;
+package by.it.vshchur.at13_calc;
 
 public class Printer {
     void print (Var var){

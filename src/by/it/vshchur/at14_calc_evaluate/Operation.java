@@ -1,4 +1,4 @@
-package by.it.vshchur.at14_calc;
+package by.it.vshchur.at14_calc_evaluate;
 
 interface Operation {
     Var add(Var other) throws CalcException;

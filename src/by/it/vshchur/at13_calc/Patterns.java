@@ -1,4 +1,4 @@
-package by.it.vshchur.at14_calc;
+package by.it.vshchur.at13_calc;
 
 public class Patterns {
     static final String SCALAR="-?[0-9]+(\\.[0-9]+)?";
