@@ -9,11 +9,11 @@ abstract class Var implements Operation {
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         if (operand.matches(Patterns.VECTOR))
-        //    return new Vector(operand);
+            return new Vector(operand);
         if (operand.matches(Patterns.MATRIX))
-          //  return new Matrix(operand);
+            return new Matrix(operand);
         return null;//когда вставлю вектор и матрицу - убрать
-        return null;
+
     }
 
     @Override

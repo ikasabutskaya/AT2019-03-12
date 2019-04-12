@@ -1,6 +1,5 @@
 package by.it.udalyou.at07;
 
-import by.it.tsyhanova.calc.CalcException;
 import by.it.udalyou.Calk.CalkException;
 
 public class Scalar extends Var{
@@ -21,7 +20,7 @@ public class Scalar extends Var{
 
 
     @Override
-    public Var add(Var other) throws CalkException, CalcException {
+    public Var add(Var other) throws CalkException {
         if (other instanceof Scalar){
             double sum=this.value+((Scalar) other).value;
             return new Scalar(sum);
@@ -31,7 +30,7 @@ public class Scalar extends Var{
     }
 
     @Override
-    public Var sub(Var other) throws CalkException, CalcException {
+    public Var sub(Var other) throws CalkException{
         if (other instanceof Scalar){
             double sub=this.value-((Scalar) other).value;
             return new Scalar(sub);
@@ -68,6 +67,7 @@ public class Scalar extends Var{
    public String toString (){
        return String.valueOf(value);
     }
+
 
 
 }

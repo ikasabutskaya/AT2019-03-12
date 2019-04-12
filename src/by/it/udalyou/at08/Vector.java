@@ -27,15 +27,21 @@ import java.util.regex.Pattern;
    }
     public Vector(String strVector){
 
-        this.value=new double[3];
-    Pattern pat = Pattern.compile("[1-9\\.]+");
-    Matcher matcher=pat.matcher(strVector);
-    int i=0;
-    while (matcher.find()){
-        this.value[i]=Double.parseDouble(matcher.group());
-        i++;
-    }
+        String[] strArr = strVector.replaceAll("[{}]", "").split("[,]");
+        double[] res = new double[strArr.length];
+        for (int i = 0; i < strArr.length; i++) {
+            res[i] = Double.parseDouble(strArr[i]);
+        }
+        this.value = res;
 
+    //Pattern pat = Pattern.compile("[1-9\\.]+");
+    //Matcher matcher=pat.matcher(strVector);
+   // int i=0;
+   // while (matcher.find()){
+    //    this.value[i]=Double.parseDouble(matcher.group());
+     //   i++;
+
+       // this.value=new double[];//***
 }
     public String toString() {
         String s = "{";

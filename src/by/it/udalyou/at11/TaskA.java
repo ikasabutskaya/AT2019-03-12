@@ -16,9 +16,9 @@ public class TaskA {
     public static void main(String[] args) {
        String dir=System.getProperty("user.dir")+"/src/by/it/udalyou/at11/";
         List<Integer> list=new ArrayList<>();
-writeIn(dir);
-readInt(dir,list);
-writeInt(dir,list);
+writeIn(dir);//Формирование масива 20 случайных чисел и занасение его в Bin
+readInt(dir,list);//Чтение масива из Bin и занесение его в list
+writeInt(dir,list);//Вывод list на экран и в Txt и подсчет среднего
 }
 private static void writeIn(String dir){
         try (
@@ -48,10 +48,8 @@ private static void writeIn(String dir){
      }
  }
 private static void writeInt(String dir, List<Integer> list) {
-    try {
-        FileWriter fw = new FileWriter(dir + "resultTaskA.txt");
-        PrintWriter txt = new PrintWriter(fw);
-
+    try (FileWriter fw = new FileWriter(dir + "resultTaskA.txt");
+         PrintWriter txt = new PrintWriter(fw))  {
         double sum = 0;
         double count = 0;
         for (Integer element : list) {

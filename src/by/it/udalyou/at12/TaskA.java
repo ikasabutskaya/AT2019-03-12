@@ -52,14 +52,13 @@ boolean plus15=false;
 for (int i=0;i<array.length;i++){
     for (int j=0;j<array[i].length;j++){
         array[i][j]=(int)(Math.random()*31)-15;
-        if (!minus15&&array[i][j]==-15);
+        if (!minus15&&array[i][j]==-15)
         minus15=true;
-        if (!plus15&&array[i][j]==15);
+        if (!plus15&&array[i][j]==15)
         plus15=true;
        }
 }
-        boolean b = minus15 && plus15;
-        return b;
+                return minus15 && plus15;
 
     }
 
