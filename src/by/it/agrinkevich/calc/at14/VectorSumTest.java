@@ -13,16 +13,15 @@ import java.util.List;
 
 
 @RunWith(value = Parameterized.class)
-public class ScalarSumTest {
+public class VectorSumTest {
+
+    public static Parser parser=new Parser();
 
     @Parameterized.Parameters
     public static List<String[]> createData() {
         String[][] str = {
-                {"2+3", "5.0"},
-                {"0+0", "0.0"},
-                {"2.33+5.12", "7.45"},
-                {"43.27+5", "48.27"},
-                {"55+5.12", "60.12"}
+                {"{1, 2, 3}+3", "{4.0, 5.0, 6.0}"},
+                {"{2, 3, 4} + {1, 2, 3}", "{3.0, 5.0, 7.0}"}
         };
         return Arrays.asList(str);
     }
@@ -35,10 +34,8 @@ public class ScalarSumTest {
 
     @Test
     public void sum() throws CalcException {
-        Parser parser=new Parser();
         Var actual = parser.calc(expression);
         Assert.assertEquals(result,actual.toString());
         System.out.println("passed: "+expression+"="+result);
-
     }
 }

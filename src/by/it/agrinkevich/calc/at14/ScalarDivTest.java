@@ -13,32 +13,33 @@ import java.util.List;
 
 
 @RunWith(value = Parameterized.class)
-public class ScalarSumTest {
+public class ScalarDivTest {
 
     @Parameterized.Parameters
     public static List<String[]> createData() {
         String[][] str = {
-                {"2+3", "5.0"},
-                {"0+0", "0.0"},
-                {"2.33+5.12", "7.45"},
-                {"43.27+5", "48.27"},
-                {"55+5.12", "60.12"}
+                {"8/4", "2.0"},
+                {"100/20", "5.0"},
+                {"8.75/3.5", "2.5"},
+                {"6.6/1.1", "6.0"},
+                {"22.5/5", "4.5"}
+
         };
         return Arrays.asList(str);
     }
 
     @Parameterized.Parameter(value = 0)
-    public static String expression;
+    public String expression;
 
     @Parameterized.Parameter(value = 1)
-    public static String result;
+    public String result;
 
     @Test
-    public void sum() throws CalcException {
-        Parser parser=new Parser();
+    public void div() throws CalcException {
+        Parser parser = new Parser();
         Var actual = parser.calc(expression);
-        Assert.assertEquals(result,actual.toString());
-        System.out.println("passed: "+expression+"="+result);
-
+        Assert.assertEquals(result, actual.toString());
+        System.out.println("passed: " + expression +"="+ result);
     }
 }
+

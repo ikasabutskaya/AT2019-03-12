@@ -11,18 +11,16 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.List;
 
-
 @RunWith(value = Parameterized.class)
-public class ScalarSumTest {
+public class VectorMulTest {
+
+    public static Parser parser=new Parser();
 
     @Parameterized.Parameters
     public static List<String[]> createData() {
         String[][] str = {
-                {"2+3", "5.0"},
-                {"0+0", "0.0"},
-                {"2.33+5.12", "7.45"},
-                {"43.27+5", "48.27"},
-                {"55+5.12", "60.12"}
+                {"{1, 2, 3}*2", "{2.0, 4.0, 6.0}"},
+                {"3 * {1, 2, 3}", "{3.0, 6.0, 9.0}"}
         };
         return Arrays.asList(str);
     }
@@ -34,11 +32,9 @@ public class ScalarSumTest {
     public static String result;
 
     @Test
-    public void sum() throws CalcException {
-        Parser parser=new Parser();
+    public void mul() throws CalcException {
         Var actual = parser.calc(expression);
         Assert.assertEquals(result,actual.toString());
         System.out.println("passed: "+expression+"="+result);
-
     }
 }

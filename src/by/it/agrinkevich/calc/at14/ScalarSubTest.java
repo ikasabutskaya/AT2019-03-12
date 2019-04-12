@@ -11,34 +11,32 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.List;
 
-
 @RunWith(value = Parameterized.class)
-public class ScalarSumTest {
+public class ScalarSubTest {
 
     @Parameterized.Parameters
-    public static List<String[]> createData() {
+    public static List<String[]> createData(){
         String[][] str = {
-                {"2+3", "5.0"},
-                {"0+0", "0.0"},
-                {"2.33+5.12", "7.45"},
-                {"43.27+5", "48.27"},
-                {"55+5.12", "60.12"}
+                {"8-3", "5.0"},
+                {"0-0", "0.0"},
+                {"7.54-4.222", "3.318"},
+                {"67.88-5", "62.88"},
+                {"56-23.5", "32.5"},
         };
         return Arrays.asList(str);
     }
 
     @Parameterized.Parameter(value = 0)
-    public static String expression;
+    public String expression;
 
     @Parameterized.Parameter(value = 1)
-    public static String result;
+    public String result;
 
     @Test
-    public void sum() throws CalcException {
-        Parser parser=new Parser();
+    public void sub() throws CalcException {
+        Parser parser = new Parser();
         Var actual = parser.calc(expression);
         Assert.assertEquals(result,actual.toString());
         System.out.println("passed: "+expression+"="+result);
-
     }
 }

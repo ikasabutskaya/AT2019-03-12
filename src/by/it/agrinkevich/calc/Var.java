@@ -32,7 +32,7 @@ public abstract class Var implements Operation {
         return var;
     }
 
-    static Var createVar(String strVar) throws CalcException {
+    public static Var createVar(String strVar) throws CalcException {
         strVar = strVar.replace(" ", "");
         if (strVar.matches(Patterns.SCALAR))
             return  new Scalar(strVar);
