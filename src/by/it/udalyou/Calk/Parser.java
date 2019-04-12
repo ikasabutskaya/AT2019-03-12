@@ -9,15 +9,20 @@ public class Parser {
     Var calk (String expression)throws CalkException {
         //2.0*2.0
         String[]operand=expression.split(Patterns.OPERATION);
-        Var one=Var.createVar(operand[0]);
+
         Var two=Var.createVar(operand[1]);
-        //Var one=Var.createVar(operand[0]);
-        //Var two=Var.createVar(operand[1]);
+
+        if (expression.contains("=")){
+           Var.saveVar(operand[0],two);
+        }
+        Var one=Var.createVar(operand[0]);
+
+
         if (one==null||two==null) {
             return null; //ToDo create error
         }
 
-                Pattern p= Pattern.compile(Patterns.OPERATION);
+        Pattern p= Pattern.compile(Patterns.OPERATION);
         Matcher m=p.matcher(expression);
         if (m.find()){
             String operetion=m.group();

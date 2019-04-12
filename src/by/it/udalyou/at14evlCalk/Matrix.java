@@ -1,16 +1,9 @@
-package by.it.udalyou.at08;
+package by.it.udalyou.at14evlCalk;
 
 
-import by.it.udalyou.Calk.CalkException;
 import java.util.Arrays;
 
-public class Matrix extends Var {
-    //разработайте для класса Var наследника Matrix с тремя конструкторами:
-    //1.Из массива{ { 1.0, 2.0 }, { 3.0, 4.0 } }сигнатура
-    // Matrix(double[ ][ ] value)
-    //2.Из такой же точно переменнойсигнатура Matrix(Matrix matrix)
-    //3.Из строки вида { { 1.0, 2.0 }, { 3.0, 4.0 } }сигнатура
-    // Matrix(String strMatrix)
+class Matrix extends Var {
 
     private double[][] value;
 
@@ -47,7 +40,7 @@ public class Matrix extends Var {
         return s.toString();
     }
 
-    public Var add (Var other) throws CalkException{
+    public Var add (Var other) throws CalcException{
 
         if (other instanceof Scalar) {
 
@@ -79,7 +72,7 @@ public class Matrix extends Var {
         }
         return super.add(other);
     }
-    public Var sub (Var other) throws CalkException{
+    public Var sub (Var other) throws CalcException{
 
         if (other instanceof Scalar) {
 
@@ -109,7 +102,7 @@ public class Matrix extends Var {
         }
         return super.sub(other);
     }
-    public Var mul (Var other) throws CalkException{
+    public Var mul (Var other) throws CalcException{
 
         if (other instanceof Scalar) {
 
@@ -117,7 +110,7 @@ public class Matrix extends Var {
             double[][] z1 = this.value;
             for (int i = 0; i < z1.length; i++) {
                 for (int j = 0; j < value[0].length; j++) {
-               z[i][j] = z1[i][j]*(((Scalar) other).value);
+                    z[i][j] = z1[i][j]*(((Scalar) other).value);
                 }
             }
             return new Matrix(z);

@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
  class Vector extends Var {
 
-    public double[] value;
+    private double[] value;
 
     public Vector(double[] val) {
         int k=val.length;

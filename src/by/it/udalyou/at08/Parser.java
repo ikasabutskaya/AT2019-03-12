@@ -1,10 +1,12 @@
 package by.it.udalyou.at08;
 
+import by.it.udalyou.Calk.CalkException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-    Var calk (String expression){
+    Var calk (String expression) throws CalkException {
         //2.0*2.0
         String[]operand=expression.split(Patterns.OPERATION);
         Var one=Var.createVar(operand[0]);
