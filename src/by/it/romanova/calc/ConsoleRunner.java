@@ -13,13 +13,17 @@ public class ConsoleRunner {
             String expression = sc.nextLine();
             if(expression.equals("end"))
                 break;
-            Var var = null;
+            Var var;
             try {
-                var = parser.calc(expression);
+                if(expression.contains("(") && expression.contains(")")){
+                    expression = parser.excludeBraces(expression);
+                }
+                    var = parser.calc(expression);
+                    printer.print(var);
             } catch (CalcException e) {
                 System.out.println("Ошибка в " + expression + "\n" + e.getMessage());
             }
-            printer.print(var);
+
         }
 
     }

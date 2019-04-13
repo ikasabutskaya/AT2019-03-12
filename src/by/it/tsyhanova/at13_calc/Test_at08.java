@@ -1,4 +1,4 @@
-package by.it.romanova.calc;
+package by.it.tsyhanova.at13_calc;
 
 
 import org.junit.Test;

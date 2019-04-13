@@ -1,4 +1,4 @@
-package by.it._tasks_.at10;
+package by.it.tsyhanova.at13_calc;
 
 
 import org.junit.Test;

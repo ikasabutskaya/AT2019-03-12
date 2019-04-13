@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class taskA {
+public class TaskA {
 
     public static void main(String[] args) {
         String path = System.getProperty("user.dir") + "/src/by/it/romanova/at11/";
@@ -26,8 +26,8 @@ public class taskA {
                 txt.print(element + " ");
                 sum = sum + element;
             }
-            System.out.println("\navg = " + sum / list.size());
-            txt.println("\navg = " + sum / list.size());
+            System.out.println("\navg=" + sum / list.size());
+            txt.println("\navg=" + sum / list.size());
 
         } catch (IOException e) {
             e.printStackTrace();
