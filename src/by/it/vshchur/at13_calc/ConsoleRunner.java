@@ -2,7 +2,7 @@ package by.it.vshchur.at13_calc;
 
 import java.util.Scanner;
 
-class ConsoleRunner {
+public class ConsoleRunner {
     public static void main(String[] args) {
 
         Parser parser=new Parser();
@@ -19,11 +19,12 @@ class ConsoleRunner {
             Var var = null;
             try {
                 var = parser.calc(expression);
-                printer.print(var);
             } catch (CalcException e) {
                 System.out.println("Ошибка в " + expression);
                 System.out.println(e.getMessage());
             }
+            printer.print(var);
+
         }
     }
 }

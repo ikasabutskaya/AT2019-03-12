@@ -2,7 +2,7 @@ package by.it.vshchur.at13_calc;
 
 import java.util.Arrays;
 
-class Vector extends Var {
+public class Vector extends Var {
     double[] value;
 
     public Vector(double[] value) {
@@ -17,7 +17,7 @@ class Vector extends Var {
         }   //{1,2,3,4,5,0}
     }
 
-    Vector(Vector vector) {
+    public Vector(Vector vector) {
         this.value = Arrays.copyOf(vector.value, vector.value.length);
     }
 
