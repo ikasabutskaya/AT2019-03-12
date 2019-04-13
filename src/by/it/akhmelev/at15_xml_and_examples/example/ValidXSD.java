@@ -1,4 +1,4 @@
-package by.it.akhmelev.at15.example;
+package by.it.akhmelev.at15_xml_and_examples.example;
 
 import org.xml.sax.SAXException;
 
@@ -15,8 +15,8 @@ import java.io.IOException;
 public class ValidXSD {
     public static void main(String[ ] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName =   "src/by/it/akhmelev/at15/example/04+XSD.xml";
-        String schemaName = "src/by/it/akhmelev/at15/example/04.xsd";
+        String fileName =   "src/by/it/akhmelev/at15_xml_and_examples/example/04+XSD.xml";
+        String schemaName = "src/by/it/akhmelev/at15_xml_and_examples/example/04.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
