@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sites xmnls="http://bean.at16.shchur.it.by"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://bean.at16.shchur.it.by sites.xsd">
+    <site url="http://it.by">
+        <pages>
+            <page title="Main page">
+                <uri>/index</uri>
+                <elements>
+                    <element name="head">
+                        head for main
+                    </element>
+                    <element name="body">
+                        text for body
+                    </element>
+                </elements>
+            </page>
+            <page title="Login page">
+                <uri>/index</uri>
+                <elements>
+                    <element name="head">
+                        head for main
+                    </element>
+                    <element name="body">
+                        text for body
+                    </element>
+                </elements>
+            </page>
+        </pages>
+    </site>
+    <site url="http://ya.ru">
+        <pages>
+            <page title="Index page">
+                <uri>/index</uri>
+                <elements>
+                    <element name="head">
+                        head for main
+                    </element>
+                    <element name="body">
+                        text for body
+                    </element>
+                </elements>
+            </page>
+            <page title="Search result page">
+                <uri>/index</uri>
+                <elements>
+                    <element name="head">
+                        Search result Yandex
+                    </element>
+                    <element name="body">
+                        some content
+                    </element>
+                </elements>
+            </page>
+        </pages>
+    </site>
+</sites>
