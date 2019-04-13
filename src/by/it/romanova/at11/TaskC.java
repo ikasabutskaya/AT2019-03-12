@@ -1,8 +1,5 @@
 package by.it.romanova.at11;
 
-import com.sun.tools.internal.ws.processor.util.DirectoryUtil;
-import sun.rmi.rmic.iiop.DirectoryLoader;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
