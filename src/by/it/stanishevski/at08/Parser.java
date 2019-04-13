@@ -1,7 +1,5 @@
 package by.it.stanishevski.at08;
 
-import javafx.scene.chart.ValueAxis;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
