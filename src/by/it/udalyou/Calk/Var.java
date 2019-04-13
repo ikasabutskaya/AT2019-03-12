@@ -1,19 +1,31 @@
 package by.it.udalyou.Calk;
 
 
+import java.util.HashMap;
+import java.util.Map;
 
 abstract class Var implements Operation {
+
+    private static Map<String, Var> vars=new HashMap<>();
+    static Var saveVar(String name, Var var){
+        vars.put(name,var);
+
+        return var;
+    }
 
     static Var createVar(String operand)throws CalkException{
         operand=operand.trim().replace("\\s+","");
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
-        if (operand.matches(Patterns.VECTOR))
+        else if (operand.matches(Patterns.VECTOR))
             return new Vector(operand);
-        if (operand.matches(Patterns.MATRIX))
+        else if (operand.matches(Patterns.MATRIX))
           //  return new Matrix(operand);
-        return null;//когда вставлю вектор и матрицу - убрать
-        throw  new CalkException("Невозможно создать "+operand);
+            return null;//когда вставлю вектор и матрицу - убрать
+        else if (vars.containsKey(operand))
+            return vars.get(operand);
+
+        return null;
     }
 
     @Override

@@ -1,8 +1,5 @@
 package by.it.vshchur.at08;
 
-import by.it.vshchur.at08.Scalar;
-import by.it.vshchur.at08.Var;
-
 import java.util.Arrays;
 
 class Vector extends Var {

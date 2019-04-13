@@ -38,11 +38,14 @@ class Vector extends Var {
 
         }
         else if (other instanceof Vector){
-            double[] result = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i] = result[i]+((Vector)other).value[i];
+            if(this.value.length == ((Vector) other).value.length) {
+                double[] result = Arrays.copyOf(value, value.length);
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = result[i] + ((Vector) other).value[i];
+                }
+                return new Vector(result);
             }
-            return new Vector(result);
+            throw new CalcException("размер векторов должен быть одинаковым");
 
         }
         else
@@ -59,11 +62,14 @@ class Vector extends Var {
             return new Vector(result);
         }
         else if (other instanceof Vector){
-            double[] result = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i] = result[i]-((Vector)other).value[i];
+            if(this.value.length == ((Vector) other).value.length) {
+                double[] result = Arrays.copyOf(value, value.length);
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = result[i] - ((Vector) other).value[i];
+                }
+                return new Vector(result);
             }
-            return new Vector(result);
+            throw new CalcException("размер векторов должен быть одинаковым");
 
         }
         else
@@ -80,13 +86,16 @@ class Vector extends Var {
             return new Vector(result);
         }
         else if (other instanceof Vector){
-            double[] array = Arrays.copyOf(value, value.length);
-            double result = 0;
-            for (int i = 0; i < array.length; i++) {
-                array[i] = array[i]*((Vector)other).value[i];
-                result = result +  array[i];
+            if(this.value.length == ((Vector) other).value.length) {
+                double[] array = Arrays.copyOf(value, value.length);
+                double result = 0;
+                for (int i = 0; i < array.length; i++) {
+                    array[i] = array[i] * ((Vector) other).value[i];
+                    result = result + array[i];
+                }
+                return new Scalar(result);
             }
-            return new Scalar(result);
+            else throw new CalcException("размер векторов должен быть одинаковым");
 
         }
         else
@@ -96,6 +105,8 @@ class Vector extends Var {
     @Override
     public Var div(Var other) throws CalcException {
         if(other instanceof Scalar){
+            if (((Scalar) other).getValue()==0)
+                throw new CalcException("нельзя делить на 0");
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i] = result[i]/((Scalar)other).getValue();

@@ -4,10 +4,6 @@ public class Scalar extends Var {
 
     double value;
 
-//    public double getValue() {
-//        return value;
-//    }
-
     public Scalar(double value) {
         this.value = value;
     }
@@ -20,10 +16,6 @@ public class Scalar extends Var {
         this.value = scalar.value;
     }
 
-    @Override
-    public String toString() {
-        return Double.toString(value);
-    }
 
     @Override
     public Var add(Var other) {
@@ -34,6 +26,7 @@ public class Scalar extends Var {
         return super.add(this);
     }
 
+    @Override
     public Var sub(Var other) {
         if (other instanceof Scalar) {
             Scalar o = (Scalar) other;
@@ -42,18 +35,23 @@ public class Scalar extends Var {
         return new Scalar(-1).mul(other);
     }
 
+    @Override
     public Var mul(Var other) {
         if (other instanceof Scalar) {
             return new Scalar(this.value * ((Scalar) other).value);
-        }
-        else return other.mul(this);
+        } else return other.mul(this);
     }
 
-
+    @Override
     public Var div(Var other) {
         if (other instanceof Scalar) {
             return new Scalar(this.value / ((Scalar) other).value);
         }
         return super.div(other);
+    }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
     }
 }

@@ -1,5 +1,7 @@
 package by.it.udalyou.at08;
 
+import by.it.udalyou.Calk.CalkException;
+
 abstract class Var implements Operation {
 
     static Var createVar(String operand){
@@ -7,33 +9,33 @@ abstract class Var implements Operation {
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         if (operand.matches(Patterns.VECTOR))
-        //    return new Vector(operand);
+            return new Vector(operand);
         if (operand.matches(Patterns.MATRIX))
-          //  return new Matrix(operand);
+            return new Matrix(operand);
         return null;//когда вставлю вектор и матрицу - убрать
-        return null;
+
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalkException {
         System.out.println("Операция сложения "+this+"+"+other+" не возможна");
         return null;
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalkException {
         System.out.println("Операция вычитания "+this+"-"+other+" не возможна");
         return null;
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalkException {
         System.out.println("Операция умножения "+this+"*"+other+" не возможна");
         return null;
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws CalkException {
         System.out.println("Операция деления "+this+"/"+other+" не возможна");
         return null;
     }
