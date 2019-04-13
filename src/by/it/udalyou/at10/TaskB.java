@@ -21,8 +21,6 @@ public class TaskB {
             String clname = element.getClassName();
             int nam = element.getLineNumber();
             if (clname.equals(element.getClassName())) {
-                //          System.out.println(element);
-
 
                 if (clname.equals(TaskB.class.getName())) {
                     System.out.printf(
@@ -35,7 +33,6 @@ public class TaskB {
         }
     }
 
-
     public static void main(String[] args) {
         double sum = 0;
         Scanner scanner = new Scanner(System.in);
@@ -46,24 +43,18 @@ public class TaskB {
 
             try {
                 double value = Double.parseDouble(txt);
-
                 System.out.println(value);
 
                 sum = sum + value;
-                try {
-                    if (sum >= 0) {
+                if (sum < 0) {
+                    throw new ArithmeticException();
+                    }
                         double squ = Math.sqrt(sum);
                         System.out.println("Корень суммы, введенных чисел: " + squ);
-                    } else throw new ArithmeticException();
 
-                } catch (ArithmeticException e) {
+                } catch (NumberFormatException |ArithmeticException e) {
                     printInfoExeption(e);
                 }
-
-            }catch (NumberFormatException e) {
-                printInfoExeption(e);
             }
         }
-
     }
-}

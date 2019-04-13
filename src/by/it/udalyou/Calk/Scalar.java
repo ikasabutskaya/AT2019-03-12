@@ -5,7 +5,7 @@ package by.it.udalyou.Calk;
 public class Scalar extends Var{
 
 
-   private double value;
+   public double value;
    //Scalar(
     Scalar(double value) {this.value=value;  }
 

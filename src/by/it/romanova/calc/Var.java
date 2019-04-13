@@ -1,6 +1,15 @@
 package by.it.romanova.calc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 abstract class Var implements Operation {
+
+    static private Map<String,Var> vars = new HashMap<>();
+    static Var saveVar(String name, Var var){
+        vars.put(name, var);
+        return var;
+    }
 
     static Var createVar(String strVar) throws CalcException {
         strVar = strVar.replace(" ", "");
@@ -10,6 +19,8 @@ abstract class Var implements Operation {
             return new Vector(strVar);
         else if (strVar.matches(Patterns.MATRIX))
             return new Matrix(strVar);
+        else if (vars.containsKey(strVar))
+            return vars.get(strVar);
         else
             throw new CalcException(" неизвестное выражение " + strVar);
     }

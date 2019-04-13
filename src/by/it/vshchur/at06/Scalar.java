@@ -1,6 +1,6 @@
 package by.it.vshchur.at06;
 
-class Scalar extends AbstractVar {
+class Scalar extends Var {
     //   @Override
     //  public String toString() {
     //      return "Это Scalar{}";

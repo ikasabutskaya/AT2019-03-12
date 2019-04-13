@@ -11,7 +11,14 @@ public class ConsoleRunner {
         Var.loadFromFile();
         for (;;){
             String expression = scan.nextLine();
-            if (expression.equals("end")) {
+            if (expression.equals("printvar")){
+                Var.printVar();
+            }
+            if (expression.equals("sortvar")){
+                Var.sortVar();
+                Var.printVar();
+            }
+           if (expression.equals("end")) {
                 Var.saveToFile();
                 break;
             }
@@ -21,6 +28,9 @@ public class ConsoleRunner {
             } catch (CalcException e) {
                 System.out.println("Ошибка в " + expression);
                 System.out.println(e.getMessage());
+                Logger.errorLog("Ошибка в " + expression);
+                Logger.errorLog(e.getMessage());
+
             }
             printer.print(var);
         }
