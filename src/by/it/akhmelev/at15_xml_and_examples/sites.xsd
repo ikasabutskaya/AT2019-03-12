@@ -20,19 +20,48 @@
 
             </element>
         </sequence>
-        <attribute name="url" type="string"></attribute>
+        <attribute name="url" type="string"/>
     </complexType>
-    
+
     <complexType name="typePages">
         <sequence>
-            <element name="page" 
+            <element name="page"
                      type="tns:typePage"
                      maxOccurs="unbounded"
             />
         </sequence>
     </complexType>
-    
+
     <complexType name="typePage">
-        <
+        <sequence>
+            <element name="uri" type="string"/>
+            <element name="elements"
+                     type="tns:typeElements"
+                     maxOccurs="unbounded"
+            />
+        </sequence>
+        <attribute name="title" type="string"/>
     </complexType>
+
+    <complexType name="typeElements">
+        <sequence>
+            <element name="element"
+                     type="tns:typeElement"
+                     maxOccurs="unbounded"
+            />
+        </sequence>
+    </complexType>
+
+
+    <!-- если контент простой но у тега есть аттрибуты -->
+    <complexType name="typeElement">
+        <simpleContent>
+            <!-- описание самого простого типа -->
+            <extension base="string">
+                <!-- и аттрибут(ов) для тега этого типа -->
+                <attribute name="name" type="string" use="required"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
 </schema>
