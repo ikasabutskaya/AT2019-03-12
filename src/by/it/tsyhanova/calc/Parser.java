@@ -60,8 +60,8 @@ public class Parser {
             operations.add(matcher.group());
         }
             String[] parts = expression.split(Patterns.OPERATION);
-            List<String> tmp = Arrays.asList(parts);
-            List<String> operands = new ArrayList<>(tmp);
+            List<String> tmp = Arrays.asList(parts);//массив на интерфейсе листа
+            List<String> operands = new ArrayList<>(tmp);//новый лист
 
             while (!operations.isEmpty()) {
                 int index = getIndex(operations);
