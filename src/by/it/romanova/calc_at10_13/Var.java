@@ -1,11 +1,11 @@
-package by.it.romanova.calc;
+package by.it.romanova.calc_at10_13;
 
 import java.util.HashMap;
 import java.util.Map;
 
 abstract class Var implements Operation {
 
-    static private Map<String,Var> vars = new HashMap<>();
+    static private Map<String, Var> vars = new HashMap<>();
     static Var saveVar(String name, Var var){
         vars.put(name, var);
         return var;

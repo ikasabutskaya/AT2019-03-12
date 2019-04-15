@@ -1,4 +1,4 @@
-package by.it.romanova.calc;
+package by.it.romanova.calc_at14;
 
 public class CalcException extends Exception {
     public CalcException() {
