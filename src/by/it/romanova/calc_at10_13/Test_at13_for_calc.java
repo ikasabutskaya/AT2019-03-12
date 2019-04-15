@@ -1,9 +1,9 @@
-package by.it.romanova.calc;
+package by.it.romanova.calc_at10_13;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class Test_at13_for_calc {
 
@@ -13,16 +13,16 @@ public class Test_at13_for_calc {
         String actual, expected;
         actual = parser.calc("A=2+5.3").toString();
         expected = "7.3";
-        assertEquals("Incorrect calc A", expected, actual);
+        assertEquals("Incorrect calc_at14 A", expected, actual);
         actual = parser.calc("B=A*3.5").toString();
         expected = "25.55";
-        assertEquals("Incorrect calc B", expected, actual);
+        assertEquals("Incorrect calc_at14 B", expected, actual);
         actual = parser.calc("B1=B+0.11*-5").toString();
         expected = "25.0";
-        assertEquals("Incorrect calc B1", expected, actual);
+        assertEquals("Incorrect calc_at14 B1", expected, actual);
         actual = parser.calc("B2=A/2-1").toString();
         expected = "2.65";
-        assertEquals("Incorrect calc B2", expected, actual);
+        assertEquals("Incorrect calc_at14 B2", expected, actual);
     }
 
     @Test
@@ -31,13 +31,13 @@ public class Test_at13_for_calc {
         String actual, expected;
         actual = parser.calc(parser.excludeBraces("C=B+(A*2)")).toString();
         expected = "40.15";
-        assertEquals("Incorrect calc C", expected, actual);
+        assertEquals("Incorrect calc_at14 C", expected, actual);
         actual = parser.calc(parser.excludeBraces("D=((C-0.15)-20)/(7-5)")).toString();
         expected = "10.0";
-        assertEquals("Incorrect calc D", expected, actual);
+        assertEquals("Incorrect calc_at14 D", expected, actual);
         actual = parser.calc(parser.excludeBraces("E={2,3}*(D/2)")).toString();
         expected = "{10.0, 15.0}";
-        assertEquals("Incorrect calc E", expected, actual);
+        assertEquals("Incorrect calc_at14 E", expected, actual);
     }
 
     @Test
