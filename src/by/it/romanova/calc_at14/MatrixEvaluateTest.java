@@ -4,15 +4,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.*;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+
 @RunWith(value = Parameterized.class)
-public class ScalarSumTest {
+public class MatrixEvaluateTest {
 
     private Parser p;
 
@@ -25,11 +27,11 @@ public class ScalarSumTest {
     @Parameters
     public static List<Object[]> parameters(){
         return Arrays.asList(new Object[][]{
-                {"A=2+5.3", "7.3"},
-                {"B=A+3.5", "10.8"},
-                {"B1=B+2", "12.8"},
-                {"B2=A+89.5", "96.8"},
-                {"B3=B2+80.2", "177.0"}
+            {"A={{1,2.0,3},{4,5,6},{7, 8,9}}+{{1,2.5,3},{4,0,6},{7,8,-9}}", "{{2.0, 4.5, 6.0}, {8.0, 5.0, 12.0}, {14.0, 16.0, 0.0}}"},
+            {"B=A*3.5", "{{7.0, 15.75, 21.0}, {28.0, 17.5, 42.0}, {49.0, 56.0, 0.0}}"},
+            {"B1={{1,2},{4,5}}*{{1,2},{5,6}}", "{{11.0, 14.0}, {29.0, 38.0}}"},
+            {"B2=B1+3.5", "{{14.5, 17.5}, {32.5, 41.5}}"},
+            {"B3=B1-B2", "{{-3.5, -3.5}, {-3.5, -3.5}}"}
         });
     }
 

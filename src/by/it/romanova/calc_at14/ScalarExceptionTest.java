@@ -4,15 +4,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.*;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+
 @RunWith(value = Parameterized.class)
-public class ScalarSumTest {
+public class ScalarExceptionTest {
 
     private Parser p;
 
@@ -23,25 +25,24 @@ public class ScalarSumTest {
     }
 
     @Parameters
-    public static List<Object[]> parameters(){
-        return Arrays.asList(new Object[][]{
-                {"A=2+5.3", "7.3"},
-                {"B=A+3.5", "10.8"},
-                {"B1=B+2", "12.8"},
-                {"B2=A+89.5", "96.8"},
-                {"B3=B2+80.2", "177.0"}
+    public static List<String> parameters(){
+        List<String> strings = Arrays.asList(new String[]{
+                "A=2/0",
+                "B=A*3",
+                "B1=0/0",
+                "B2=jjj",
+                "B3=B2*0"
         });
+        return strings;
     }
 
     @Parameter
     public String expression;
 
-    @Parameter(1)
-    public String result;
 
-    @Test
+    @Test(expected = CalcException.class)
     public void scalarEvaluateTest() throws CalcException {
-        assertThat(p.calc(expression).toString(), is(result));
+        p.calc(expression);
     }
 
 }
