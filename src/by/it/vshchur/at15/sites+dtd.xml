@@ -15,13 +15,13 @@
                 </elements>
             </page>
             <page title="Login page">
-                <uri>/index</uri>
+                <uri>/login</uri>
                 <elements>
                     <element name="head">
                         head for main
                     </element>
-                    <element name="body">
-                        text for body
+                    <element name="form">
+                        login form
                     </element>
                 </elements>
             </page>
@@ -33,20 +33,20 @@
                 <uri>/index</uri>
                 <elements>
                     <element name="head">
-                        head for main
+                        head for yandex
                     </element>
-                    <element name="body">
-                        text for body
+                    <element name="form">
+                        text for search form
                     </element>
                 </elements>
             </page>
             <page title="Search result page">
-                <uri>/index</uri>
+                <uri>/result</uri>
                 <elements>
                     <element name="head">
                         Search result Yandex
                     </element>
-                    <element name="body">
+                    <element name="content">
                         some content
                     </element>
                 </elements>

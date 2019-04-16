@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://bean.at16.shchur.it.by"
         xmlns:tns="http://bean.at16.shchur.it.by"
@@ -16,18 +16,51 @@
 
     <complexType name="typeSite">
         <sequence>
-            <element name="pages" type="typePages">
+            <element name="pages" type="tns:typePages">
 
             </element>
         </sequence>
-        <attribute name="url" type="string"></attribute>
+        <attribute name="url" type="string"/>
     </complexType>
 
     <complexType name="typePages">
         <sequence>
             <element name="page"
                      type="tns:typePage"
-            maxOccurs="unbounded"/>
+                     maxOccurs="unbounded"
+            />
         </sequence>
+    </complexType>
+
+    <complexType name="typePage">
+        <sequence>
+            <element name="uri" type="string"/>
+            <element name="elements"
+                     type="tns:typeElements"
+                     maxOccurs="unbounded"
+            />
+        </sequence>
+        <attribute name="title" type="string"/>
+    </complexType>
+
+    <complexType name="typeElements">
+        <sequence>
+            <element name="element"
+                     type="tns:typeElement"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+
+
+
+    <complexType name="typeElement">
+        <simpleContent>
+
+            <extension base="string">
+
+                <attribute name="name" type="string" use="required"/>
+            </extension>
+        </simpleContent>
     </complexType>
 </schema>
