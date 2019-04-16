@@ -13,17 +13,16 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 
-
 @RunWith(value = Parameterized.class)
-public class MatrixSumTest {
+public class MatrixSubTest {
 
     public static Parser parser=new Parser();
 
     @Parameterized.Parameters
     public static List<String[]> createData() {
         String[][] str = {
-                {"{{1, 2, 3}, {1, 2, 3}, {1, 2, 3}} + {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}", "{{2.0, 4.0, 6.0}, {2.0, 4.0, 6.0}, {2.0, 4.0, 6.0}}"},
-                {"{{1, 2, 3},{1, 2, 3}} + 3", "{{4.0, 5.0, 6.0}, {4.0, 5.0, 6.0}}"}
+                {"{{2, 3, 4}, {2, 3, 4}, {2, 3, 4}} - {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}}", "{{1.0, 2.0, 3.0}, {1.0, 2.0, 3.0}, {1.0, 2.0, 3.0}}"},
+                {"{{4, 5, 6},{4, 5, 6}} - 2", "{{2.0, 3.0, 4.0}, {2.0, 3.0, 4.0}}"}
         };
         return Arrays.asList(str);
     }
@@ -35,7 +34,7 @@ public class MatrixSumTest {
     public static String result;
 
     @Test
-    public void sum() throws CalcException {
+    public void sub() throws CalcException {
         Var actual = parser.calc(expression);
         Assert.assertThat(result, is(actual.toString()));
         System.out.println("passed: "+expression+"="+result);
