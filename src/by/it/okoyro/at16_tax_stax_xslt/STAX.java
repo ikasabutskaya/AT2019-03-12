@@ -15,28 +15,27 @@ public class STAX {
 
 	public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
 		XMLInputFactory factory = XMLInputFactory.newInstance();
-		String filename = "/Users/oksanakoyro/work/AT2019-03-12/src/by/it/okoyro/at15/sites.xml";
-		Reader reader = new FileReader(filename);
-		XMLStreamReader xmlStreamReader = factory.createXMLStreamReader(reader);
+		Reader reader = new FileReader("/Users/oksanakoyro/work/AT2019-03-12/src/by/it/okoyro/at15/sites.xml");
+		XMLStreamReader xmlReader = factory.createXMLStreamReader(reader);
 
-		while (xmlStreamReader.hasNext()) {
-			int nodeType = xmlStreamReader.next();
+		while (xmlReader.hasNext()) {
+			int nodeType = xmlReader.next();
 			switch (nodeType) {
 				case XMLStreamConstants.START_ELEMENT:
 
 					StringBuilder at = new StringBuilder();
-					int length = xmlStreamReader.getAttributeCount();
+					int length = xmlReader.getAttributeCount();
 					for (int i = 0; i < length; i++) {
-						at.append(" ").append(xmlStreamReader.getAttributeLocalName(i))
-								.append("=").append(xmlStreamReader.getAttributeValue(i));
+						at.append(" ").append(xmlReader.getAttributeLocalName(i))
+								.append("=").append(xmlReader.getAttributeValue(i));
 					}
-					System.out.println(tab + "<" + xmlStreamReader.getLocalName() + at + ">");
+					System.out.println(tab + "<" + xmlReader.getLocalName() + at + ">");
 					tab = tab.concat("\t"); // добавить табулятор
 
 					break;
 				case XMLStreamConstants.CHARACTERS:
 
-					text.append(xmlStreamReader.getText());
+					text.append(xmlReader.getText());
 
 					break;
 				case XMLStreamConstants.END_ELEMENT:
@@ -46,7 +45,7 @@ public class STAX {
 						System.out.println(tab + out);
 						text.setLength(0); // чистим StringBuilder
 					}
-					System.out.println(tab + "</" + xmlStreamReader.getLocalName() + ">");
+					System.out.println(tab + "</" + xmlReader.getLocalName() + ">");
 					break;
 				default:
 			}
