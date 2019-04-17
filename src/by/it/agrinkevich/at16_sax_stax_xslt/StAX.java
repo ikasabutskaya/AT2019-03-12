@@ -1,15 +1,20 @@
 package by.it.agrinkevich.at16_sax_stax_xslt;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 
 public class StAX {
 
-    private String tab="";
-    private StringBuilder text=new StringBuilder();
+    private static String tab="";
+    private static StringBuilder text=new StringBuilder();
 
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
-        /*XMLInputFactory factory = XMLInputFactory.newInstance();
+        XMLInputFactory factory = XMLInputFactory.newInstance();
         String filename = "src/by/it/agrinkevich/at15/sites.xml";
         Reader source=new FileReader(filename);
         XMLStreamReader reader = factory.createXMLStreamReader(source);
@@ -17,27 +22,31 @@ public class StAX {
             int type=reader.next();
             switch (type){
                 case XMLStreamConstants.START_ELEMENT:
-                    StringBuilder at=new StringBuilder();
+                    StringBuilder at = new StringBuilder();
                     int n = reader.getAttributeCount();
-                    for (int i = 0; i < n; i++) {
-                        at.append(" ")
-                                .append(reader.getLocalName(i))
+                    for (int i = 0; i < n; i++)
+                        at
+                                .append(" ")
+                                .append(reader.getAttributeLocalName(i))
                                 .append("=")
-                                .append(reader);
-                    }
-                    System.out.println(tab+"<"+qName+at+">");
+                                .append(reader.getAttributeValue(i));
+                    System.out.println(tab + "<" + reader.getLocalName() + at + ">");
                     tab=tab.concat("\t");
-                    System.out.println("start");
                     break;
                 case XMLStreamConstants.CHARACTERS:
-                    System.out.println("text");
+                    text.append(reader.getText());
                     break;
                 case XMLStreamConstants.END_ELEMENT:
-                    System.out.println("end");
+                    tab = tab.substring(1);
+                    String out = text.toString().trim();
+                    if(!out.isEmpty()){
+                        System.out.println(tab + out);
+                        text.setLength(0);
+                    }
+                    System.out.println(tab + "</" + reader.getLocalName() + ">");
                     break;
+                default:
             }
         }
-
-*/
     }
 }
