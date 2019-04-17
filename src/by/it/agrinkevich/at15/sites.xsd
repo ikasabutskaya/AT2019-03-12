@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://bean.at16.akhmelev.it.by"
-        xmlns:tns="http://bean.at16.akhmelev.it.by"
+        targetNamespace="http://bean.at16.agrinkevich.it.by"
+        xmlns:tns="http://bean.at16.agrinkevich.it.by"
         elementFormDefault="qualified">
     <element name="sites">
         <complexType>
@@ -13,55 +13,41 @@
             </sequence>
         </complexType>
     </element>
-
     <complexType name="typeSite">
         <sequence>
-            <element name="pages" type="tns:typePages">
-
-            </element>
+            <element name="pages" type="tns:typePages"/>
         </sequence>
         <attribute name="url" type="string"/>
     </complexType>
-
     <complexType name="typePages">
         <sequence>
             <element name="page"
                      type="tns:typePage"
-                     maxOccurs="unbounded"
-            />
+                     maxOccurs="unbounded">
+            </element>
         </sequence>
     </complexType>
-
     <complexType name="typePage">
         <sequence>
-            <element name="uri" type="string"/>
+            <element name="uri"/>
             <element name="elements"
-                     type="tns:typeElements"
-                     maxOccurs="unbounded"
-            />
+                     type="tns:typeElements"/>
         </sequence>
         <attribute name="title" type="string"/>
     </complexType>
-
     <complexType name="typeElements">
         <sequence>
             <element name="element"
                      type="tns:typeElement"
-                     maxOccurs="unbounded"
-            />
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
         </sequence>
     </complexType>
-
-
-    <!-- если контент простой но у тега есть атрибуты -->
     <complexType name="typeElement">
-        <simpleContent>
-            <!-- описание самого простого типа -->
-            <extension base="string">
-                <!-- и аттрибут(ов) для тега этого типа -->
-                <attribute name="name" type="string" use="required"/>
-            </extension>
-        </simpleContent>
+            <simpleContent>
+                <extension base="string">
+                    <attribute name="name" type="string"/>
+                </extension>
+            </simpleContent>
     </complexType>
-
 </schema>

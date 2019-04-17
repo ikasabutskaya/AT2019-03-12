@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT sites (site)+>
+<!ELEMENT site (pages)>
+<!ATTLIST site url PCDATA #REQUIRED>
+<!ELEMENT pages (page)+>
+<!ELEMENT page (name,element)>
+<!ATTLIST page id PCDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT element (#PCDATA)>
+<!ATTLIST element element_id CDATA #REQUIRED>

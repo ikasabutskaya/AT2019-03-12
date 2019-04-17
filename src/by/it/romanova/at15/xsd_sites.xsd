@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://at15.by.it.romanova"
+        xmlns:tns="http://at15.by.it.romanova"
+        elementFormDefault="qualified">
+  <element name="sites" type="tns:sitesType"/>
+  <complexType name="elementType">
+    <simpleContent>
+      <extension base="string">
+        <attribute type="string" name="element_id" use="optional"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="pageType">
+    <sequence>
+      <element name="name">
+        <simpleType>
+          <restriction base="string">
+            <enumeration value="First Page"/>
+            <enumeration value="Second page"/>
+            <enumeration value="Info Page"/>
+          </restriction>
+        </simpleType>
+      </element>
+
+      <element type="tns:elementType" name="element" maxOccurs="unbounded" minOccurs="1"/>
+    </sequence>
+    <attribute type="string" name="id"/>
+  </complexType>
+  <complexType name="pagesType">
+    <sequence>
+      <element type="tns:pageType" name="page" maxOccurs="unbounded" minOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="siteType">
+    <sequence>
+      <element type="tns:pagesType" name="pages"/>
+    </sequence>
+    <attribute type="string" name="url"/>
+  </complexType>
+  <complexType name="sitesType">
+    <sequence>
+      <element type="tns:siteType" name="site" maxOccurs="unbounded" minOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>
