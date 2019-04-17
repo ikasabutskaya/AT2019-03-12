@@ -1,4 +1,4 @@
-package by.it.ikasabutskaya.calc_11;
+package by.it.ikasabutskaya.at13;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ public abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
 
-    public static Var saveVar(String name, Var var) {
+    static Var saveVar(String name, Var var) {
         vars.put(name, var);
 
         return var;
@@ -16,7 +16,7 @@ public abstract class Var implements Operation {
 
 
 
-   public static Var createVar(String strVar) throws CalcException {
+   static Var createVar(String strVar) throws CalcException {
        strVar=strVar.replace(" ","");
        if (strVar.matches(Patterns.SCALAR))
            return new Scalar(strVar);
