@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<sites xmlns="http://bean.at16.akhmelev.it.by"
+<sites xmlns="http://bean.at15.udalyou.it.by"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://bean.at16.akhmelev.it.by sites.xsd" >
+       xsi:schemaLocation="http://bean.at15.udalyou.it.by sites.xsd
+http://bean.at15.udalyou.it.by ">
     <site url="http://it.by">
         <pages>
             <page title="Main page">
                 <uri>/index</uri>
                 <elements>
-                    <element name="head">
+                    <typeElement name="head">
                         head for main
-                    </element>
-                    <element name="body">
+                    </typeElement>
+                    <typeElement name="body">
                         text for body
-                    </element>
+                    </typeElement>
                 </elements>
             </page>
             <page title="Login page">
                 <uri>/login</uri>
                 <elements>
-                    <element name="head">
+                    <typeElement name="head">
                         head for main
-                    </element>
-                    <element name="form">
+                    </typeElement>
+                    <typeElement name="form">
                         form login
-                    </element>
+                    </typeElement>
                 </elements>
             </page>
         </pages>
@@ -33,23 +34,23 @@
             <page title="Index page">
                 <uri>/index</uri>
                 <elements>
-                    <element name="head">
+                    <typeElement name="head">
                         Search yandex
-                    </element>
-                    <element name="form">
+                    </typeElement>
+                    <typeElement name="form">
                         search form
-                    </element>
+                    </typeElement>
                 </elements>
             </page>
             <page title="Search result page">
                 <uri>/result</uri>
                 <elements>
-                    <element name="head">
+                    <typeElement name="head">
                         Search result Yandex
-                    </element>
-                    <element name="content">
+                    </typeElement>
+                    <typeElement name="content">
                         some content
-                    </element>
+                    </typeElement>
                 </elements>
             </page>
         </pages>

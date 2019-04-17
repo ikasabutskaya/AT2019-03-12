@@ -18,7 +18,7 @@ public class SAX extends DefaultHandler {
         SAXParser saxParser = saxParserFactory.newSAXParser();
 
         String filename="src/by/it/udalyou/at15/sites.xml";
-        SAX hendler=new SAX();
+        SAX hendler=new SAX();//??????
         saxParser.parse(filename,hendler);
 
     }
@@ -37,7 +37,11 @@ public class SAX extends DefaultHandler {
         StringBuilder sb=new StringBuilder();
         int n=attributes.getLength();
         for (int i=0;i<n;i++){
-          sb.append(" ").append(attributes.getLocalName(i)).append("=").append(attributes.getValue(i));
+                sb
+                  .append(" ")
+                  .append(attributes.getLocalName(i))
+                  .append("=")
+                  .append(attributes.getValue(i));
                  }
         System.out.println(tab+"<"+qName+sb+">");
         tab=tab.concat("\t");
