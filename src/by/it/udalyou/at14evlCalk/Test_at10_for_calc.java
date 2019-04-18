@@ -15,7 +15,7 @@ import static org.junit.Assert.fail;
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
 public class Test_at10_for_calc {
 
-    @Test(timeout = 1500)
+    @Test(timeout = 5000)
     public void testTaskA__ConsoleRunner() throws Exception {
         run("3.8+26.2\n" +
                 "end\n")
@@ -30,7 +30,7 @@ public class Test_at10_for_calc {
 
     }
 
-    @Test(timeout = 1500)
+    @Test(timeout = 5000)
     public void testTaskB__ConsoleRunner() throws Exception {
         run("{2,3,4}*2\n" +
                 "end\n")
