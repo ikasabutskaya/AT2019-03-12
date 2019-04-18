@@ -1,13 +1,15 @@
 package by.it.udalyou.at07;
 
 
-    interface Operation {
-        Var add(Var other);
+import by.it.udalyou.Calk.CalkException;
 
-        Var sub(Var other);
+interface Operation {
+        Var add(Var other) throws CalkException;
 
-        Var mul(Var other);
+        Var sub(Var other) throws CalkException ;
 
-        Var div(Var other);
+        Var mul(Var other) throws CalkException;
+
+        Var div(Var other) throws CalkException;
     }
 
