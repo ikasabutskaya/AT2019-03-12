@@ -54,7 +54,7 @@ public class SAX extends DefaultHandler {
 
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         SAXParser saxParser = saxParserFactory.newSAXParser();
-        String filename = "src/by/vshchur/at16_sax_stax_xslt/sites.xml";
+        String filename = "src/by/it/vshchur/at16_sax_stax_xslt/site=s.xml";
         SAX handler = new SAX();
         saxParser.parse (filename, handler);
     }
