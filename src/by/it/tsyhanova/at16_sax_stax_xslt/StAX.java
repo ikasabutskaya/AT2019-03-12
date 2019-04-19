@@ -15,7 +15,7 @@ public class StAX {
 
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
         XMLInputFactory factory = XMLInputFactory.newInstance();
-        String filename = "src/by/it/akhmelev/at15_xml_and_examples/sites.xml";
+        String filename = "src/by/it/tsyhanova/at15/sites.xml";
         Reader source = new FileReader(filename);
         XMLStreamReader reader = factory.createXMLStreamReader(source);
         while (reader.hasNext()) {

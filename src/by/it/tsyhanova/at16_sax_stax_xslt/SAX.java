@@ -54,7 +54,7 @@ public class SAX extends DefaultHandler {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         SAXParser saxParser = saxParserFactory.newSAXParser();
-        String filename = "src/by/it/akhmelev/at15_xml_and_examples/sites.xml";
+        String filename = "src/by/it/tsyhanova/at15/sites.xml";
         SAX handler = new SAX();
         saxParser.parse(filename, handler);
     }

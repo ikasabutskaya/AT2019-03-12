@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class XSLT {
     public static void main(String[] args) throws TransformerException, IOException {
-        String xslPath = "src/by/it/akhmelev/at16_sax_stax_xslt/rules.xsl";
-        String xmlPath = "src/by/it/akhmelev/at15_xml_and_examples/sites.xml";
-        String htmlPath = "src/by/it/akhmelev/at16_sax_stax_xslt/result.html";
+        String xslPath = "src/by/it/tsyhanova/at16_sax_stax_xslt/rules.xsl";
+        String xmlPath = "src/by/it/tsyhanova/at15/sites.xml";
+        String htmlPath = "src/by/it/tsyhanova/at16_sax_stax_xslt/result.html";
         TransformerFactory factory = TransformerFactory.newInstance();
         StreamSource xml=new StreamSource(new FileReader(xslPath));
         Transformer transformer = factory.newTransformer(xml);
