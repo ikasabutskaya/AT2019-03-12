@@ -23,8 +23,8 @@ public class ScalarSumTest {
 	public static Collection<Object[]> getTestParameters() {
 		return Arrays.asList(new Object[][]{
 				{"1+3", 4.0},
-				{"4+4", 8.0},
-				{"11+23", 34.0},
+				{"4.1+4.5", 8.6},
+				{"11.12+23.23", 34.35},
 				{"2+4", 6.0},
 				{"0.1+0.4", 0.5}
 		});
@@ -37,14 +37,12 @@ public class ScalarSumTest {
 
 	@Before
 	public void initParser() {
-		//		Parser ps = new Parser();
+		ps = new Parser();
 	}
 
 	@Test
 	public void sum() throws CalcException {
-		Parser ps = new Parser();
-		double actual = Double.parseDouble(String.valueOf(ps.calc(expression)));
-		Assert.assertEquals(result, actual, 1e-15); //object and double are not equal
-//		Assert.assertThat(ps.calc(expression), is(result));
+		double actual = Double.parseDouble(String.valueOf(ps.calc(expression))); // приводим тут объект к стрингу а потом его к double, чтобы сравнить
+		Assert.assertEquals(result, actual, 1e-15);
 	}
 }
