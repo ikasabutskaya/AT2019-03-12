@@ -3,6 +3,7 @@ package by.it.tsyhanova.calc.at14;
 
 import by.it.tsyhanova.calc.Parser;
 import by.it.tsyhanova.calc.Var;
+import by.it.tsyhanova.calc.Vector;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,9 +36,11 @@ public class ScalarSumTest {
 
     @Test
     public void sumTest() throws Exception {
-        Parser parser=new Parser();
+        /*Parser parser=new Parser();
         Var actual = parser.calc(expression);
         Assert.assertEquals(result,actual.toString());
-        System.out.println("passed "+expression+" = "+result);
+        System.out.println("passed "+expression+" = "+result);*/
+
+
     }
 }
