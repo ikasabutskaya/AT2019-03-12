@@ -1,10 +1,12 @@
 package by.it.udalyou.at08;
 
+import by.it.udalyou.Calk.CalkException;
+
 import java.util.Scanner;
 
 public class ConsoleRunner {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalkException {
         Scanner scan=new Scanner(System.in);
         String line;
 

@@ -36,6 +36,17 @@ public class InOut {
                 System.out.println();
         }
     }
+    static void arrayPrint2D(double[][] m){
+        for (int i=0;i<m.length;i++){
+            for (int j=0;j<m[0].length;j++)
+                System.out.printf("%10.4f",m[i][j]);
+            System.out.println();
+        }
+    System.out.println();
+}
+
+
+
 }
 
 

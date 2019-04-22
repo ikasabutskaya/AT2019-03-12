@@ -112,4 +112,27 @@ public class Vector extends Var {
     public String toString() {
         return Arrays.toString(value).replace('[','{').replace(']','}');
     }
+    //решение проблемы с точностью вычислений
+    //code > generate > equals() & hashcode()
+    //вычисляем дельту разницы значений и возвращаем false, если она больше нуля
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vector vector = (Vector) o;
+        //value - длина дабловой строки value=new double[s.length];
+        //vector.value[i] - длина вычисляемой дабловой строки
+        for (int i = 0; i < value.length; i++) {
+            if(Math.abs(value[i]-vector.value[i])>1e-15){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(value);
+    }
 }
+
