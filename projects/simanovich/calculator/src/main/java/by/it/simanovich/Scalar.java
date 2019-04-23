@@ -9,15 +9,12 @@ public class Scalar extends Var {
     }
 
     public Scalar(String strScalar) {
-        value=Double.parseDouble(strScalar);
-
+        this.value = Double.parseDouble(strScalar);
     }
-
 
     public Scalar(Scalar scalar) {
-        this.value=scalar.value;
+        this.value = scalar.value;
     }
-
 
     @Override
     public Var add(Var other) throws CalcException {
@@ -28,17 +25,17 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar){
             return new Scalar(this.value-((Scalar)other).value);
         }{
             Var minus=new Scalar(-1);
-        return other.sub(this).mul(minus);
+            return other.sub(this).mul(minus);
         }
     }
 
     @Override
-    public Var mul(Var other)  throws CalcException {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar){
             return new Scalar(this.value*((Scalar)other).value);
         }
@@ -46,11 +43,11 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var div(Var other)  throws CalcException {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar){
-            double z=((Scalar)other).value;
+            double z = ((Scalar)other).value;
             if (z==0)
-                throw new CalcException("деление на ноль");
+                throw new CalcException("Деление на ноль");
             return new Scalar(this.value/z);
         }
         return super.div(other);
