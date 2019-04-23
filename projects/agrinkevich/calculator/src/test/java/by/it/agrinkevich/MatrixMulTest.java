@@ -1,8 +1,5 @@
-package by.it.agrinkevich.calc.at14;
+package by.it.agrinkevich;
 
-import by.it.agrinkevich.calc.CalcException;
-import by.it.agrinkevich.calc.Parser;
-import by.it.agrinkevich.calc.Var;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +13,7 @@ import static org.hamcrest.CoreMatchers.is;
 @RunWith(value = Parameterized.class)
 public class MatrixMulTest {
 
-    public static Parser parser=new Parser();
+    public static Parser parser = new Parser();
 
     @Parameterized.Parameters
     public static List<String[]> createData() {
@@ -45,6 +42,6 @@ public class MatrixMulTest {
         // и сравнить друг с другом нижним методом:
         //Assert.assertArrayEquals();
         Assert.assertThat(result, is(actual.toString()));
-        System.out.println("passed: "+expression+"="+result);
+        System.out.println("passed: " + expression + "=" + result);
     }
 }

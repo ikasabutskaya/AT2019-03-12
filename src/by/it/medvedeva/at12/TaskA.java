@@ -4,48 +4,39 @@ import java.io.*;
 
 public class TaskA {
     public static void main(String[] args) {
+        String filename= Util.getPath("matrix.txt");
 
-        String filename = System.getProperty("user.dir")+"/src/by/it/medvedeva/at12/matrix.txt";
-
-        int[][] array = new int [6][4];
-        for (;!generate(array););
-
-        try (BufferedReader r = new BufferedReader(
-                new FileReader(filename)
-        ))
-        { while (true){
-
-            String line = r.readLine();
-            if (line == null) break;
-            System.out.println(line);
-        }
-        }
-
-        try (PrintWriter out = new PrintWriter(new FileWriter(filename))){
-            for (int [] row : array){
-
+        int[][] arr = new int[6][4];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length ; j++) {
+                arr[i][j]= -15-(int) (Math.random()*31);
             }
-            ;
+        }
+        try (
+                PrintWriter out = new PrintWriter(
+                        new FileWriter(filename))
+
+        ){
+            for (int[] row:arr){
+                for (int element : row){
+                    out.printf("%3d ",element);
+                }
+                out.println();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-
-    private static boolean generate(int[][] array) {
-        boolean minus15 = false;
-        boolean plus15 = false;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j <array[i].length ; j++) {
-                array [i][j]= (int) (Math.random()*31)-15;
-                if(!minus15 && array[i][j] == -15)
-                    minus15 = true;
-            if(!plus15 && array[i][j] == -15)
-                    plus15 = true;
-                
+        try (
+                BufferedReader in = new BufferedReader(
+                        new FileReader(filename)
+                )){
+            while (in.ready()){
+                System.out.println(in.readLine());
             }
-            
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    return  minus15 && plus15;
     }
 }
