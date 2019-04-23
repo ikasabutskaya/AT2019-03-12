@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TaskA {
     public static void main(String[] args) {
-        String path=System.getProperty("user.dir")+ "/src/by/it/akhmelev/at11/";
+        String path=System.getProperty("user.dir")+ "/src/by/it/simanovich/at11/";
         writeInt(path);
 
         List<Integer> list=new ArrayList<>();
