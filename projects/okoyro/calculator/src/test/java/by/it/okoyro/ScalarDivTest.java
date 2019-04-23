@@ -1,7 +1,5 @@
-package by.it.okoyro.at14;
+package by.it.okoyro;
 
-import by.it.okoyro.at13.CalcException;
-import by.it.okoyro.at13.Parser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,16 +10,15 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
-public class ScalarMulTest {
-
+public class ScalarDivTest {
 	@Parameterized.Parameters
 	public static Collection<Object[]> testParams() {
 		return Arrays.asList(new Object[][]{
-				{"4*7", 28},
-				{"100*1.0", 100},
-				{"5*5.0", 25.0},
-				{"11.1*0", 0},
-				{"0.8*0.5", 0.4}
+				{"4/2", 2},
+				{"100/20", 5},
+				{"5/5.0", 1.0},
+				{"11.1/1", 11.1},
+				{"0.8/0.5", 1.6}
 		});
 	}
 
@@ -39,7 +36,7 @@ public class ScalarMulTest {
 	}
 
 	@Test
-	public void mul() throws CalcException {
+	public void div() throws CalcException {
 		double actual = Double.parseDouble(String.valueOf(ps.calc(expression))); // приводим объект к стрингу а потом его к double, чтобы сравнить
 		Assert.assertEquals(result, actual, 1e-15);
 	}

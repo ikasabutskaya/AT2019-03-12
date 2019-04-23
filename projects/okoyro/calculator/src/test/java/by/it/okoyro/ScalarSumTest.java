@@ -1,7 +1,5 @@
-package by.it.okoyro.at14;
+package by.it.okoyro;
 
-import by.it.okoyro.at13.CalcException;
-import by.it.okoyro.at13.Parser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
