@@ -2,7 +2,7 @@ package by.it.vshchur.at06;
 
 import java.util.Arrays;
 
-class Vector extends AbstractVar {
+class Vector extends Var {
 
     private double[] value;
 

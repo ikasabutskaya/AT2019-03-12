@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sites SYSTEM "dtd_sites.dtd" >
+<sites>
+    <site url="http://romanova.by">
+        <pages>
+            <page id="0001">
+                <name>First Page</name>
+                <element element_id="10001">
+                    page header
+                </element>
+                <element element_id="10002">
+                    page body
+                </element>
+                <element element_id="10003">
+                    page footer
+                </element>
+            </page>
+            <page id="0002">
+                <name>Second page</name>
+                <element element_id="20001">
+                    page header
+                </element>
+                <element element_id="20002">
+                    text field
+                </element>
+                <element element_id="20003">
+                    text button
+                </element>
+            </page>
+        </pages>
+    </site>
+    <site url="http://at2019.by">
+        <pages>
+            <page id="0001">
+                <name>Info Page</name>
+                <element element_id="10001">
+                    page header
+                </element>
+                <element element_id="10002">
+                    page content
+                </element>
+                <element element_id="10003">
+                    page footer
+                </element>
+            </page>
+            <page id="0002">
+                <name>Second page</name>
+                <element element_id="20001">
+                    page header
+                </element>
+                <element element_id="20002">
+                    text field
+                </element>
+                <element element_id="20003">
+                    text button
+                </element>
+            </page>
+        </pages>
+    </site>
+</sites>
