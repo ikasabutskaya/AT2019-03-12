@@ -1,4 +1,4 @@
-package by.it.romanova.calc_at14;
+package by.it.romanova;
 
 import org.junit.Before;
 import org.junit.Test;

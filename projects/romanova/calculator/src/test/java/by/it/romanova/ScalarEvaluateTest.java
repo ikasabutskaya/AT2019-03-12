@@ -1,4 +1,4 @@
-package by.it.romanova.calc_at14;
+package by.it.romanova;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +10,11 @@ import org.junit.runners.Parameterized.Parameters;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 @RunWith(value = Parameterized.class)
-public class MatrixExceptionTest {
+public class ScalarEvaluateTest {
 
     private Parser p;
 
@@ -22,21 +25,25 @@ public class MatrixExceptionTest {
     }
 
     @Parameters
-    public static List<String> parameters(){
-        return Arrays.asList("A={{1,2.0,3},{4,5,6},{7, 8,9}}/{{1,2.5,3},{4,0,6},{7,8,-9}}",
-                "B=abc",
-                "B1={{1,2},{4,5}}/0",
-                "B2={{1,2},{4,5}}+{{1,2.0,3},{4,5,6},{7, 8,9}}",
-                "B3={{1,2},{4,5}}-{{1,2.0,3},{4,5,6},{7, 8,9}}");
+    public static List<Object[]> parameters(){
+        return Arrays.asList(new Object[][]{
+            {"A=2+5.3", "7.3"},
+            {"B=A*3.5", "25.55"},
+            {"B1=B+0.11*-5", "25.0"},
+            {"B2=A/2-1", "2.65"},
+            {"B3=B2+4/2", "4.65"}
+        });
     }
 
     @Parameter
     public String expression;
 
+    @Parameter(1)
+    public String result;
 
-    @Test(expected = CalcException.class)
+    @Test
     public void scalarEvaluateTest() throws CalcException {
-        p.calc(expression);
+        assertThat(p.calc(expression).toString(), is(result));
     }
 
 }

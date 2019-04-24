@@ -1,4 +1,4 @@
-package by.it.romanova.calc_at14;
+package by.it.romanova;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RunWith(value = Parameterized.class)
-public class MatrixExceptionTest {
+public class ScalarExceptionTest {
 
     private Parser p;
 
@@ -23,11 +23,14 @@ public class MatrixExceptionTest {
 
     @Parameters
     public static List<String> parameters(){
-        return Arrays.asList("A={{1,2.0,3},{4,5,6},{7, 8,9}}/{{1,2.5,3},{4,0,6},{7,8,-9}}",
-                "B=abc",
-                "B1={{1,2},{4,5}}/0",
-                "B2={{1,2},{4,5}}+{{1,2.0,3},{4,5,6},{7, 8,9}}",
-                "B3={{1,2},{4,5}}-{{1,2.0,3},{4,5,6},{7, 8,9}}");
+        List<String> strings = Arrays.asList(new String[]{
+                "A=2/0",
+                "B=-6/0",
+                "B1=0/0",
+                "B2=jjj",
+                "B3=o"
+        });
+        return strings;
     }
 
     @Parameter
