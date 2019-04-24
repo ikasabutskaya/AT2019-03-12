@@ -17,7 +17,8 @@ public class VectorMulTest {
     public static List<String[]> createData() {
         String[][] str = {
                 {"{1, 2, 3}*2", "{2.0, 4.0, 6.0}"},
-                {"3 * {1, 2, 3}", "{3.0, 6.0, 9.0}"}
+                {"3*{1, 2, 3}", "{3.0, 6.0, 9.0}"},
+                {"2.14*{1.35, 2.76, 3.05}", "{2.889, 5.9064, 6.527}"}
         };
         return Arrays.asList(str);
     }
