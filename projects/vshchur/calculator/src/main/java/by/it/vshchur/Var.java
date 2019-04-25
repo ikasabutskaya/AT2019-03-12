@@ -9,7 +9,7 @@ public abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
     private static String filename=System.getProperty("user.dir")+
-            "/src/by/it/vshchur/at12_calc/vars.txt";
+            "/src/main/java/by/it/vshchur/vars.txt";
 
    public static Var createVar(String strVar) throws CalcException {
        strVar=strVar.replace(" ","");
