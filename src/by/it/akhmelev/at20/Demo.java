@@ -3,7 +3,7 @@ package by.it.akhmelev.at20;
 import java.sql.*;
 import java.time.LocalDateTime;
 
-public class TaskCreate {
+public class Demo {
 
     static {
         try { //mysql-connector 8.0.15
