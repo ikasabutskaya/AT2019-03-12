@@ -16,7 +16,7 @@ public class ConnectionCreatorMySql implements ConnectionCreator {
     }
 
     private static final String URL = "" +
-            "jdbc:mysql://127.0.0.1:2019/akhmelev" +
+            "jdbc:mysql://127.0.0.1:3306/akhmelev" +
             "?useUnicode=true" +
             "&useJDBCCompliantTimezoneShift=true" +
             "&useLegacyDatetimeCode=false" +

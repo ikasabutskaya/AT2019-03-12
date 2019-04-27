@@ -35,8 +35,8 @@ public class UserDao implements InterfaceDao<User> {
     @Override
     public boolean create(User user) throws SQLException {
         String sql = String.format("insert INTO user (username, email, password, create_time)" +
-                "values ('%s','%s','%s','%s')",
-                user.getUsername(),user.getEmail(),user.getPassword(),user.getDate()
+                        "values ('%s','%s','%s','%s')",
+                user.getUsername(), user.getEmail(), user.getPassword(), user.getDate()
         );
 
         ConnectionCreator connectionCreator = new ConnectionCreatorMySql();
@@ -44,10 +44,10 @@ public class UserDao implements InterfaceDao<User> {
                 Connection connection = connectionCreator.get();
                 Statement statement = connection.createStatement()
         ) {
-            if (1==statement.executeUpdate(sql,Statement.RETURN_GENERATED_KEYS)){
+            if (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
-                if (generatedKeys.next()){
-                    long id=generatedKeys.getLong(1);
+                if (generatedKeys.next()) {
+                    long id = generatedKeys.getLong(1);
                     user.setId(id);
                     return true;
                 }
@@ -57,13 +57,35 @@ public class UserDao implements InterfaceDao<User> {
     }
 
     @Override
-    public boolean update(User bean) throws SQLException {
-        return false;
+    public boolean update(User user) throws SQLException {
+        String sql = String.format("update user " +
+                        " SET username='%s', email='%s', password='%s', create_time='%s'" +
+                        " WHERE id='%d'",
+                user.getUsername(), user.getEmail(), user.getPassword(), user.getDate(), user.getId()
+        );
+
+        ConnectionCreator connectionCreator = new ConnectionCreatorMySql();
+        try (
+                Connection connection = connectionCreator.get();
+                Statement statement = connection.createStatement()
+        ) {
+            return (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS));
+        }
     }
 
     @Override
-    public boolean delete(User bean) throws SQLException {
-        return false;
+    public boolean delete(User user) throws SQLException {
+        String sql = String.format("DELETE FROM user " +
+                " WHERE id='%d'", user.getId()
+        );
+
+        ConnectionCreator connectionCreator = new ConnectionCreatorMySql();
+        try (
+                Connection connection = connectionCreator.get();
+                Statement statement = connection.createStatement()
+        ) {
+            return (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS));
+        }
     }
 
     @Override
