@@ -1,6 +1,7 @@
 package by.it.tsyhanova.at21;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionCreatorMySql implements ConnectionCreator {
@@ -12,8 +13,17 @@ public class ConnectionCreatorMySql implements ConnectionCreator {
         }
     }
 
+    private static final String URL=""+
+            "jdbc:mysql://127.0.0.1:3306/tsyhanova?" +
+            "useUnicode=true&" +
+            "useJDBCCompliantTimezoneShift=true&" +
+            "useLegacyDatetimeCode=false&" +
+            "serverTimezone=UTC";
+    private static final String LOGIN="root";
+    private static final String PASSWORD="";
+
     @Override
     public Connection get() throws SQLException {
-        return null;
+        return DriverManager.getConnection(URL,LOGIN,PASSWORD);
     }
 }
