@@ -7,6 +7,6 @@ public interface InterfaceDao<T> {
     T read(long id) throws SQLException;
     boolean create(T bean) throws SQLException;
     boolean update(T bean) throws SQLException;
-    boolean delete(T bean) throws SQLException;
+    boolean delete(long id) throws SQLException;
     List<T> getAll() throws SQLException;
 }

@@ -1,5 +1,6 @@
 package by.it.romanova.at21.beans;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class User {
@@ -8,12 +9,12 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Date date;
+    private Timestamp date;
 
     public User() {
     }
 
-    public User(long id, String username, String password, String email, Date date) {
+    public User(long id, String username, String password, String email, Timestamp date) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -53,11 +54,11 @@ public class User {
         this.email = email;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
