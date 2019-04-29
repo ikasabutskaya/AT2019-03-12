@@ -1,4 +1,4 @@
-package by.it.okoyro.at13;
+package by.it.okoyro;
 
 public class Patterns {
     static final String SCALAR="-?[0-9]+(\\.[0-9]+)?";
