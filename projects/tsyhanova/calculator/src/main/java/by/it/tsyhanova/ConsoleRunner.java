@@ -1,4 +1,4 @@
-package by.it.tsyhanova.calc;
+package by.it.tsyhanova;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,8 +9,9 @@ public class ConsoleRunner {
 
     public static void main(String[] args) {
         String filename=System.getProperty("user.dir")+
-                "/src/by/it/tsyhanova/vars.txt";
+                "/src/main/java/by/it/tsyhanova/vars.txt";
 
+        //System.out.println(System.getProperty("user.dir"));
 
         Parser parser=new Parser();
         Printer printer=new Printer();
