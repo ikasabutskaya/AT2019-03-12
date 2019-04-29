@@ -17,7 +17,7 @@ public class Demo {
         System.out.println(Timestamp.valueOf(LocalDateTime.now()));
         try (
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://127.0.0.1:3306/akhmelev?" +
+                        "jdbc:mysql://127.0.0.1:2019/akhmelev?" +
                                 "useUnicode=true&" +
                                 "useJDBCCompliantTimezoneShift=true&" +
                                 "useLegacyDatetimeCode=false&" +
