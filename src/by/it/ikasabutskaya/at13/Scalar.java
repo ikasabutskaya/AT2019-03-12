@@ -4,14 +4,16 @@ public class Scalar extends Var {
 
     double value;
 
+    public double getValue() {return value; }
+
     public Scalar(double value) {
         this.value = value;
     }
 
-    public Scalar(String strScalar) {
-        value=Double.parseDouble(strScalar);
 
-    }
+
+    public Scalar(String strScalar) {
+        value=Double.parseDouble(strScalar); }
 
 
     public Scalar(Scalar scalar) {
@@ -22,42 +24,47 @@ public class Scalar extends Var {
     @Override
     public Var add(Var other) throws CalcException {
         if (other instanceof Scalar){
-            return new Scalar(this.value+((Scalar)other).value);
+            Scalar i = (Scalar)other;
+            double result = this.value + i.value;
+            return new Scalar(result);
         }
         return other.add(this);
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar){
-            return new Scalar(this.value-((Scalar)other).value);
-        }{
-            Var minus=new Scalar(-1);
-        return other.sub(this).mul(minus);
+            Scalar i = (Scalar)other;
+            double result = this.value - i.value;
+            return new Scalar(result);
         }
+        else return new Scalar(-1).mul(other).add(this);
     }
 
     @Override
     public Var mul(Var other)  throws CalcException {
         if (other instanceof Scalar){
-            return new Scalar(this.value*((Scalar)other).value);
+            Scalar i = (Scalar)other;
+            double result = this.value * i.value;
+            return new Scalar(result);
         }
         return other.mul(this);
     }
 
     @Override
-    public Var div(Var other)  throws CalcException {
-        if (other instanceof Scalar){
-            double z=((Scalar)other).value;
-            if (z==0)
+    public Var div(Var other) throws CalcException {
+        if (other instanceof Scalar) {
+            Scalar i = (Scalar) other;
+            if (i.value == 0)
                 throw new CalcException("Деление на ноль");
-            return new Scalar(this.value/z);
+
+
+            double result = this.value / i.value;
+            return new Scalar(result);
         }
-        return super.div(other);
+        else
+            return super.div(other);
+
     }
 
-    @Override
-    public String toString() {
-        return Double.toString(value);
-    }
 }

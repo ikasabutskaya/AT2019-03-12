@@ -30,16 +30,16 @@ class Parser {
 
     by.it.ikasabutskaya.at13.Var calc(String expression) throws CalcException {
 
-        String[] operands = expression.split(by.it.ikasabutskaya.at13.Patterns.OPERATION);
+        String[] operands = expression.split(Patterns.OPERATION);
         operand = new ArrayList<>(Arrays.asList(operands));
 
-        Pattern pattern = Pattern.compile(by.it.ikasabutskaya.at13.Patterns.OPERATION);
+        Pattern pattern = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = pattern.matcher(expression);
         while (matcher.find()) {
             operation.add(matcher.group());
         }
 
-        by.it.ikasabutskaya.at13.Var res = null;
+        Var res = null;
         while (operation.size() > 0) {
             int pos = getPosOperation();
             String vl = operand.get(pos);
@@ -51,7 +51,7 @@ class Parser {
         return res;
     }
 
-    String excludeBracers(String expression) throws by.it.ikasabutskaya.at13.CalcException {
+    String excludeBracers(String expression) throws CalcException {
         String res = expression, calculation;
         while ((res.contains("(")) || (res.contains(")"))) {
             Pattern pattern = Pattern.compile(Patterns.BRACES);

@@ -17,7 +17,7 @@ public class ConsoleRunner {
             Var var;
             try {
                 if (expression.contains("(") && expression.contains(")")) {
-                    expression = parser.excludeBraces(expression);
+                    expression = parser.excludeBracers(expression);
                 }
 
                 var = parser.calc(expression);
