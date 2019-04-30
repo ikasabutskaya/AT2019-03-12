@@ -1,4 +1,4 @@
-package by.it.akhmelev.at21.beans;
+package by.it.akhmelev.at22.beans;
 
 import java.util.Date;
 
@@ -70,8 +70,7 @@ public class User {
 
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        return date != null ? date.equals(user.date) : user.date == null;
+        return email != null ? email.equals(user.email) : user.email == null;
     }
 
     @Override
