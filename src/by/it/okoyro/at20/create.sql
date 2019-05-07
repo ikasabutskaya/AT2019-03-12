@@ -32,19 +32,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `okoyro`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `okoyro`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(16) NOT NULL,
-  `email` VARCHAR(255) NULL,
-  `password` VARCHAR(32) NOT NULL,
-  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `okoyro`.`category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `okoyro`.`category` (
