@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `okoyro`.`user` (
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(32) NOT NULL,
-  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -75,9 +75,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `okoyro`;
-INSERT INTO `okoyro`.`user` (`id`, `username`, `email`, `password`, `create_time`) VALUES (1, 'default', 'default@mail.com', 'qwerty', NULL);
-INSERT INTO `okoyro`.`user` (`id`, `username`, `email`, `password`, `create_time`) VALUES (2, 'simple', 'simple@gmail.com', 'asdfg', NULL);
-INSERT INTO `okoyro`.`user` (`id`, `username`, `email`, `password`, `create_time`) VALUES (3, 'admin', 'admin@domain.com', 'zxcvb', NULL);
+INSERT INTO `okoyro`.`user` (`id`, `username`, `email`, `password`, `create_time`) VALUES (1, 'default', 'default@mail.com', 'qwerty', DEFAULT);
+INSERT INTO `okoyro`.`user` (`id`, `username`, `email`, `password`, `create_time`) VALUES (2, 'simple', 'simple@gmail.com', 'asdfg', DEFAULT);
+INSERT INTO `okoyro`.`user` (`id`, `username`, `email`, `password`, `create_time`) VALUES (3, 'admin', 'admin@domain.com', 'zxcvb', DEFAULT);
 
 COMMIT;
 
