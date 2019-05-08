@@ -20,7 +20,7 @@ public class DBConnection {
 //							"useJDBCCompliantTimezoneShift = true&" +
 //							"useLegacyDatetimeCode = false&" +
 //							"serverTimezone = UTC",
-							"root", "password");
+							"root", "");
 					Statement statement = connection.createStatement()
 					)  {
 				ResultSet resultSet = statement.executeQuery("select * from user");

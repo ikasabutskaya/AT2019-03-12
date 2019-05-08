@@ -25,7 +25,7 @@ public class ConnectionCreatorMySql implements ConnectionCreator {
 	//							"useLegacyDatetimeCode = false&" +
 	//							"serverTimezone = UTC",
 	private static final String USER = "root";
-	private static final String PASSWORD = "password";
+	private static final String PASSWORD = "";
 
 	@Override
 	public Connection get() throws SQLException {
