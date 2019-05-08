@@ -51,4 +51,21 @@ public class Helper {
         while (shift);
         InOut.printArray(array); // print sorted array
     }
+
+
+
+
+
+
+//    static double[ ] mul(double[ ][ ] matrix, double[ ] vector){
+//
+//    }
+//
+//
+//
+//
+//
+//    static double[ ][ ] mul(double[ ][ ] matrixLeft, double[ ][ ] matrixRight){
+//
+//    }
 }
