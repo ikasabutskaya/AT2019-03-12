@@ -1,4 +1,4 @@
-package by.it.ikasabutskaya.at13;
+package by.it.ikasabutskaya.calc_at14;
 
 import java.util.Scanner;
 

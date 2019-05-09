@@ -1,4 +1,4 @@
-package by.it.ikasabutskaya.calc;
+package by.it.ikasabutskaya.calc_at13;
 
 
 import org.junit.Test;

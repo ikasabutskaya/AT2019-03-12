@@ -1,8 +1,9 @@
-package by.it.ikasabutskaya.calc;
+package by.it.ikasabutskaya.calc_at13;
 
 import java.util.Scanner;
 
 public class ConsoleRunner {
+
     public static void main(String[] args) {
 
         Parser parser=new Parser();
@@ -12,14 +13,19 @@ public class ConsoleRunner {
             String expression=scanner.nextLine();
             if (expression.equals("end"))
                 break;
-            Var var = null;
+
+            Var var;
             try {
+                if (expression.contains("(") && expression.contains(")")) {
+                    expression = parser.excludeBracers(expression);
+                }
+
                 var = parser.calc(expression);
+                printer.print(var);
             } catch (CalcException e) {
-                System.out.println("Ошибка в "+expression);
-                System.out.println(e.getMessage());
+                System.out.println("Ошибка в " + expression + "\n" + e.getMessage());
             }
-            printer.print(var);
         }
     }
 }
+

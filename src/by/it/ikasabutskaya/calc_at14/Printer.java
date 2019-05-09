@@ -1,4 +1,4 @@
-package by.it.ikasabutskaya.at13;
+package by.it.ikasabutskaya.calc_at14;
 
 class Printer {
     void print(Var var){

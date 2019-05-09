@@ -1,4 +1,4 @@
-package by.it.ikasabutskaya.at13;
+package by.it.ikasabutskaya.calc_at14;
 
 public class Scalar extends Var {
 
@@ -17,7 +17,13 @@ public class Scalar extends Var {
 
 
     public Scalar(Scalar scalar) {
-        this.value=scalar.value;
+        this.value = scalar.value;
+    }
+
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
     }
 
 
@@ -42,7 +48,7 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var mul(Var other)  throws CalcException {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar){
             Scalar i = (Scalar)other;
             double result = this.value * i.value;
@@ -56,7 +62,7 @@ public class Scalar extends Var {
         if (other instanceof Scalar) {
             Scalar i = (Scalar) other;
             if (i.value == 0)
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Деление на ноль ");
 
 
             double result = this.value / i.value;

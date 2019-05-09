@@ -1,11 +1,10 @@
-package by.it.ikasabutskaya.at13;
+package by.it.ikasabutskaya.calc_at14;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 
 class Parser {
@@ -28,7 +27,7 @@ class Parser {
         return pos;
     }
 
-    by.it.ikasabutskaya.at13.Var calc(String expression) throws CalcException {
+    Var calc(String expression) throws CalcException {
 
         String[] operands = expression.split(Patterns.OPERATION);
         operand = new ArrayList<>(Arrays.asList(operands));

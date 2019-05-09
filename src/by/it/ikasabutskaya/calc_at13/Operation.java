@@ -1,4 +1,4 @@
-package by.it.ikasabutskaya.at13;
+package by.it.ikasabutskaya.calc_at13;
 
 interface Operation {
 

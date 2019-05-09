@@ -1,6 +1,6 @@
-package by.it.ikasabutskaya.calc;
+package by.it.ikasabutskaya.calc_at13;
 
-public class Printer {
+class Printer {
     void print(Var var){
         if (var!=null)
             System.out.println(var);
