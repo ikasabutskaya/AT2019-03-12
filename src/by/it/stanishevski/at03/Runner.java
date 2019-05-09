@@ -7,6 +7,7 @@ public class Runner {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
         double[]array = InOut.getArray(str);
+        InOut.printArray(array);
 
 
     }
