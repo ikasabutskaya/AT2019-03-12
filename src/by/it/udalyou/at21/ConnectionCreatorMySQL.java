@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionCreatorMySQL implements ConnectionCreator{
 
+
+
     static {
         try { //mysql-connector 8.0.15
             Class.forName("com.mysql.cj.jdbc.Driver");
