@@ -1,6 +1,6 @@
 package by.it.udalyou.at21.beans;
 
-import javax.xml.crypto.Data;
+
 import java.sql.Date;
 
 public class User {

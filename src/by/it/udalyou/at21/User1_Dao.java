@@ -1,6 +1,6 @@
 package by.it.udalyou.at21;
 
-import by.it.udalyou.at21.beans.User;
+import by.it.udalyou.at21.beans.User1;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,20 +8,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class UserDAO implements interfaseDAO <User> {
+
+public class User1_Dao implements interfaseDAO_1<User1> {
+
 
     @Override
-    public User read (long id)throws SQLException {
-        User user = null;
+    public User1 read(long id) throws SQLException {
+        User1 user1 = null;
         String sql = "SELECT * FROM udalyou.user WHERE id=" + id;
         ConnectionCreator connectionCreator = new ConnectionCreatorMySQL();
-        try   (
+        try (
                 Connection connection = connectionCreator.get();
-                Statement statement = connection.createStatement())
-        {
+                Statement statement = connection.createStatement()
+        ) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
-                user = new User(
+                user1 = new User1(
                         resultSet.getLong("id"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
@@ -30,15 +32,15 @@ public class UserDAO implements interfaseDAO <User> {
                 );
             }
         }
-        return user;
+        return user1;
     }
 
-
     @Override
-    public boolean create(User user) throws SQLException {
+    public boolean create(User1 user1) throws SQLException {
+
         String sql = String.format("insert INTO user (username, email, password, create_time)" +
                         "values ('%s','%s','%s','%s')",
-                user.getUsername(),user.getEmail(),user.getPassword(),user.getDate()
+                user1.getUsername(), user1.getEmail(), user1.getPassword(), user1.getDate()
         );
 
         ConnectionCreator connectionCreator = new ConnectionCreatorMySQL();
@@ -50,7 +52,7 @@ public class UserDAO implements interfaseDAO <User> {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
                     long id = generatedKeys.getLong(1);
-                    user.setId(id);
+                    user1.setId(id);
                     return true;
                 }
             }
@@ -59,11 +61,12 @@ public class UserDAO implements interfaseDAO <User> {
     }
 
     @Override
-    public boolean update(User user) throws SQLException {
+    public boolean update(User1 user1) throws SQLException {
+
         String sql = String.format("update user " +
                         " SET username='%s', email='%s', password='%s', create_time='%s'" +
                         " WHERE id='%d'",
-                user.getUsername(), user.getEmail(), user.getPassword(), user.getDate(), user.getId()
+                user1.getUsername(), user1.getEmail(), user1.getPassword(), user1.getDate(), user1.getId()
         );
 
         ConnectionCreator connectionCreator = new ConnectionCreatorMySQL();
@@ -76,9 +79,10 @@ public class UserDAO implements interfaseDAO <User> {
     }
 
     @Override
-    public boolean delete(User user) throws SQLException {
+    public boolean delete(User1 user1) throws SQLException {
+
         String sql = String.format("DELETE FROM user " +
-                " WHERE id='%d'",  user.getId()
+                " WHERE id='%d'", user1.getId()
         );
 
         ConnectionCreator connectionCreator = new ConnectionCreatorMySQL();
@@ -91,8 +95,8 @@ public class UserDAO implements interfaseDAO <User> {
     }
 
     @Override
-    public List<User> getAll() throws SQLException {
+    public List<User1> getAll() throws SQLException {
+
         return null;
     }
 }
-
