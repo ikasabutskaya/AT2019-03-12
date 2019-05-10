@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HelloSelenium {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver=new ChromeDriver();
-        driver.get("http://google.com");
+        driver.get("https://google.com");
         By queryLocator=By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, queryLocator);
         queryInput.sendKeys("привет\n");
