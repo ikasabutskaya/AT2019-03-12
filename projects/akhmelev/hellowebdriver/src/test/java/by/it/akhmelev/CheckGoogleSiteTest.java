@@ -14,7 +14,7 @@ public class CheckGoogleSiteTest {
     public void userTryFindHelloInGoogle() throws Exception{
         WebDriver driver=new ChromeDriver();
         try {
-            driver.get("http://goosgle.com");
+            driver.get("https://google.com");
             By queryLocator=By.xpath("//input[@class='gLFyf gsfi']");
             WebElement queryInput = waitAndGetWebElement(driver, queryLocator);
             queryInput.sendKeys("привет\n");
