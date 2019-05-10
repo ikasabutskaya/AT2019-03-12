@@ -29,6 +29,7 @@ public class UserDaoTest {
         User check_user = new User(created_id,"la la la", "00001", "d@mail.ru", timestamp);
         User read_user = userDao.read(created_id);
         System.out.println(read_user + "\n" + check_user);
+        System.out.println(timestamp);
         Assert.assertEquals("user is not created", read_user, check_user);
     }
 
