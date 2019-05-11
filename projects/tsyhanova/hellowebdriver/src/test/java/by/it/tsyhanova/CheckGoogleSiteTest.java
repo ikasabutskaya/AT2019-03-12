@@ -13,6 +13,7 @@ public class CheckGoogleSiteTest {
     public void userTryFindHelloInGoogle() throws Exception{
         WebDriver driver=new ChromeDriver();
         try {
+
             driver.get("https://www.google.by/");
             //поиск поля ввода по его классу
             By queryLocator = By.xpath("//input[@class='gLFyf gsfi']");
@@ -23,6 +24,7 @@ public class CheckGoogleSiteTest {
             waitAndGetWebElement(driver, By.xpath("//*[@id='logo']/img"));
         }
         finally {
+            //quit
             driver.quit();
         }
 
