@@ -11,6 +11,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class CheckFindImageGoogleSiteTest {
 
     private WebDriver driver;
@@ -28,12 +35,14 @@ public class CheckFindImageGoogleSiteTest {
 
     @Test
     public void taskA() throws Exception {
-        driver.get("https://www.google.com/");
+        driver.get("https://www.google.com");
+        // Engish page
+        // driver.get("https://www.google.com/webhp?hl=en");
         By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
         queryInput.sendKeys("seleniumhq\n");
 
-        By byLinkImagesSearch = By.xpath("//*[@class='hdtb-mitem hdtb-imb'][1]/a");
+        By byLinkImagesSearch = By.xpath("//a[@class='q qs'][contains(@href,'tbm=isch')]");
         WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
         linkImagesSearch.click();
 
@@ -41,13 +50,23 @@ public class CheckFindImageGoogleSiteTest {
         WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
         linkResultFirstImage.click();
 
-        By byLinkResultSite = By.xpath("//a[@class='irc_vpl i3599 irc_lth'][@tabindex='0']");
+        By byLinkResultSite = By.xpath("//a[@class='irc_vpl i3599 irc_lth'][@tabindex=0]");
         WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
+
+        //wait rendering (но лучше проверить это явно)
+        Thread.sleep(333);
         linkResultSite.click();
 
-        //TODO add end
+        //open a new tab and check url at the last tab
+        Set<String> handles = driver.getWindowHandles();
+        List<String> handlesList = new ArrayList<>(handles);
+        String newTab = handlesList.get(handlesList.size() - 1);
 
-        Assert.assertEquals("1", "1");
+        // switch to new tab
+        driver.switchTo().window(newTab);
+
+        String url = driver.getCurrentUrl();
+        assertTrue("not complete find", url.startsWith("https://www.seleniumhq.org"));
     }
 
     @After
