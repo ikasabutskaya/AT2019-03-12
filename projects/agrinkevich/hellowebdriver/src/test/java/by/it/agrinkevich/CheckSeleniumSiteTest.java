@@ -9,6 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CheckSeleniumSiteTest {
 
     @Test
@@ -24,11 +27,15 @@ public class CheckSeleniumSiteTest {
             waitAndGetWebElement(driver, By.xpath("//*[@id=\"nav\"]/li/ul/li[3]/a")).click();
             queryLocator=By.xpath("//*[@id=\"mainContent\"]/pre[1]");
             queryInput=waitAndGetWebElement(driver,queryLocator);
-            
+
             Assert.assertTrue(queryInput.getText().contains("<artifactId>selenium-java</artifactId>"));
 
             String dependencyText = queryInput.getText();
-            System.out.println(dependencyText);
+            Pattern pattern = Pattern.compile("<version>(.+?)</version>");
+            Matcher matcher = pattern.matcher(dependencyText);
+            matcher.find();
+            System.out.println("Version for selenium-java: " + matcher.group(1)); // Prints String I want to extract
+
         }
         finally {
             driver.quit();
