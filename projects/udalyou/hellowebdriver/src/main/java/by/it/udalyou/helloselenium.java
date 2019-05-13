@@ -1,4 +1,4 @@
-package by.i.udalyou;
+package by.it.udalyou;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
