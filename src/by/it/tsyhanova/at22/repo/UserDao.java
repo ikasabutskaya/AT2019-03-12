@@ -1,6 +1,8 @@
-package by.it.tsyhanova.at21;
+package by.it.tsyhanova.at22.repo;
 
-import by.it.tsyhanova.at21.beans.User;
+import by.it.tsyhanova.at22.beans.User;
+import by.it.tsyhanova.at22.connection.ConnectionCreator;
+import by.it.tsyhanova.at22.connection.ConnectionCreatorMySql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,12 +11,21 @@ import java.sql.Statement;
 import java.util.List;
 
 public class UserDao implements InterfaceDao<User> {
+    //
+    private ConnectionCreator connectionCreator;
+    //code>generate>constructor
+    public UserDao(ConnectionCreator connectionCreator) {
+        this.connectionCreator = connectionCreator;
+    }
+
     //чтение
     @Override
     public User read(long id) throws SQLException {
         User user=null;
-        String sql="SELECT * FROM tsyhanova.user WHERE ID="+id;
-        ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
+        //переписываем select в полном варианте с обратными кавычками
+        String sql=String.format("SELECT * FROM `tsyhanova`.`user` WHERE ID=%d",id);
+        //удаляем все жесткие зависимости, вынеся connectioncreator вверх
+        //ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
         try (
                 Connection connection=connectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -41,11 +52,12 @@ public class UserDao implements InterfaceDao<User> {
     @Override
     public boolean create(User user) throws SQLException {
         String sql=String.format(
-                "insert INTO user (username,email,password,create_time)"+
+                "insert INTO `tsyhanova`.`user` (username,email,password,create_time)"+
                 " values ('%s','%s','%s','%s');",
                 user.getUsername(),user.getEmail(),user.getPassword(),user.getDate()
                 );
-        ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
+        //удаляем все жесткие зависимости, вынеся connectioncreator вверх
+        //ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
         try (
                 Connection connection=connectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -70,10 +82,11 @@ public class UserDao implements InterfaceDao<User> {
     @Override
     public boolean update(User user) throws SQLException {
         String sql=String.format(
-                "UPDATE `user` SET `username`='%s',`email`='%s',`password`='%s',`create_time`='%s' WHERE `user`.`ID`=%d;",
+                "UPDATE `tsyhanova`.`user` SET `username`='%s',`email`='%s',`password`='%s',`create_time`='%s' WHERE `user`.`ID`=%d;",
                 user.getUsername(),user.getEmail(),user.getPassword(),user.getDate(),user.getId()
         );
-        ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
+        //удаляем все жесткие зависимости, вынеся connectioncreator вверх
+        //ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
         try (
                 Connection connection=connectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -94,10 +107,11 @@ public class UserDao implements InterfaceDao<User> {
     @Override
     public boolean delete(User user) throws SQLException {
         String sql=String.format(
-                "DELETE FROM `user` WHERE `user`.`ID`=%d;",
+                "DELETE FROM `tsyhanova`.`user` WHERE `user`.`ID`=%d;",
                 user.getId()
         );
-        ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
+        //удаляем все жесткие зависимости, вынеся connectioncreator вверх
+        //ConnectionCreator connectionCreator=new ConnectionCreatorMySql();
         try (
                 Connection connection=connectionCreator.get();
                 Statement statement = connection.createStatement()
