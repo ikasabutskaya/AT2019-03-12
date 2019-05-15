@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema akhmelev
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `akhmelev`.`category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE);
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC));
 
 
 -- -----------------------------------------------------
@@ -47,8 +47,6 @@ CREATE TABLE IF NOT EXISTS `akhmelev`.`variable` (
   `user_id` INT NOT NULL,
   `category_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_variable_user_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_variable_category1_idx` (`category_id` ASC) VISIBLE,
   CONSTRAINT `fk_variable_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `akhmelev`.`user` (`id`)
