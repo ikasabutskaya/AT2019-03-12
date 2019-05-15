@@ -1,10 +1,19 @@
 package by.it.agrinkevich.at25;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
 
-    HashMap<String, Integer> hmap = new HashMap<>();
+    final static HashMap<Good, Integer> hmap=new HashMap<Good, Integer>() {
+        {
+            put(new Good("Apple"), 20);
+            put(new Good("Peach"), 30);
+            put(new Good("Orange"), 40);
+            put(new Good("Banana"), 50);
+        }
+    };
+
+    private Basket basket;
 
 
     Buyer(long number) {
@@ -31,6 +40,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         int timeout = Util.random(100, 200);
         System.out.println(this + "wait " + timeout + " seconds");
         Util.sleep(timeout);
+        this.basket=new Basket();
         System.out.println(this + "finished to take baskets ");
     }
 
@@ -47,9 +57,12 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     public void putGoodsToBasket() {
         System.out.println(this + "started to put goods to basket ");
         int timeout = Util.random(100, 200);
+        int count = Util.random(1,4);
+        basket.getGoods().addAll(getRandomSubSet(count));
         System.out.println(this + "wait " + timeout + " seconds");
         Util.sleep(timeout);
         System.out.println(this + "finished to put goods to basket ");
+        System.out.println(this + "has " + this.basket.getGoods().size() + " : " + this.basket.getGoods());
     }
 
     @Override
@@ -61,5 +74,15 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public String toString() {
         return getName();
+    }
+
+    private Collection<Good> getRandomSubSet(int subSetSize){
+        List<Good> goods =new ArrayList<>(hmap.keySet());
+        Set<Good> subSet = new HashSet<>(subSetSize);
+        for (int i = 0; i < subSetSize; i++) {
+            Collections.shuffle(goods);
+            subSet.add(goods.get(0));
+        }
+        return subSet;
     }
 }
