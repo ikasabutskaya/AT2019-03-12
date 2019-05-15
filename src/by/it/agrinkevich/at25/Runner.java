@@ -6,23 +6,25 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
 
-        List<Buyer> buyers=new ArrayList<>();
+        List<Buyer> buyers = new ArrayList<>();
 
         System.out.println("Market opened");
-        int buyerCounter=0;
-        for (int time=0; time<120; ++time) {
+        for (int time = 0; time < 120; ++time) {
             Util.sleep(1000);
-            int count=Util.random(2);
-            for (int i=0; i<=count; ++i){
-                Buyer buyer = new Buyer(++buyerCounter);
+            int count = Util.random(2);
+            for (int i = 0; i <= count; ++i) {
+                Buyer buyer = new Buyer(++Dispatcher.buyerCounter);
                 buyers.add(buyer);
                 buyer.start();
             }
         }
-        /*for (Buyer buyer:
-             ) {
-
-        }*/
+        for (Buyer buyer : buyers) {
+            try {
+                buyer.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         System.out.println("Market closed");
     }
 
