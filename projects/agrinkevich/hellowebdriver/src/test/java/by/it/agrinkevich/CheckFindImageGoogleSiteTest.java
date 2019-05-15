@@ -29,6 +29,7 @@ public class CheckFindImageGoogleSiteTest {
     @Before
     public void setUpBrowser() {
         driver=new ChromeDriver();
+        //driver=new FirefoxDriver();
         driver.manage().window().maximize();
     }
 
@@ -69,6 +70,7 @@ public class CheckFindImageGoogleSiteTest {
         By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
         queryInput.sendKeys("seleniumhq\n");
+        queryInput.submit();
 
         By byLinkImagesSearch = By.xpath("//*[@class='hdtb-mitem hdtb-imb'][1]/a");
         WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
@@ -82,31 +84,44 @@ public class CheckFindImageGoogleSiteTest {
         WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
         linkResultSite.click();
 
+        String url = driver.getCurrentUrl();
+        assertTrue(url.startsWith("https://www.seleniumhq.org"));
+
+
         Set<String> handles = driver.getWindowHandles();
         List<String> handlesList = new ArrayList<>(handles);
         String newTab = handlesList.get(handlesList.size() - 1);
-
         driver.switchTo().window(newTab);
 
-        String url = driver.getCurrentUrl();
-        assertTrue("not complete find", url.startsWith("https://www.seleniumhq.org"));
 
         assertTrue(driver.getTitle().contains("Selenium - Web Browser Automation"));
 
         newTab = handlesList.get(0);
         driver.switchTo().window(newTab);
 
-        By byLinkSearch = By.xpath("//*[@class='RNNXgb']");
+        By byButtonSearchByImage = By.xpath("//*[@class='S3Wjs']");
+        WebElement buttonSearchByImage = waitAndGetWebElement(driver, byButtonSearchByImage);
+        buttonSearchByImage.click();
+
+
+        By byFirstImage = By.xpath("//*[@id='i48MSmX01sE18M:']");
+        WebElement firstImage = waitAndGetWebElement(driver, byFirstImage);
+
+        //*[@class='RNNXgb']
         //*[@class='gLFyf gsfi'])
+        //*[@id='i48MSmX01sE18M:'] picture
+        By byLinkSearch = By.xpath("//*[@class='qbip']");
         WebElement linkSearch = waitAndGetWebElement(driver, byLinkSearch);
         Actions builder = new Actions(driver);
-        builder.dragAndDrop(linkResultFirstImage, linkSearch).build().perform();
+        builder.dragAndDrop(firstImage, linkSearch).build().perform();
         //builder.clickAndHold(linkResultFirstImage).moveToElement(linkSearch).release().build().perform();
 
 
         /*By byLinkFirstResultSite = By.xpath("//*[@id=\"rso\"]/div[1]/div/div[1]/div/div/div[1]/a[1]/h3");
         WebElement linkFirstResultSite = waitAndGetWebElement(driver, byLinkFirstResultSite);
-        linkFirstResultSite.click();*/
+        linkFirstResultSite.click();
+
+        assertTrue(driver.getCurrentUrl().contains("https://www.seleniumhq.org/selenium-ide/"));*/
 
         Thread.sleep(5000);
     }
