@@ -97,15 +97,58 @@ public class FindImageSeleniumHQ {
                 .moveToElement(queryInputTo)
                 .release()
                 .perform();*/
-        builder.clickAndHold(linkImagesSearchFrom).build().perform();
+        /*builder.clickAndHold(linkImagesSearchFrom).build().perform();
         Thread.sleep(333);
         builder.moveToElement(queryInputTo).build().perform();
         Thread.sleep(333);
         builder.moveByOffset(-1,-1).build().perform();
         Thread.sleep(333);
         builder.release().build().perform();
-        Thread.sleep(333);
-          //  driver.quit();
+        Thread.sleep(333);*/
+       // builder.dragAndDrop(linkImagesSearchFrom,queryInputTo).perform();
+
+       /* //Setup robot
+        Robot robot = new Robot();
+        robot.setAutoDelay(50);
+
+        //Fullscreen page so selenium coordinates work
+        robot.keyPress(KeyEvent.VK_F11);
+        Thread.sleep(2000);
+
+        //Get size of elements
+        Dimension fromSize = byLinkImagesSearchFrom.getSize();
+        Dimension toSize = byQueryInputTo.getSize();
+
+        //Get centre distance
+        int xCentreFrom = fromSize.width / 2;
+        int yCentreFrom = fromSize.height / 2;
+        int xCentreTo = toSize.width / 2;
+        int yCentreTo = toSize.height / 2;
+
+        //Get x and y of WebElement to drag to
+        Point toLocation = byQueryInputTo.getLocation();
+        Point fromLocation = byLinkImagesSearchFrom.getLocation();
+
+        //Make Mouse coordinate centre of element
+        toLocation.x += xOffset + xCentreTo;
+        toLocation.y += yCentreTo;
+        fromLocation.x += xCentreFrom;
+        fromLocation.y += yCentreFrom;
+
+        //Move mouse to drag from location
+        robot.mouseMove(fromLocation.x, fromLocation.y);
+
+        //Click and drag
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+
+        //Move to final position
+        robot.mouseMove(toLocation.x, toLocation.y);
+
+        //Drop
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+*/
+
+        //  driver.quit();
         }
     private static WebElement waitAndGetWebElement(WebDriver driver, By queryLocator) {
         (new WebDriverWait(driver, 10))
