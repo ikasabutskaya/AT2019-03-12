@@ -1,4 +1,4 @@
-package by.it.udalyou.Calk;
+package by.it.udalyou.at13Calc;
 
 
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package by.it.udalyou.at13Calk;
+package by.it.udalyou.at13Calc;
 
 import java.io.*;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ public abstract class Var implements Operation {
 
    private static Map<String, Var> vars=new HashMap<>();
    private static String filename=System.getProperty("user.dir")+
-            "/src/by/it/akhmelev/calc_12/vars.txt";
+            "/src/by/it/udalyou/at13Calc/vars.txt";
 
    public static Var createVar(String strVar) throws CalcException {
        strVar=strVar.replace(" ","");

@@ -1,4 +1,4 @@
-package by.it.udalyou.at14evlCalk;
+package by.it.udalyou.at13Calc;
 
 public class Scalar extends Var {
 

@@ -1,4 +1,4 @@
-package by.it.udalyou.at14evlCalk;
+package by.it.udalyou.at14evlCalc;
 
 import java.io.*;
 import java.util.HashMap;

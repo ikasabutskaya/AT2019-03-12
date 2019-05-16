@@ -1,10 +1,10 @@
-package by.it.udalyou.at14evlCalk;
+package by.it.udalyou.at13Calc;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+class Parser {
 
     private Map<String,Integer> priority;
 
@@ -52,7 +52,7 @@ public class Parser {
         }
     }
 
-    public Var calc(String expression) throws CalcException {
+    Var calc(String expression) throws CalcException {
         //2.0*3.0
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = patternOperation.matcher(expression);
