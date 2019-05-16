@@ -1,9 +1,7 @@
-package by.it.udalyou.Calk;
+package by.it.udalyou.Calc;
 
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by user on 23.03.2019.
