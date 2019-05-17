@@ -6,14 +6,12 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) throws InterruptedException {
         List<Buyer> buyers = new ArrayList<>();
-
-        int buyercounter = 0;
-        for (int i = 0; i < 5; i++) {
+        int count = Util.random(2);
+        for (int i = 0; i < count; i++) {
            // Util.sleep(1000);
-            Buyer buyer = new Buyer(buyercounter);
+            Buyer buyer = new Buyer(++Dispatcher.buyerCounter);
             buyers.add(buyer);
             buyer.start();
-            buyercounter++;
         }
 
         for (Buyer buyer : buyers) {

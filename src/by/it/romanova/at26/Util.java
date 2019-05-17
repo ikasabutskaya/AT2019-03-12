@@ -1,6 +1,4 @@
-package by.it.romanova.at25;
-
-import java.util.Random;
+package by.it.romanova.at26;
 
 class Util {
 

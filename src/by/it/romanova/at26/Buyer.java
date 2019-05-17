@@ -1,6 +1,6 @@
-package by.it.romanova.at25;
+package by.it.romanova.at26;
 
-public class Buyer extends Thread implements IBuyer, IUseBacket{
+public class Buyer extends Thread implements IBuyer, IUseBacket {
     Buyer(long number){
         super("Buyer № " + number + " ");
     }
@@ -19,8 +19,21 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
     }
 
     @Override
+    public void enterQueue() {
+        Queue.addToQueue(this);
+        synchronized (this){
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
     public void goOut() {
         System.out.println(this.getName() + "exit the Market");
+        Dispatcher.buyerOut();
     }
 
     @Override
@@ -29,6 +42,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
         takeBucket();
         chooseGoods();
         putGoodsToBucket();
+        enterQueue();
         goOut();
     }
 
