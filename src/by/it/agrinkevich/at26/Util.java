@@ -7,7 +7,6 @@ class Util {
     private static Random rnd = new Random();
 
     private Util() {
-
     }
 
     static int random(int start, int stop) {

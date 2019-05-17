@@ -4,8 +4,8 @@ public class Cashier implements Runnable {
 
     private String name;
 
-    Cashier(long id) {
-        this.name = "\t\tCashier # " + id + " ";
+    public Cashier(long id) {
+        this.name = "\t\tCashier № " + id + " ";
     }
 
     @Override
@@ -19,13 +19,11 @@ public class Cashier implements Runnable {
                 synchronized (buyer){
                     buyer.notify();
                 }
-                System.out.println(this + "stoped service of " + buyer);
+                System.out.println(this + "stopped service of " + buyer);
             }
             else
                 Util.sleep(10);
-
         }
-
         System.out.println(this + "closed");
     }
 

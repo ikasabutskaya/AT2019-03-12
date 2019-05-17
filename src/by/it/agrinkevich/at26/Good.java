@@ -9,6 +9,10 @@ class Good {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -23,8 +27,4 @@ class Good {
         return Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

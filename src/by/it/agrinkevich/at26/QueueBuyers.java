@@ -3,7 +3,7 @@ package by.it.agrinkevich.at26;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class QueueBuyers {
+class QueueBuyers {
 
     private QueueBuyers(){
 
