@@ -12,10 +12,10 @@ public class Runner {
 
 		for (int time = 0; time < 120; time++) {  // set 120 seconds
 			Util.sleep(1000);
-			int count = Util.random(2); // set max quantity of buyers
+			int count = Util.random(2); // set max quantity of buyers in thread
 			for (int i = 0; i <= count; i++) {
-				Buyer buyer = new Buyer(++Dispatcher.buyerCounter); // increase buyers
-				buyers.add(buyer);  // add buyers to list
+				Buyer buyer = new Buyer(++Dispatcher.buyerCounter); // create buyer  & increase buyers quantity
+				buyers.add(buyer);  // add buyer to list
 				buyer.start();
 			}
 		}
