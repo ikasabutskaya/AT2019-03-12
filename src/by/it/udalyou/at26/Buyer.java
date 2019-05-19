@@ -1,5 +1,7 @@
 package by.it.udalyou.at26;
 
+import java.util.*;
+
 public class Buyer extends Thread implements IBuyer {
 
     Buyer(long namber){
@@ -27,8 +29,8 @@ public class Buyer extends Thread implements IBuyer {
     @Override
     public void chooseGoods() {
         System.out.println(this+" started to choose goods");
-        int timeOut = Util.random(200, 5000);
-        System.out.println(this+"weit "+ timeOut+"seconds ");
+        int timeOut = Util.random(500, 2000);
+        System.out.println(this+"weit "+ timeOut+"miliseconds ");
         Util.sleep(timeOut);
         System.out.println(this+" stoped to choose goods");
     }
@@ -49,9 +51,30 @@ public class Buyer extends Thread implements IBuyer {
 
     @Override
     public void putGoodsToBacket() {
-        int timeOut = Util.random(100, 200);
-        Util.sleep(timeOut);
-        System.out.println(this+" put doods in the backet");
+        double sum=0;
+        //определение колличества покупок
+
+        int rd= Util.random(4)+1;
+        System.out.println(this+"берет : "+rd+" ед.товара");
+
+        Map<String, Double> good = Util.getGoods();//
+        //System.out.println(good);//
+
+        Set<Map.Entry<String, Double>> sgoods= Util.getGoods().entrySet();
+        //System.out.println(sgoods);
+        List<String> keyList = new ArrayList<String>(Util.getGoods().keySet());
+        //определение случайным образом что покупается
+        for (int i = 1; i <= rd; i++) {
+
+            int randIndex = new Random().nextInt(keyList.size());
+            String randKey = keyList.get(randIndex);
+
+            Double randValue = good.get(randKey);
+            sum=sum+randValue;
+            System.out.print(randKey + " ");
+        }
+        System.out.println();
+        System.out.printf("%-10s%-6.2f%-5s%n","Всего на сумму : ",sum,"у.е.");
     }
 
     @Override
