@@ -42,7 +42,7 @@ public class ScalarSumTest {
     public String result;
 
     @Test
-    public void scalarEvaluateTest() throws CalcException, CalcException {
+    public void scalarEvaluateTest() throws CalcException  {
         assertThat(p.calc(expression).toString(), is(result));
     }
 
