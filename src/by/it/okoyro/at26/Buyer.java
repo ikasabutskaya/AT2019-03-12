@@ -6,6 +6,7 @@ public class Buyer extends Thread implements IBuyer {
 	public void run() {
 		enterTheShop();
 		chooseGoods();
+		toQueue();
 		goOut();
 	}
 
@@ -29,10 +30,23 @@ public class Buyer extends Thread implements IBuyer {
 	}
 
 	@Override
+	public void toQueue() {
+		BuyersQueue.add(this); // buyer adds itself to a queue
+		synchronized (this){  // buyer synchronises itself
+			try {
+				this.wait();  // buyer sleep
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	@Override
 	public void goOut() {
 		System.out.println(this + "gets out of the Shop");
-		Dispatcher.buyerCounter--; // один счетчик для всех потоков покупателей - источник проблемы, существует вероятность
-		// что счетчик посчитает 2 покупателей как 1 (в случае совпадения работы 2 потоков)
+		Dispatcher.buyerOut();
 
 	}
 
