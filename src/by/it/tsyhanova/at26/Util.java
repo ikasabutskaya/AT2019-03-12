@@ -1,4 +1,4 @@
-package by.it.tsyhanova.at25;
+package by.it.tsyhanova.at26;
 
 import java.util.Random;
 
@@ -20,7 +20,7 @@ class Util {
 
     static void sleep(int timeout) {
         try {
-            Thread.sleep(timeout/ Dispatcher.K_SPEED);//при разгоне примерно в 100 раз
+            Thread.sleep(timeout/ Dispatcher.K_SPEED);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

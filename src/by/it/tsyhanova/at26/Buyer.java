@@ -1,4 +1,4 @@
-package by.it.tsyhanova.at25;
+package by.it.tsyhanova.at26;
 
 public class Buyer extends Thread implements IBuyer {
 
@@ -10,9 +10,9 @@ public class Buyer extends Thread implements IBuyer {
     public void run() {
         enterToMarket();
         chooseGoods();
+        addToQueue();
         goOut();
     }
-
 
     @Override
     public void enterToMarket() {
@@ -29,9 +29,21 @@ public class Buyer extends Thread implements IBuyer {
     }
 
     @Override
+    public void addToQueue() {
+        QueueBuyers.add(this);
+        synchronized (this){//синхронизация самого на себе
+            try {
+                this.wait();//уснул на своем мониторе
+            } catch (InterruptedException e) {
+                e.printStackTrace();//кассир извлекает покупателя из очереди
+            }
+        }
+    }
+
+    @Override
     public void goOut() {
         System.out.println(this + "out from the Market");
-        Dispatcher.buyerCounter--;
+        Dispatcher.buyerOut();
     }
 
     @Override
