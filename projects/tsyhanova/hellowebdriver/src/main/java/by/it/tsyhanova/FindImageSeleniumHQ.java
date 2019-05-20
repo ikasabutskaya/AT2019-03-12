@@ -1,26 +1,25 @@
 package by.it.tsyhanova;
 
-import okio.Timeout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+
 
 public class FindImageSeleniumHQ {
     public static void main(String[] args) throws Exception {
 
         WebDriver driver;
 
-       driver = new ChromeDriver();
+       driver = new FirefoxDriver();
        driver.manage().window().maximize();
+
 
 
 
@@ -30,6 +29,9 @@ public class FindImageSeleniumHQ {
             By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
             WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
             queryInput.sendKeys("seleniumhq\n");
+            /*By byButtonSearch = By.xpath("//input[@class='gNO89b']");
+            WebElement buttonSearch = waitAndGetWebElement(driver, byButtonSearch);
+            buttonSearch.click();*/
 
             By byLinkImagesSearch = By.xpath("//a[@class='q qs'][contains(@href,'tbm=isch')]");
             WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
@@ -92,61 +94,7 @@ public class FindImageSeleniumHQ {
         WebElement linkImagesSearchFrom = waitAndGetWebElement(driver, byLinkImagesSearchFrom);
 
         Actions builder=new Actions(driver);
-        //builder.dragAndDrop(linkImagesSearchFrom,queryInputTo).perform();
-        /*builder.clickAndHold(linkImagesSearchFrom)
-                .moveToElement(queryInputTo)
-                .release()
-                .perform();*/
-        /*builder.clickAndHold(linkImagesSearchFrom).build().perform();
-        Thread.sleep(333);
-        builder.moveToElement(queryInputTo).build().perform();
-        Thread.sleep(333);
-        builder.moveByOffset(-1,-1).build().perform();
-        Thread.sleep(333);
-        builder.release().build().perform();
-        Thread.sleep(333);*/
-       // builder.dragAndDrop(linkImagesSearchFrom,queryInputTo).perform();
-
-       /* //Setup robot
-        Robot robot = new Robot();
-        robot.setAutoDelay(50);
-
-        //Fullscreen page so selenium coordinates work
-        robot.keyPress(KeyEvent.VK_F11);
-        Thread.sleep(2000);
-
-        //Get size of elements
-        Dimension fromSize = byLinkImagesSearchFrom.getSize();
-        Dimension toSize = byQueryInputTo.getSize();
-
-        //Get centre distance
-        int xCentreFrom = fromSize.width / 2;
-        int yCentreFrom = fromSize.height / 2;
-        int xCentreTo = toSize.width / 2;
-        int yCentreTo = toSize.height / 2;
-
-        //Get x and y of WebElement to drag to
-        Point toLocation = byQueryInputTo.getLocation();
-        Point fromLocation = byLinkImagesSearchFrom.getLocation();
-
-        //Make Mouse coordinate centre of element
-        toLocation.x += xOffset + xCentreTo;
-        toLocation.y += yCentreTo;
-        fromLocation.x += xCentreFrom;
-        fromLocation.y += yCentreFrom;
-
-        //Move mouse to drag from location
-        robot.mouseMove(fromLocation.x, fromLocation.y);
-
-        //Click and drag
-        robot.mousePress(InputEvent.BUTTON1_MASK);
-
-        //Move to final position
-        robot.mouseMove(toLocation.x, toLocation.y);
-
-        //Drop
-        robot.mouseRelease(InputEvent.BUTTON1_MASK);
-*/
+        builder.dragAndDrop(linkImagesSearchFrom,queryInputTo).perform();
 
         //  driver.quit();
         }
