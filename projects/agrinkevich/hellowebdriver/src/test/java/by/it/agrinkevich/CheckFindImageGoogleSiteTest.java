@@ -39,37 +39,6 @@ public class CheckFindImageGoogleSiteTest {
         By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
         queryInput.sendKeys("seleniumhq\n");
-
-        By byLinkImagesSearch = By.xpath("//*[@class='hdtb-mitem hdtb-imb'][1]/a");
-        WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
-        linkImagesSearch.click();
-
-        By byLinkResultFirstImage = By.xpath("//*[@class='rg_bx rg_di rg_el ivg-i'][@data-ri='0']");
-        WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
-        linkResultFirstImage.click();
-
-        By byLinkResultSite = By.xpath("//*[@class='irc_vpl i3599 irc_lth'][@tabindex='0']");
-        WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
-        linkResultSite.click();
-
-        //open a new tab and check url at the last tab
-        Set<String> handles = driver.getWindowHandles();
-        List<String> handlesList = new ArrayList<>(handles);
-        String newTab = handlesList.get(handlesList.size() - 1);
-
-        // switch to new tab
-        driver.switchTo().window(newTab);
-
-        String url = driver.getCurrentUrl();
-        assertTrue("not complete find", url.startsWith("https://www.seleniumhq.org"));
-    }
-
-    @Test
-    public void TaskB() throws Exception{
-        driver.get("https://www.google.com/");
-        By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
-        WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
-        queryInput.sendKeys("seleniumhq\n");
         queryInput.submit();
 
         By byLinkImagesSearch = By.xpath("//*[@class='hdtb-mitem hdtb-imb'][1]/a");
@@ -80,41 +49,78 @@ public class CheckFindImageGoogleSiteTest {
         WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
         linkResultFirstImage.click();
 
+
         By byLinkResultSite = By.xpath("//*[@class='irc_vpl i3599 irc_lth'][@tabindex='0']");
         WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
         linkResultSite.click();
 
+        Thread.sleep(2000);
+
+        //open a new tab and check url at the last tab
+        Set<String> handles = driver.getWindowHandles();
+        List<String> handlesList = new ArrayList<>(handles);
+        String newTab = handlesList.get(handlesList.size() - 1);
+
+        // switch to new tab
+        driver.switchTo().window(newTab);
+
         String url = driver.getCurrentUrl();
         assertTrue(url.startsWith("https://www.seleniumhq.org"));
+    }
 
+    @Test
+    public void TaskB() throws Exception{
+        driver.get("https://www.google.com/");
+        By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
+        WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
+        queryInput.sendKeys("seleniumhq\n");
+        //queryInput.submit();
+
+        By byLinkImagesSearch = By.xpath("//*[@class='hdtb-mitem hdtb-imb'][1]/a");
+        WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
+        linkImagesSearch.click();
+
+        /*By byLinkResultFirstImage = By.xpath("//*[@class='rg_bx rg_di rg_el ivg-i'][@data-ri='0']");
+        WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
+        linkResultFirstImage.click();
+
+        By byLinkResultSite = By.xpath("//*[@class='irc_vpl i3599 irc_lth'][@tabindex='0']");
+        WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
+        linkResultSite.click();
+
+        Thread.sleep(2000);
 
         Set<String> handles = driver.getWindowHandles();
         List<String> handlesList = new ArrayList<>(handles);
         String newTab = handlesList.get(handlesList.size() - 1);
         driver.switchTo().window(newTab);
 
-
+        String url = driver.getCurrentUrl();
+        assertTrue(url.startsWith("https://www.seleniumhq.org"));
         assertTrue(driver.getTitle().contains("Selenium - Web Browser Automation"));
 
         newTab = handlesList.get(0);
-        driver.switchTo().window(newTab);
-
-        By byButtonSearchByImage = By.xpath("//*[@class='S3Wjs']");
-        WebElement buttonSearchByImage = waitAndGetWebElement(driver, byButtonSearchByImage);
-        buttonSearchByImage.click();
+        driver.switchTo().window(newTab);*/
 
 
-        By byFirstImage = By.xpath("//*[@id='i48MSmX01sE18M:']");
-        WebElement firstImage = waitAndGetWebElement(driver, byFirstImage);
-
-        //*[@class='RNNXgb']
-        //*[@class='gLFyf gsfi'])
-        //*[@id='i48MSmX01sE18M:'] picture
-        By byLinkSearch = By.xpath("//*[@class='qbip']");
+        By byLinkSearch = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement linkSearch = waitAndGetWebElement(driver, byLinkSearch);
+        linkSearch.clear();
+
+
+        By byFirstImage = By.xpath("//img[@id='i48MSmX01sE18M:']");
+        WebElement firstImage = waitAndGetWebElement(driver, byFirstImage);
+        //firstImage.click();
+
+        /*By byButtonSearchByImage = By.xpath("//*[@class='S3Wjs']");
+        WebElement buttonSearchByImage = waitAndGetWebElement(driver, byButtonSearchByImage);
+        buttonSearchByImage.click();*/
+
+
         Actions builder = new Actions(driver);
-        builder.dragAndDrop(firstImage, linkSearch).build().perform();
-        //builder.clickAndHold(linkResultFirstImage).moveToElement(linkSearch).release().build().perform();
+        //builder.dragAndDrop(firstImage, linkSearch).build().perform();
+        builder.clickAndHold(firstImage).moveToElement(linkSearch).release().build().perform();
+
 
 
         /*By byLinkFirstResultSite = By.xpath("//*[@id=\"rso\"]/div[1]/div/div[1]/div/div/div[1]/a[1]/h3");
@@ -122,8 +128,6 @@ public class CheckFindImageGoogleSiteTest {
         linkFirstResultSite.click();
 
         assertTrue(driver.getCurrentUrl().contains("https://www.seleniumhq.org/selenium-ide/"));*/
-
-        Thread.sleep(5000);
     }
 
     @After
