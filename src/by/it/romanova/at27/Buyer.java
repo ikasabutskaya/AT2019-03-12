@@ -27,12 +27,16 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void enterQueue() {
         Queue.addToQueue(this);
+        iWait = true;
         synchronized (this){
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while (iWait){
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
     }
 

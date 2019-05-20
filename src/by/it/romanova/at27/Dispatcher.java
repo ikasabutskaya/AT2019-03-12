@@ -1,30 +1,32 @@
 package by.it.romanova.at27;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 class Dispatcher {
 
     static final int K_SPEED=100;
 
     private static final int PLAN = 8;
-    private static volatile int buyerCounter=0;
-    private static volatile int buyerInShop=0;
+    private static final AtomicInteger buyerCounter = new AtomicInteger(0);
+    private static final AtomicInteger buyerInShop = new AtomicInteger(0);
 
-    static synchronized boolean marketOpened(){
-        return buyerCounter<PLAN;
+    static boolean marketOpened(){
+        return buyerCounter.get()<PLAN;
     }
 
-    static synchronized boolean marketClosed(){
-        return (buyerCounter >= PLAN) && (buyerInShop == 0);
+    static boolean marketClosed(){
+        return (buyerCounter.get() >= PLAN) && (buyerInShop.get() == 0);
 
     }
 
-    static synchronized int buyerIn(){
-        buyerCounter++;
-        buyerInShop++;
-        return buyerCounter;
+    static int buyerIn(){
+        buyerCounter.getAndIncrement();
+        buyerInShop.getAndIncrement();
+        return buyerCounter.get();
     }
 
-    static synchronized void buyerOut(){
-        buyerInShop--;
+    static void buyerOut(){
+        buyerInShop.getAndDecrement();
     }
 
 

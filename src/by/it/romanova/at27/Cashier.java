@@ -17,12 +17,11 @@ public class Cashier implements Runnable{
                 System.out.println(this +" started service of "+buyer.getName());
                 Util.sleep(Util.random(200,500));
                 synchronized (buyer){
+                    buyer.setWaiting(false);
                     buyer.notifyAll();
                 }
                 System.out.println(this +" stopped service of "+buyer.getName());
             }
-            else
-                Util.sleep(10);
         }
 
         System.out.println(this + " closed");
