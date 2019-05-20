@@ -19,12 +19,8 @@ public class UserDAOTest {
         Date date = Timestamp.valueOf(LocalDateTime.now());
         User user = new User(0, "Alina", "12345", "grinkevich.alina@gmail.com", date);
         userDao.create(user);
-        user = userDao.read(user.getId());
-        System.out.println("Created user: "+ user);
-        Assert.assertEquals("Username is incorrect","Alina",user.getUsername());
-        Assert.assertEquals("Password is incorrect","12345",user.getPassword());
-        Assert.assertEquals("Email is incorrect","grinkevich.alina@gmail.com",user.getEmail());
-        //Assert.assertEquals("Date is incorrect",date,user.getDate());
+        User user2 = userDao.read(user.getId());
+        Assert.assertEquals(user, user2);
 
         //check update
         user.setUsername("Kate");
