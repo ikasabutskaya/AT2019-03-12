@@ -1,7 +1,6 @@
 package by.it.akhmelev;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CheckFindImageGoogleSiteTest {
@@ -64,6 +62,11 @@ public class CheckFindImageGoogleSiteTest {
         Set<String> handles = driver.getWindowHandles();
         List<String> handlesList = new ArrayList<>(handles);
         String newTab = handlesList.get(handlesList.size() - 1);
+
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Thread.sleep(3333);
+
+
 
         // switch to new tab
         driver.switchTo().window(newTab);
