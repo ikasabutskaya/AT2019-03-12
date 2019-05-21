@@ -4,7 +4,6 @@ import by.it.akhmelev.tools.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 public class StartPage {
 
@@ -34,9 +33,9 @@ public class StartPage {
     public StartPage setOrigin(String origin) {
         WebElement originInput = Util.find(driver, byInputOrigin);
         originInput.click();
-        new Actions(driver).pause(1000);
+        Util.shortWait(driver);
         originInput.sendKeys(origin);
-        new Actions(driver).pause(1000);
+        Util.shortWait(driver);
         WebElement dropDownValie = Util.find(driver, byAriaOption0);
         dropDownValie.click();
         return this;
@@ -45,9 +44,9 @@ public class StartPage {
     public StartPage setDestination(String destination) {
         WebElement inputDestination = Util.find(driver, byInputDestination);
         inputDestination.click();
-        Util.wait(driver);
+        Util.shortWait(driver);
         inputDestination.sendKeys(destination);
-        Util.wait(driver);
+        Util.shortWait(driver);
         WebElement dropDownValie = Util.find(driver, byAriaOption0);
         dropDownValie.click();
         return this;
@@ -56,16 +55,16 @@ public class StartPage {
     public StartPage setDepartingDate(String date) {
         WebElement inputDepartingDate = Util.find(driver, byInputDepartingDate);
         inputDepartingDate.click();
-        Util.wait(driver);
+        Util.shortWait(driver);
         inputDepartingDate.sendKeys(date);
-        Util.wait(driver);
+        Util.shortWait(driver);
         return this;
     }
 
     public ResultPage getSearch() {
         WebElement inputDepartingDate = Util.find(driver, byInputDepartingDate);
         inputDepartingDate.sendKeys("\n");
-        Util.wait(driver);
+        Util.shortWait(driver);
         ResultPage resultPage=new ResultPage(driver);
         return resultPage;
     }

@@ -54,7 +54,7 @@ public class CheckFindImageGoogleSiteTest {
         By byLinkResultSite = By.xpath("//a[@class='irc_vpl i3599 irc_lth'][@tabindex=0]");
         WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
 
-        //wait rendering (но лучше проверить это явно)
+        //shortWait rendering (но лучше проверить это явно)
         Thread.sleep(333);
         linkResultSite.click();
 

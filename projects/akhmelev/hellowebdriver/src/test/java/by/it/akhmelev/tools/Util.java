@@ -10,8 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class Util {
-    public static void wait(WebDriver driver){
-        new Actions(driver).pause(1000);
+
+    public static void shortWait(WebDriver driver){
+        new Actions(driver).pause(1000).perform();
     }
 
     public static WebElement find(WebDriver driver, By queryLocator) {
