@@ -8,8 +8,6 @@ public class ShopRunner {
 
 		Dispatcher.reset();
 
-//		List<Thread> combinedThreads = new ArrayList<>(); // list to store all threads (buyers & cashiers)
-
 		ExecutorService threadsPool = Executors.newFixedThreadPool(2);
 
 		for (int j = 1; j <= 2; j++) {
@@ -26,19 +24,10 @@ public class ShopRunner {
 			for (int i = 0; i <= count; i++) {
 				if (Dispatcher.isShopOpened()) {
 					Buyer buyer = new Buyer(Dispatcher.buyerIn()); // buyerIn method increases total quantity and in shop quantity
-//					combinedThreads.add(buyer);  // add buyers to threads' list
 					buyer.start();
 				}
 			}
 		}
-//		for (Thread buyer : combinedThreads) {
-//			try {
-//				buyer.join();
-//			}
-//			catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
 		while (!threadsPool.isTerminated()) {  // make sure all threads are stopped
 			Util.sleep(10);
 		}
