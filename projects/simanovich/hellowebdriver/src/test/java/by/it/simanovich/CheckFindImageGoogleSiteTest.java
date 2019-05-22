@@ -45,8 +45,63 @@ public class CheckFindImageGoogleSiteTest {
         linkFromImage.click();
         Thread.sleep(5000);
 
+        Set<String> handles = driver.getWindowHandles();
+        List<String> handlesList = new ArrayList<>(handles);
+        String newTab = handlesList.get(handlesList.size() - 1);
+
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Thread.sleep(3333);
+
+
+        driver.switchTo().window(newTab);
+
+        String url = driver.getCurrentUrl();
+        assertTrue("not complete find", url.startsWith("https://www.seleniumhq.org"));
+
 
         Assert.assertEquals("1", "1");
+    }
+
+    @Test
+    public void taskB() throws Exception {
+
+        driver.get("https://www.google.com");
+
+        By byQueryInput = By.xpath("//input[@name='q']");
+        WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
+        queryInput.sendKeys("seleniumhq\n");
+
+        By byLinkImagesSearch = By.xpath("//a[@class='q qs'][contains(@href,'tbm=isch')]");
+        WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
+        linkImagesSearch.click();
+
+        By byLinkResultFirstImage = By.xpath("//img[@class='rg_ic rg_i'][@data-atf=1]");
+        WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
+
+
+        Actions actions = new Actions(driver);
+        WebElement photoButton = waitAndGetWebElement(driver, By.xpath("//span[@class='S3Wjs']"));
+        photoButton.click();;
+        actions.pause(Duration.ofMillis(555)).perform();
+
+        WebElement target = waitAndGetWebElement(driver, By.xpath("//div[@id='qbp']"));
+        target.click();;
+
+        WebElement from = waitAndGetWebElement(driver, By.xpath("//*[@id='i48MSmX01sE18M:']"));
+
+        actions
+                .clickAndHold(from)
+                .release(target)
+                .build()
+                .perform();
+
+
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("alert('Focus window');");
+        Thread.sleep(1000);
+        driver.switchTo().alert().accept();
+        Thread.sleep(1000);
+
     }
 
     @After
