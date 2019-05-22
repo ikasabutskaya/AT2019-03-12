@@ -39,7 +39,7 @@ public class CheckFindImageGoogleSiteTest {
         By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
         queryInput.sendKeys("seleniumhq\n");
-        queryInput.submit();
+        //queryInput.submit();
 
         By byLinkImagesSearch = By.xpath("//*[@class='hdtb-mitem hdtb-imb'][1]/a");
         WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
@@ -80,7 +80,7 @@ public class CheckFindImageGoogleSiteTest {
         WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
         linkImagesSearch.click();
 
-        /*By byLinkResultFirstImage = By.xpath("//*[@class='rg_bx rg_di rg_el ivg-i'][@data-ri='0']");
+        By byLinkResultFirstImage = By.xpath("//*[@class='rg_bx rg_di rg_el ivg-i'][@data-ri='0']");
         WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
         linkResultFirstImage.click();
 
@@ -100,7 +100,7 @@ public class CheckFindImageGoogleSiteTest {
         assertTrue(driver.getTitle().contains("Selenium - Web Browser Automation"));
 
         newTab = handlesList.get(0);
-        driver.switchTo().window(newTab);*/
+        driver.switchTo().window(newTab);
 
 
         By byLinkSearch = By.xpath("//input[@class='gLFyf gsfi']");
