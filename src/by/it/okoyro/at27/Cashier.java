@@ -18,11 +18,11 @@ public class Cashier implements Runnable {
 				System.out.println(this + " starts service of " + buyer);
 				Util.sleep(Util.random(2000, 5000));
 				synchronized (buyer){ // синхронизация на объекте buyer
-					buyer.notify();  // "разбудить" buyer
+					buyer.setWaiting(false);
+					buyer.notifyAll();  // "разбудить" buyer
 				}
 				System.out.println(this + " finishes service of " + buyer);
 			}
-			else Util.sleep(10);
 		}
 		System.out.println(this + " closes");
 	}

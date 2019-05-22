@@ -1,30 +1,37 @@
 package by.it.okoyro.at27;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 class Dispatcher {
 
 	static final int K_SPEED = 100; // is used to increase speed
 
 	private static final int PLAN = 100;
 
-	private static volatile int totalBuyersCounter = 0;
-	private static volatile int buyersInShop = 0;
+	private static final AtomicInteger totalBuyersCounter = new AtomicInteger(0);
+	private static final AtomicInteger buyersInShop = new AtomicInteger(0);
 
-	synchronized static boolean isShopReadyToClose() {
-		return totalBuyersCounter >= PLAN &&
-			   buyersInShop == 0;
+	static boolean isShopReadyToClose() {
+		return totalBuyersCounter.get() >= PLAN &&
+			   buyersInShop.get() == 0;
 	}
 
-	synchronized static boolean isShopOpened() {
-		return totalBuyersCounter < PLAN;
+	static boolean isShopOpened() {
+		return totalBuyersCounter.get() < PLAN;
 	}
 
-	synchronized static int buyerIn() {   // method has to be
-		totalBuyersCounter++;
-		buyersInShop++;
-		return totalBuyersCounter;
+	static int buyerIn() {   // method has to be
+		totalBuyersCounter.getAndIncrement();
+		buyersInShop.getAndIncrement();
+		return totalBuyersCounter.get();
 	}
 
-	synchronized static void buyerOut() {
-		buyersInShop--;
+	static void buyerOut() {
+		buyersInShop.getAndDecrement();
 	}
+
+	static void reset() {
+		totalBuyersCounter.set(0);
+        buyersInShop.set(0);
+    }
 }
