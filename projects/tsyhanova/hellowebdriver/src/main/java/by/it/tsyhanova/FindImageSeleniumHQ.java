@@ -29,6 +29,7 @@ public class FindImageSeleniumHQ {
             By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
             WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
             queryInput.sendKeys("seleniumhq\n");
+            queryInput.submit();
             /*By byButtonSearch = By.xpath("//input[@class='gNO89b']");
             WebElement buttonSearch = waitAndGetWebElement(driver, byButtonSearch);
             buttonSearch.click();*/
