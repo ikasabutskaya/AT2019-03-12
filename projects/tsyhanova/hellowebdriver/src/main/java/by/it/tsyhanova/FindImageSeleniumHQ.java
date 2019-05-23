@@ -1,26 +1,25 @@
 package by.it.tsyhanova;
 
-import okio.Timeout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+
 
 public class FindImageSeleniumHQ {
     public static void main(String[] args) throws Exception {
 
         WebDriver driver;
 
-       driver = new ChromeDriver();
+       driver = new FirefoxDriver();
        driver.manage().window().maximize();
+
 
 
 
@@ -30,6 +29,9 @@ public class FindImageSeleniumHQ {
             By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
             WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
             queryInput.sendKeys("seleniumhq\n");
+            /*By byButtonSearch = By.xpath("//input[@class='gNO89b']");
+            WebElement buttonSearch = waitAndGetWebElement(driver, byButtonSearch);
+            buttonSearch.click();*/
 
             By byLinkImagesSearch = By.xpath("//a[@class='q qs'][contains(@href,'tbm=isch')]");
             WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
@@ -92,20 +94,9 @@ public class FindImageSeleniumHQ {
         WebElement linkImagesSearchFrom = waitAndGetWebElement(driver, byLinkImagesSearchFrom);
 
         Actions builder=new Actions(driver);
-        //builder.dragAndDrop(linkImagesSearchFrom,queryInputTo).perform();
-        /*builder.clickAndHold(linkImagesSearchFrom)
-                .moveToElement(queryInputTo)
-                .release()
-                .perform();*/
-        builder.clickAndHold(linkImagesSearchFrom).build().perform();
-        Thread.sleep(333);
-        builder.moveToElement(queryInputTo).build().perform();
-        Thread.sleep(333);
-        builder.moveByOffset(-1,-1).build().perform();
-        Thread.sleep(333);
-        builder.release().build().perform();
-        Thread.sleep(333);
-          //  driver.quit();
+        builder.dragAndDrop(linkImagesSearchFrom,queryInputTo).perform();
+
+        //  driver.quit();
         }
     private static WebElement waitAndGetWebElement(WebDriver driver, By queryLocator) {
         (new WebDriverWait(driver, 10))
