@@ -1,7 +1,10 @@
 package by.it.okoyro;
 
-import by.it.okoyro.pages.StartPage;
+import by.it.okoyro.pages.HomePageB;
+import by.it.okoyro.pages.SearchResultPage;
+import by.it.okoyro.pages.HomePage;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -11,42 +14,38 @@ public class ExpediaTest {
 
 	private WebDriver driver;
 
-	//	private WebElement flightTab = driver.findElement(By.id("tab-flight-tab-hp"));
-	//	private WebElement flightInputFrom = driver.findElement(By.id("flight-origin-hp-flight"));
-	//	private WebElement flightInputTo = driver.findElement(By.id("flight-destination-hp-flight"));
-	//	private WebElement oneWayButton = driver.findElement(By.id("flight-type-one-way-label-hp-flight"));
-	//	private WebElement searchButton = driver.findElement(By.id(""));
-
 	@Before
 	public void setUp() {
 		driver = new ChromeDriver();
 	}
 
-
 	@Test
 	public void taskA() throws Exception {
 		driver.get("https://www.expedia.com/");
 
-		StartPage startPage = new StartPage(driver);
-		startPage
+		HomePage homePage = new HomePage(driver);
+		SearchResultPage resultPage = homePage
 				.selectSearchFlightMode()
-				.setFlightFrom("Minsk") //, Belarus (MSQ-All Airports
-				.setFlightTo("Moscow") // , Russia (MOW-All Airports
 				.selectOneWayFlight()
+				.setFlightFrom("minsk") //, Belarus (MSQ-All Airports
+				.setFlightTo("moscow") // , Russia (MOW-All Airports
 				.setDepartureDate("06/20/2019")
-				.performSearch(); // TODO: 2019-05-21 continue the flow
+				.performSearch();
+		int searchResultsQuantity = resultPage.countSearchResults();
+		Assert.assertTrue(searchResultsQuantity > 1);
+	}
 
-		Thread.sleep(5000);
+	@Test
+	public void taskB() throws Exception {
+		driver.get("https://www.expedia.com/");
 
-		// get prices elements as a result
-//		List<WebElement> resultPrice = driver.findElements(By.xpath(""));
-//		Assert.assertTrue(resultPrice.size() > 1);
-
-
+		HomePageB homePageB = new HomePageB(driver);
 	}
 
 	@After
 	public void tearDown() {
 		driver.quit();
 	}
+
+
 }
