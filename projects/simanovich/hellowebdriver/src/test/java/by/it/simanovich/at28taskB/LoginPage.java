@@ -10,8 +10,10 @@ import java.sql.Driver;
 
 public class LoginPage {
 
-    public void setupBrowser()  {
-       WebDriver driver = new ChromeDriver();
+    public void setupBrowser() {
+        WebDriver driver = new ChromeDriver();
+    }
+
 
        @FindBy ("//*[@id=\"account-signin\"]")
                WebElement signInbutton;
@@ -25,6 +27,16 @@ public class LoginPage {
        @FindBy ("//*[@id=\"gss-signin-submit\"]")
                WebElement signInConfirmButton;
 
-    }
+
+       public void logIn (String email, String password){
+
+           emailField.sendKeys(email);
+           passwordField.sendKeys(password);
+           signInConfirmButton.click();
+
+
+       }
+
+
 
 }
