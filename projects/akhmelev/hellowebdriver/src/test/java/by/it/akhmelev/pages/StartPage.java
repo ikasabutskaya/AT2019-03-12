@@ -13,6 +13,7 @@ public class StartPage {
         this.driver = driver;
     }
 
+
     private By byButtonFlight = By.id("tab-flight-tab-hp");
     private By byButtonOneWay = By.id("flight-type-one-way-label-hp-flight");
     private By byInputOrigin = By.id("flight-origin-hp-flight");
