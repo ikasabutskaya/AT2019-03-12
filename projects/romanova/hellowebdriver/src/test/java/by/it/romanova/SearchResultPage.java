@@ -3,7 +3,7 @@ package by.it.romanova;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SearchResultPage extends  MainPage{
+public class SearchResultPage extends Util {
 
     private static final By
             SEARCH_RESULT = By.xpath("//li[@class=\"flight-module segment offer-listing\"]");

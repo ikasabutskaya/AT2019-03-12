@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class MainPage {
+public class Util {
 
     protected WebDriver driver;
 
-    protected MainPage(WebDriver driver) {
+    protected Util(WebDriver driver) {
         this.driver = driver;
     }
 

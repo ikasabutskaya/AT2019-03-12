@@ -3,7 +3,7 @@ package by.it.romanova;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends MainPage {
+public class HomePage extends Util {
 
     protected HomePage(WebDriver driver) {
         super(driver);
