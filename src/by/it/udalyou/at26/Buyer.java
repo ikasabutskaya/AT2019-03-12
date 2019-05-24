@@ -28,11 +28,11 @@ public class Buyer extends Thread implements IBuyer {
 
     @Override
     public void chooseGoods() {
-        System.out.println(this+" started to choose goods");
+        System.out.println("\t\t"+this+" started to choose goods");
         int timeOut = Util.random(500, 2000);
-        System.out.println(this+"weit "+ timeOut+"miliseconds ");
+        System.out.println("\t\t\t"+this+"weit "+ timeOut+" millis ");
         Util.sleep(timeOut);
-        System.out.println(this+" stoped to choose goods");
+        System.out.println("\t\t\t\t"+this+" stoped to choose goods");
     }
 
     @Override
@@ -46,23 +46,22 @@ public class Buyer extends Thread implements IBuyer {
     public void takeBacket() {
         int timeOut = Util.random(100, 200);
         Util.sleep(timeOut);
-        System.out.println(this+" take the backet");
+        System.out.println("\t"+this+" take the backet");
     }
 
     @Override
     public void putGoodsToBacket() {
         double sum=0;
-        //определение колличества покупок
-
-        int rd= Util.random(4)+1;
-        System.out.println(this+"берет : "+rd+" ед.товара");
-
         Map<String, Double> good = Util.getGoods();//
         //System.out.println(good);//
 
         Set<Map.Entry<String, Double>> sgoods= Util.getGoods().entrySet();
         //System.out.println(sgoods);
         List<String> keyList = new ArrayList<String>(Util.getGoods().keySet());
+
+        //определение колличества покупок
+        int rd= Util.random(4)+1;
+        System.out.println(this+"берет : "+rd+" ед.товара");
         //определение случайным образом что покупается
         for (int i = 1; i <= rd; i++) {
 
@@ -79,6 +78,7 @@ public class Buyer extends Thread implements IBuyer {
 
     @Override
     public void addToQueue() {
+
         QueueBuyers.add(this);
         synchronized (this){
             try {

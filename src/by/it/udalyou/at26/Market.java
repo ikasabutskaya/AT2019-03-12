@@ -8,7 +8,7 @@ public class Market {
     public static void main(String[] args) {
         Map<String, Double> good;
 
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 2; j++) {
             System.out.println("проверочный цикл "+j);
 
             Dispetcher.reset();
