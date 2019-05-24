@@ -1,0 +1,10 @@
+Started by upstream project "TaskB" build number 130
+originally caused by:
+ Started by upstream project "TaskA" build number 194
+ originally caused by:
+  Запущен по таймеру
+Running as SYSTEM
+Building in workspace C:\Jenkins\workspace\TaskC
+Copied 5 artifacts from "TaskA" build number 194
+Archiving artifacts
+Finished: SUCCESS

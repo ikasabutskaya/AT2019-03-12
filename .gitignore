@@ -4,10 +4,12 @@ target/
 
 .idea
 
-*.jar
+*.jar8
 *.war
 *.ear
 *.iml
+*.ipr
+*.iws
 *.log
 
 dataTaskA.bin
