@@ -102,32 +102,23 @@ public class CheckFindImageGoogleSiteTest {
         newTab = handlesList.get(0);
         driver.switchTo().window(newTab);
 
-
         By byLinkSearch = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement linkSearch = waitAndGetWebElement(driver, byLinkSearch);
         linkSearch.clear();
 
-
         By byFirstImage = By.xpath("//img[@id='i48MSmX01sE18M:']");
         WebElement firstImage = waitAndGetWebElement(driver, byFirstImage);
-        //firstImage.click();
-
-        /*By byButtonSearchByImage = By.xpath("//*[@class='S3Wjs']");
-        WebElement buttonSearchByImage = waitAndGetWebElement(driver, byButtonSearchByImage);
-        buttonSearchByImage.click();*/
-
+        firstImage.click();
 
         Actions builder = new Actions(driver);
         //builder.dragAndDrop(firstImage, linkSearch).build().perform();
         builder.clickAndHold(firstImage).moveToElement(linkSearch).release().build().perform();
 
-
-
-        /*By byLinkFirstResultSite = By.xpath("//*[@id=\"rso\"]/div[1]/div/div[1]/div/div/div[1]/a[1]/h3");
+        By byLinkFirstResultSite = By.xpath("//*[@id=\"rso\"]/div[1]/div/div[1]/div/div/div[1]/a[1]/h3");
         WebElement linkFirstResultSite = waitAndGetWebElement(driver, byLinkFirstResultSite);
         linkFirstResultSite.click();
 
-        assertTrue(driver.getCurrentUrl().contains("https://www.seleniumhq.org/selenium-ide/"));*/
+        assertTrue(driver.getCurrentUrl().contains("https://www.seleniumhq.org/selenium-ide/"));
     }
 
     @After

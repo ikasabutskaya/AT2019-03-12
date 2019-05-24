@@ -34,7 +34,7 @@ public class CheckSeleniumSiteTest {
             Pattern pattern = Pattern.compile("<version>(.+?)</version>");
             Matcher matcher = pattern.matcher(dependencyText);
             matcher.find();
-            System.out.println("Version for selenium-java: " + matcher.group(1)); // Prints String I want to extract
+            System.out.println("Version for selenium-java: " + matcher.group(1));
 
         }
         finally {
