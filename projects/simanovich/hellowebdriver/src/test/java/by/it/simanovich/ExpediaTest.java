@@ -37,7 +37,7 @@ public class ExpediaTest {
         return plusDays.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     }
 
-
+    By searchResultLocator = By.xpath("//*[@class=\"grid-container standard-padding \"]");
 
 
     @Test
@@ -56,10 +56,11 @@ public class ExpediaTest {
         WebElement toSearchField = waitAndGetWebElement(driver, By.xpath("//*[@id=\"flight-destination-hp-flight\"]"));
         toSearchField.sendKeys("Moscow, Russia (MOW-All Airports)\n");
 
-        WebElement departingField = waitAndGetWebElement(driver, By.xpath("//*[@id=\"flight-departing-hp-flight\"]"));
-        departingField.sendKeys(getCurrentDate());
+        WebElement departingDate = waitAndGetWebElement(driver, By.xpath("//*[@id=\"flight-departing-hp-flight\"]"));
+        departingDate.sendKeys(getCurrentDate());
 
         Thread.sleep(5000);
+
     }
 
     @After
