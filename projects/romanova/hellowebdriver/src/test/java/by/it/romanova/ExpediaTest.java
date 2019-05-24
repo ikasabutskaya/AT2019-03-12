@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+@Test(groups = {"at28"})
 public class ExpediaTest{
 
     private WebDriver driver;
@@ -16,7 +17,7 @@ public class ExpediaTest{
        driver = new ChromeDriver();
     }
 
-    @Test
+    @Test(groups = {"at28"})
     public void TaskA() throws Exception{
         driver.get("https://www.expedia.com/");
         HomePage homePage = new HomePage(driver);

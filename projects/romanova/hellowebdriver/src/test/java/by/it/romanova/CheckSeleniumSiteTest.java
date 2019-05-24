@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Test(groups = {"at23"})
 public class CheckSeleniumSiteTest {
     private static final String
             INPUT_LOCATOR = "//input[@class=\"gLFyf gsfi\"]",
@@ -37,8 +38,8 @@ public class CheckSeleniumSiteTest {
     }
 
 
-    @Test
-    public void task() throws InterruptedException {
+    @Test(groups = {"at23"})
+    public void task() {
         driver.get("https://www.google.com/");
 
         WebElement google_input = waitAndGetElement(driver, By.xpath(INPUT_LOCATOR));

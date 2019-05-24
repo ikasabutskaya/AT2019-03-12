@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+@Test(groups = {"at23"})
 public class GoogleSiteTest {
 
     private WebDriver driver;
@@ -19,7 +20,7 @@ public class GoogleSiteTest {
         driver = new ChromeDriver();
     }
 
-    @Test
+    @Test(groups = {"at23"})
     public void findAnyResultByRequest(){
         driver.get("https://www.google.com");
         By input = By.xpath("//input[@class=\"gLFyf gsfi\"]");

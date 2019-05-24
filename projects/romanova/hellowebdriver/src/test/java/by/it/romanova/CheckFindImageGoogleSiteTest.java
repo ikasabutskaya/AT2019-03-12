@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Test(groups = {"at24"})
 public class CheckFindImageGoogleSiteTest {
 
     private static final String
@@ -40,7 +41,7 @@ public class CheckFindImageGoogleSiteTest {
         driver.manage().window().maximize();
     }
 
-    @Test
+    @Test(groups = {"at24"})
     public void taskA(){
         driver.get("https://www.google.com/");
 
@@ -64,7 +65,7 @@ public class CheckFindImageGoogleSiteTest {
 
     }
 
-    @Test
+    @Test(groups = {"at24"})
     public void taskB() throws InterruptedException {
         driver.get("https://www.google.com/");
 
