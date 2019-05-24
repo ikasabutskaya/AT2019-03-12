@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ExpediaTest {
@@ -59,7 +60,14 @@ public class ExpediaTest {
         WebElement departingDate = waitAndGetWebElement(driver, By.xpath("//*[@id=\"flight-departing-hp-flight\"]"));
         departingDate.sendKeys(getCurrentDate());
 
+        Thread.sleep(3000);
+
+        departingDate.sendKeys("\n");
+
         Thread.sleep(5000);
+
+
+
 
     }
 
