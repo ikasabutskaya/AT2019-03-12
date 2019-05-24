@@ -1,4 +1,4 @@
-package by.it.medvedeva.at25;
+package by.it.medvedeva.at25at26;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +52,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         }
         QueueBuyer.add(this);
         s.release();
-        System.out.println(this+"waits as "+Integer.toString(QueueBuyer.getSize()));
+        System.out.println(this+"waits for "+Integer.toString(QueueBuyer.getSize()));
         synchronized (this){
             try {
                 this.wait();

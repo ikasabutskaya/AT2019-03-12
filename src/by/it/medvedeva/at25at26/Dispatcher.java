@@ -1,4 +1,4 @@
-package by.it.medvedeva.at25;
+package by.it.medvedeva.at25at26;
 
 class Dispatcher {
     private static final Object localMonitor = new Object();
