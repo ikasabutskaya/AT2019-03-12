@@ -11,6 +11,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class ExpediaTest {
 
     private static WebElement waitAndGetWebElement(WebDriver driver, By inputLocator) {
@@ -24,6 +30,14 @@ public class ExpediaTest {
     public void setupBrowser()  {
         driver = new ChromeDriver();
     }
+
+    private static String getCurrentDate() {
+        LocalDate date = LocalDate.now();
+        LocalDate plusDays = date.plusDays(30);
+        return plusDays.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+    }
+
+
 
 
     @Test
@@ -41,6 +55,9 @@ public class ExpediaTest {
 
         WebElement toSearchField = waitAndGetWebElement(driver, By.xpath("//*[@id=\"flight-destination-hp-flight\"]"));
         toSearchField.sendKeys("Moscow, Russia (MOW-All Airports)\n");
+
+        WebElement departingField = waitAndGetWebElement(driver, By.xpath("//*[@id=\"flight-departing-hp-flight\"]"));
+        departingField.sendKeys(getCurrentDate());
 
         Thread.sleep(5000);
     }
