@@ -4,13 +4,13 @@ import by.it.agrinkevich.pages.FactoryResultPage;
 import by.it.agrinkevich.pages.FactoryStartPage;
 import by.it.agrinkevich.pages.ResultPage;
 import by.it.agrinkevich.pages.StartPage;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class ExpediaTest {
     private WebDriver driver;
 
 
-    @Before
+    @BeforeMethod
     public void setUpBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -54,12 +54,11 @@ public class ExpediaTest {
         FactoryStartPage factoryStartPage = new FactoryStartPage(driver);
 
         factoryStartPage
-               /* .openAccountDropDown()
+                .openAccountDropDown()
                 .openSignInForm()
                 .setEmail("rof1c@wimsg.com")
                 .setPassword("Aaaa1111")
                 .doLogin()
-                */
                 .selectSearchFlightMode()
                 .selectRoundTrip()
                 .setOrigin("Minsk, Belarus (MSQ-All Airports)")
@@ -89,11 +88,11 @@ public class ExpediaTest {
                 break;
             }
         }
-        Assert.assertEquals("Prices are lower then 100$ ",false, isPriceLower100);
+        Assert.assertEquals(false, isPriceLower100);
 
     }
 
-    @After
+    @AfterMethod
     public void tearDownBrowser() {
         driver.quit();
     }
