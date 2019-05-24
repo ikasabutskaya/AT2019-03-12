@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ExpediaTest {
 
@@ -66,6 +67,9 @@ public class ExpediaTest {
 
         Thread.sleep(5000);
 
+        List<WebElement> elementsResult = driver.findElements(searchResultLocator);
+        int size = elementsResult.size();
+        assert (size>1);
 
 
 
