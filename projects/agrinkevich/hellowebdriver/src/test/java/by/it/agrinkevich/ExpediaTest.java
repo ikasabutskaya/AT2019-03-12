@@ -23,13 +23,13 @@ public class ExpediaTest {
    private WebDriver driver;
 
 
-    @BeforeMethod
+    @BeforeMethod (groups = {"at28"})
     public void setUpBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    @Test
+    @Test (groups = {"at28"})
     public void taskA() throws Exception {
         driver.get("https://www.expedia.com/");
 
@@ -47,7 +47,7 @@ public class ExpediaTest {
         Assert.assertTrue(resultSearchCount > 1);
     }
 
-    @Test
+    @Test (groups = {"at28"})
     public void taskB() throws InterruptedException, ParseException {
         driver.get("https://www.expedia.com/");
 
@@ -92,7 +92,7 @@ public class ExpediaTest {
 
     }
 
-    @AfterMethod
+    @AfterMethod (groups = {"at28"})
     public void tearDownBrowser() {
         driver.quit();
     }

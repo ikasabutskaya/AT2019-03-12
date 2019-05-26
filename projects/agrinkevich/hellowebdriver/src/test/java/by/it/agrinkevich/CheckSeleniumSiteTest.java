@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class CheckSeleniumSiteTest {
 
-    @Test
+    @Test(groups = {"at23"})
     public void userCheckDependencyContainsText() throws Exception {
         WebDriver driver = new ChromeDriver();
         try {

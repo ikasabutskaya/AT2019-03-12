@@ -25,14 +25,14 @@ public class CheckFindImageGoogleSiteTest {
                 .until(ExpectedConditions.presenceOfElementLocated(queryLocator));
     }
 
-    @BeforeMethod
+    @BeforeMethod (groups = {"at24"})
     public void setUpBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    @Test
-    public void TaskA() throws Exception {
+    @Test (groups = {"at24"})
+    public void taskA() throws Exception {
         driver.get("https://www.google.com/");
         By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
@@ -65,8 +65,8 @@ public class CheckFindImageGoogleSiteTest {
         assertTrue(url.startsWith("https://www.seleniumhq.org"));
     }
 
-    @Test
-    public void TaskB() throws Exception {
+    @Test (groups = {"at24"})
+    public void taskB() throws Exception {
         driver.get("https://www.google.com/");
         By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
         WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
@@ -119,7 +119,7 @@ public class CheckFindImageGoogleSiteTest {
         assertTrue(driver.getCurrentUrl().contains("https://www.seleniumhq.org/selenium-ide/"));*/
     }
 
-    @AfterMethod
+    @AfterMethod (groups = {"at24"})
     public void tearDownBrowser() {
         driver.quit();
     }

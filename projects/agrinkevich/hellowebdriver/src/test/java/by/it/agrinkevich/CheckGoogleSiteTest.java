@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CheckGoogleSiteTest {
 
-    @Test
+    @Test(groups = {"at23"})
     public void userTryFindHelloInGoogle() throws Exception {
         WebDriver driver = new ChromeDriver();
         try {
