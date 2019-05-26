@@ -65,13 +65,12 @@ public class FactoryStartPage {
     private WebElement signInOption;
 
 
-
-    public FactoryStartPage openAccountDropDown() throws InterruptedException {
+    public FactoryStartPage openAccountDropDown() {
         dropDownAccount.click();
-       return this;
+        return this;
     }
 
-    public LoginPage openSignInForm(){
+    public LoginPage openSignInForm() {
         signInOption.click();
         LoginPage loginPage = new LoginPage(driver);
         return loginPage;
@@ -107,25 +106,23 @@ public class FactoryStartPage {
         return this;
     }
 
-    public FactoryStartPage setReturningDate(int num) throws ParseException{
+    public FactoryStartPage setReturningDate(int num) throws ParseException {
         inputReturningDate.click();
-    try {
-        Robot robot = new Robot();
-        Util.shortWait(driver);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        Util.shortWait(driver);
-        robot.keyPress(KeyEvent.VK_A);
-        Util.shortWait(driver);
-        robot.keyRelease(KeyEvent.VK_A);
-        Util.shortWait(driver);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
+        try {
+            Robot robot = new Robot();
+            Util.shortWait(driver);
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            Util.shortWait(driver);
+            robot.keyPress(KeyEvent.VK_A);
+            Util.shortWait(driver);
+            robot.keyRelease(KeyEvent.VK_A);
+            Util.shortWait(driver);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
 
-        robot.keyPress(KeyEvent.VK_BACK_SPACE);
-    }
-    catch ( AWTException  e){
-        e.printStackTrace();
-    }
-
+            robot.keyPress(KeyEvent.VK_BACK_SPACE);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         Util.shortWait(driver);
         inputReturningDate.sendKeys(setDate(num));
         Util.shortWait(driver);
@@ -133,7 +130,7 @@ public class FactoryStartPage {
         return this;
     }
 
-    public FactoryStartPage setTwoAdult(){
+    public FactoryStartPage setTwoAdult() {
         selectNumberOfPeople.click();
         buttonIncreaseNumberOfAdults.click();
         selectNumberOfPeople.click();
@@ -141,10 +138,11 @@ public class FactoryStartPage {
     }
 
     public FactoryResultPage getSearch() throws InterruptedException {
-        Thread.sleep(6000);
-        searchButton.click();
         Util.shortWait(driver);
-        FactoryResultPage factoryResultPage=new FactoryResultPage(driver);
+        inputReturningDate.click();
+        inputReturningDate.submit();
+
+        FactoryResultPage factoryResultPage = new FactoryResultPage(driver);
         return factoryResultPage;
     }
 

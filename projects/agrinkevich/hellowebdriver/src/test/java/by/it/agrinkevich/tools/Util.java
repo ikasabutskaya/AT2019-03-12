@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Util {
 
-    public static void shortWait(WebDriver driver){
+    public static void shortWait(WebDriver driver) {
         new Actions(driver).pause(1000).perform();
     }
 

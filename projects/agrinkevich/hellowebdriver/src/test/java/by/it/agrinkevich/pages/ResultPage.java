@@ -11,14 +11,14 @@ public class ResultPage {
 
     private WebDriver driver;
 
-    private By byPrice=By.xpath("//*[@data-test-id='listing-price-dollars']");
+    private By byPrice = By.xpath("//*[@data-test-id='listing-price-dollars']");
 
     public ResultPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public int getResultSearchCount(){
-        List<WebElement> elements = Util.findAll(driver,byPrice);
+    public int getResultSearchCount() {
+        List<WebElement> elements = Util.findAll(driver, byPrice);
         return elements.size();
     }
 }

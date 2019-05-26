@@ -1,26 +1,8 @@
 package by.it.agrinkevich;
 
-import by.it.agrinkevich.pages.FactoryResultPage;
-import by.it.agrinkevich.pages.FactoryStartPage;
-import by.it.agrinkevich.pages.ResultPage;
-import by.it.agrinkevich.pages.StartPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class ExpediaTest {
 
-    private WebDriver driver;
+   /* private WebDriver driver;
 
 
     @BeforeMethod
@@ -40,7 +22,7 @@ public class ExpediaTest {
                 .selectOneWay()
                 .setOrigin("Minsk, Belarus (MSQ-All Airports)")
                 .setDestination("Moscow, Russia (MOW-All Airports)")
-                .setDepartingDate("05/24/2019")
+                .setDepartingDate(30)
                 .getSearch();
 
         int resultSearchCount = resultPage.getResultSearchCount();
@@ -56,7 +38,7 @@ public class ExpediaTest {
         factoryStartPage
                 .openAccountDropDown()
                 .openSignInForm()
-                .setEmail("rof1c@wimsg.com")
+                .setEmail("cr1ji@wimsg.com")
                 .setPassword("Aaaa1111")
                 .doLogin()
                 .selectSearchFlightMode()
@@ -73,17 +55,17 @@ public class ExpediaTest {
         List<String> strPrices = pricesWebElement.stream().map(element -> element.getText()).collect(Collectors.toList());
         List<Integer> num = new ArrayList<>();
         Iterator<String> iter = strPrices.iterator();
-        while (iter.hasNext()){
+        while (iter.hasNext()) {
             String str = iter.next();
-            str = str.replaceAll("[$,]+","");
+            str = str.replaceAll("[$,]+", "");
             num.add(Integer.parseInt(str));
         }
         Iterator<Integer> iterNum = num.iterator();
         boolean isPriceLower100 = false;
-        while (iterNum.hasNext()){
+        while (iterNum.hasNext()) {
             Integer myInteger = iterNum.next();
             int myInt = myInteger.intValue();
-            if (myInt < 100){
+            if (myInt < 100) {
                 isPriceLower100 = true;
                 break;
             }
@@ -96,4 +78,5 @@ public class ExpediaTest {
     public void tearDownBrowser() {
         driver.quit();
     }
+    */
 }
