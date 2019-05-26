@@ -1,8 +1,26 @@
 package by.it.agrinkevich;
 
+import by.it.agrinkevich.pages.FactoryResultPage;
+import by.it.agrinkevich.pages.FactoryStartPage;
+import by.it.agrinkevich.pages.ResultPage;
+import by.it.agrinkevich.pages.StartPage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ExpediaTest {
 
-   /* private WebDriver driver;
+   private WebDriver driver;
 
 
     @BeforeMethod
@@ -78,5 +96,4 @@ public class ExpediaTest {
     public void tearDownBrowser() {
         driver.quit();
     }
-    */
 }
