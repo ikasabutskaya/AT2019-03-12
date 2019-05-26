@@ -2,19 +2,19 @@ package by.it.akhmelev;
 
 import by.it.akhmelev.pages.ResultPage;
 import by.it.akhmelev.pages.StartPage;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class ExpediaTest {
 
     WebDriver driver;
 
 
-    @Before
+    @BeforeMethod
     public void setUpBrowser() {
         driver = new ChromeDriver();
     }
@@ -30,7 +30,7 @@ public class ExpediaTest {
                 .selectOneWay()
                 .setOrigin("Minsk, Belarus (MSQ-All Airports)")
                 .setDestination("Moscow, Russia (MOW-All Airports)")
-                .setDepartingDate("05/24/2019")
+                .setDepartingDate("6/6/2019")
                 .getSearch();
 
         int resultSearchCount = resultPage.getResultSearchCount();
@@ -72,7 +72,7 @@ public class ExpediaTest {
         */
     }
 
-    @After
+    @AfterMethod
     public void tearDownBrowser() {
         driver.quit();
     }
