@@ -2,13 +2,13 @@ package by.it.udalyou;
 import org.openqa.selenium.By;
 import by.it.udalyou.pages.ResultPage;
 import by.it.udalyou.pages.StartPage;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class ExpediaTest {
     WebDriver driver;
 
 
-    @Before
+    @BeforeMethod
     public void setUpBrowser() {
         driver = new ChromeDriver();
     }
@@ -92,7 +92,7 @@ public class ExpediaTest {
     }
 */
     }
-        @After
+     @AfterMethod
         public void tearDownBrowser() {
             driver.quit();
         }
