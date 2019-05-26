@@ -5,7 +5,7 @@ Feature: Find aicraft ticket Minsk-Kiev
  When User set Flight Mode
  And User set One Way Ticket
  And Set Origin "Minsk"
- And Set Desination "Kiev"
+ And Set Destination "Kiev"
  And Set Date 6/6/2019
  And Click Search
  And User seen List with result

@@ -52,14 +52,15 @@ public class TaskA {
         assertNotNull(startPage);
     }
 
-    @When("^Set Desination \"([^\"]*)\"$")
-    public void set_Desination(String city) throws Throwable {
+    @When("^Set Destination \"([^\"]*)\"$")
+    public void set_Destination(String city) throws Throwable {
         startPage.setDestination(city);
         assertNotNull(startPage);
     }
 
     @When("^Set Date (\\d+)/(\\d+)/(\\d+)$")
-    public void setDate(int arg1, int arg2, int arg3) throws Throwable {
+    public void setDate(int dd, int mm, int yyyy) throws Throwable {
+        String stringDate = String.format("%02d/%02d/%04d/", dd, mm, yyyy);
         startPage.setDepartingDate("6/6/2019");
         assertNotNull(startPage);
     }
@@ -73,7 +74,7 @@ public class TaskA {
     @When("^User seen List with result$")
     public void userSeenListWithResult() throws Throwable {
         countTickets = resultPage.getResultSearchCount();
-        assertTrue(countTickets>=0);
+        assertTrue(countTickets >= 0);
     }
 
     @Then("^Count if results more (\\d+)$")
