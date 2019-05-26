@@ -77,7 +77,7 @@ public class FactoryStartPage {
     }
 
     public FactoryStartPage selectSearchFlightMode() throws InterruptedException {
-        Thread.sleep(130000);
+        Thread.sleep(200000);
         buttonFlight.click();
         return this;
     }
