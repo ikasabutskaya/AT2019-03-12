@@ -2,6 +2,7 @@ package by.it.akhmelev.cucumber;
 
 import by.it.akhmelev.pages.ResultPage;
 import by.it.akhmelev.pages.StartPage;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -21,59 +22,67 @@ public class TaskA {
     private int countTickets;
 
     @Before
-    public void InitTest(){
-        driver=new ChromeDriver();
+    public void InitTest() {
+        driver = new ChromeDriver();
     }
 
 
-    @Given("^Home Page aviacompany Is Loaded$")
-    public void homePageAviacompanyIsLoaded() throws Throwable {
-        driver.get("https://www.expedia.com.my/");
-        startPage=new StartPage(driver);
-        assertTrue(startPage!=null);
+    @Given("^Home Page airline Is Loaded from \"([^\"]*)\"$")
+    public void home_Page_airline_Is_Loaded_from(String url) throws Throwable {
+        driver.get(url);
+        startPage = new StartPage(driver);
+        assertNotNull(startPage);
     }
 
     @When("^User set Flight Mode$")
     public void userSetFlightMode() throws Throwable {
         startPage.selectSearchFlightMode();
+        assertNotNull(startPage);
     }
 
     @When("^User set One Way Ticket$")
     public void userSetOneWayTicket() throws Throwable {
         startPage.selectOneWay();
+        assertNotNull(startPage);
     }
 
-    @When("^Set Origin Minsk$")
-    public void setOriginMinsk() throws Throwable {
-        startPage.setOrigin("Minsk");
+    @When("^Set Origin \"([^\"]*)\"$")
+    public void set_Origin(String city) throws Throwable {
+        startPage.setOrigin(city);
+        assertNotNull(startPage);
     }
 
-    @When("^Set Desination Moscow$")
-    public void setDesinationMoscow() throws Throwable {
-        startPage.setDestination("Moscow");
+    @When("^Set Desination \"([^\"]*)\"$")
+    public void set_Desination(String city) throws Throwable {
+        startPage.setDestination(city);
+        assertNotNull(startPage);
     }
 
     @When("^Set Date (\\d+)/(\\d+)/(\\d+)$")
     public void setDate(int arg1, int arg2, int arg3) throws Throwable {
         startPage.setDepartingDate("6/6/2019");
+        assertNotNull(startPage);
     }
 
     @When("^Click Search$")
     public void clickSearch() throws Throwable {
-        resultPage=startPage.getSearch();
+        resultPage = startPage.getSearch();
+        assertNotNull(resultPage);
     }
 
     @When("^User seen List with result$")
     public void userSeenListWithResult() throws Throwable {
-        countTickets=resultPage.getResultSearchCount();
+        countTickets = resultPage.getResultSearchCount();
+        assertTrue(countTickets>=0);
     }
 
     @Then("^Count if results more (\\d+)$")
     public void countIfResultsMore(int count) throws Throwable {
-        try {
-        assertTrue(countTickets>count);
-        } finally {
-            driver.quit();
-        }
+        assertTrue(countTickets > count);
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 }
