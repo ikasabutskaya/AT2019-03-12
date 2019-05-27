@@ -6,8 +6,13 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 
 @CucumberOptions(
-        features = "C:/AT2019-03-12/projects/udalyou/hellowebdriver/src/test/java/by/it/udalyou/сucumber",
-        glue = "by.it.udalyou.cucumber",
+        features = "src/test/java/by/it/udalyou/сucumber",
+      //  glue = "src.test.java.by.it.udalyou.cucumber",
+      // glue = "src/test/java/by/it/udalyou/cucumber/TaskA",
+       // tags = "@all",
+       // dryRun = true,
+      // strict = true,
+
         snippets = SnippetType.CAMELCASE
 )
 public class BddAiaLineTest extends AbstractTestNGCucumberTests {
