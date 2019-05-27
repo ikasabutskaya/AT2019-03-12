@@ -24,7 +24,6 @@ public class StartPage {
     @CacheLookup
     public static WebElement destinationAirport;
 
-
     //т.к. хром имеет проблему с кликом по радио, вместо радио используем его label
     @FindBy(how = How.XPATH, using = "//*[@id='mat-radio-3']/label/div[2]")
     @CacheLookup
@@ -38,6 +37,17 @@ public class StartPage {
     @FindBy(how = How.XPATH, using = "//*[@id='merlin-search-container']/div[1]/form/div[6]/button")
     @CacheLookup
     public static WebElement buttonClick;
+
+    public void SetFlightDetailes(String sOriginPlace, String sDestinationPlace, String sDepartureDate){
+        onWay.click();
+        originPlace.clear();
+        originPlace.sendKeys(sOriginPlace);
+        destinationPlace.sendKeys(sDestinationPlace);
+        destinationAirport.click();
+        departureDate.clear();
+        departureDate.sendKeys(sDepartureDate);
+        buttonClick.click();
+    }
 
     // This is a constructor, as every page need a base driver to find web elements
     public StartPage(WebDriver driver){this.driver = driver;}

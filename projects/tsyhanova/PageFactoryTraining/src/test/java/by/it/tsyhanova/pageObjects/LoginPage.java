@@ -23,8 +23,9 @@ public class LoginPage {
     public static WebElement myPassword;
 
 
+
     // This method will take two arguments ( Username nd Password)
-    public void LogIn_Action(String sUserName, String sPassword){
+    public void LogInAction(String sUserName, String sPassword){
         userName.sendKeys(sUserName);
         myPassword.sendKeys(sPassword);
     }
