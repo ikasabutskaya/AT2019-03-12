@@ -1,4 +1,6 @@
-package by.it.udalyou.at26;
+package by.it.udalyou.at27;
+
+
 
 public class Cashier implements Runnable{
 
@@ -18,16 +20,17 @@ public class Cashier implements Runnable{
     public void run() {
         System.out.println(this+" opend");
         while (!Dispetcher.marketClosed()){
-            Buyer buyer=QueueBuyers.extract();
+                 Buyer buyer=QueueBuyers.extract();
             if (buyer!=null){
-                System.out.println(this+" started sevis of "+buyer);
+                System.out.println(this+" started servis of "+buyer);
                 Util.sleep(Util.random(2000,5000));
+                System.out.println(this+" stoped servis of "+buyer);
                 synchronized (buyer){
+                    buyer.setWaiting(false);
                     buyer.notifyAll();
                 }
-                System.out.println(this+" stoped sevis of "+buyer);
             }
-        else Util.sleep(100);
+
         }
 
         System.out.println(this+" closed");

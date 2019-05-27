@@ -1,4 +1,4 @@
-package by.it.udalyou.at26;
+package by.it.udalyou.at25;
 
 import java.util.*;
 
@@ -15,12 +15,20 @@ private static Random rnd=new Random();
 static int random(int max){
     return random(0,max);
 }
+
     static void sleep(int timeOut) {
         try {
-            Thread.sleep(timeOut/ Dispetcher.K_SPEED);
+            Thread.sleep(timeOut/Dispetcher.K_SPEED);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+       // private static Random rand=new Random();
+    /*    static int rand (int start, int stop){
+            //return (int) (Math.random()*(stop-start-1))+start;
+            int delta=(stop-start);
+            return rnd.nextInt(delta)+start;
+        }*/
+
     }
     private static Map<String,Double> goods;
     public static Map<String, Double> getGoods() {
@@ -36,9 +44,8 @@ static int random(int max){
         return goods;
     }
 
-    Set<Map.Entry<String, Double>> sgoods=goods.entrySet();
-    List<String> keyList = new ArrayList<String>(goods.keySet());
-
+   //   Set<Map.Entry<String, Double>> sgoods=goods.entrySet();
+     //       List<String> keyList = new ArrayList<String>(goods.keySet());
 
 
 }

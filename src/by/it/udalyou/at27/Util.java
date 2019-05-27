@@ -1,4 +1,6 @@
-package by.it.udalyou.at26;
+package by.it.udalyou.at27;
+
+
 
 import java.util.*;
 
@@ -37,8 +39,6 @@ static int random(int max){
     }
 
     Set<Map.Entry<String, Double>> sgoods=goods.entrySet();
-    List<String> keyList = new ArrayList<String>(goods.keySet());
+    List<String> googsList = new ArrayList<String>(goods.keySet());
 
-
-
-}
+   }
