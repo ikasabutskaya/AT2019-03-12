@@ -54,7 +54,6 @@ public class Buyer extends Thread implements IBuyer {
         System.out.println(this + "out from the Market");
         Dispatcher.buyerOut();
     }
-
     @Override
     public String toString() {
         return getName();
