@@ -1,4 +1,7 @@
 package by.it.vshchur.at21;
 
-public class CreateConnection {
+import java.sql.Connection;
+
+public interface CreateConnection {
+    Connection get() throws
 }
