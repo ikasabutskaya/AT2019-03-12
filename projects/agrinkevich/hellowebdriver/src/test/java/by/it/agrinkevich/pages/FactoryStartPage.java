@@ -77,6 +77,7 @@ public class FactoryStartPage {
     }
 
     public FactoryStartPage selectSearchFlightMode() throws InterruptedException {
+        //too long timeout was set because of passing a captcha
         Thread.sleep(200000);
         buttonFlight.click();
         return this;
