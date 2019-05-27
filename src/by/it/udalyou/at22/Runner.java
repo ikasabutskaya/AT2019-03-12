@@ -1,9 +1,6 @@
 package by.it.udalyou.at22;
 
 import by.it.udalyou.at22.beans.User;
-import by.it.udalyou.at22.connection.ConnectionCreator;
-import by.it.udalyou.at22.connection.ConnectionCreatorMySQL;
-import by.it.udalyou.at22.repo.UserDao;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
