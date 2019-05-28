@@ -38,7 +38,7 @@ public class ExpediaTest{
 
     @Test(groups = {"at28"})
     public void TaskB() throws Exception{
-        driver.get("https://www.expedia.com/");
+        driver.get("https://www.expedia.com.my/");
         FactoryHomePage factoryHomePage = new FactoryHomePage(driver);
         FactorySearchResultPage factorySearchResultPage = factoryHomePage
                 .openAccountDropDown()

@@ -3,23 +3,21 @@ package by.it.romanova.cucumber;
 import by.it.romanova.pages.HomePage;
 import by.it.romanova.pages.SearchResultPage;
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-@Test
 public class TaskA {
 
     private WebDriver driver;
 
     private HomePage homePage;
 
-    @BeforeMethod
+    @Before
     public void setUpDriver(){
         driver = new ChromeDriver();
     }
@@ -27,7 +25,7 @@ public class TaskA {
     @Given("^Home Page Is Loaded$")
     public void home_Page_Is_Loaded() {
         driver.get("https://www.expedia.com/");
-        HomePage homePage = new HomePage(driver);
+        homePage = new HomePage(driver);
         homePage.assertMainPageLoaded();
     }
 
@@ -68,8 +66,7 @@ public class TaskA {
     }
 
 
-
-    @AfterMethod
+    @After
     public void tearDown() {
         driver.quit();
     }

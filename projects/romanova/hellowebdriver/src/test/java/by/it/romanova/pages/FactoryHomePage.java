@@ -39,7 +39,7 @@ public class FactoryHomePage extends Util {
     @FindBy(id = "header-account-menu")
     private WebElement dropDownAccount;
 
-    @FindBy(id = "account-signin")
+    @FindBy(id = "header-account-signin-button")
     private WebElement signInOption;
 
     @FindBy(xpath = "//*[@id='traveler-selector-hp-flight']/div/ul/li/button")
