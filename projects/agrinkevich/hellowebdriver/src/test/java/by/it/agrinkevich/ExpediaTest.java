@@ -56,7 +56,7 @@ public class ExpediaTest {
         factoryStartPage
                 .openAccountDropDown()
                 .openSignInForm()
-                .setEmail("8wwdx@vmani.com")
+                .setEmail("junm2@vmani.com")
                 .setPassword("Aaaa1111")
                 .doLogin()
                 .selectSearchFlightMode()
