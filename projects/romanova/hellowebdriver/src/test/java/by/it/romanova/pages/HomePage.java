@@ -4,6 +4,9 @@ import by.it.romanova.tools.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 public class HomePage extends Util {
 
     public HomePage(WebDriver driver) {

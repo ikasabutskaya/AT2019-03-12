@@ -36,6 +36,28 @@ public class ExpediaTest{
         Thread.sleep(10000);
     }
 
+    @Test(groups = {"at28"})
+    public void TaskB() throws Exception{
+        driver.get("https://www.expedia.com/");
+        FactoryHomePage factoryHomePage = new FactoryHomePage(driver);
+        FactorySearchResultPage factorySearchResultPage = factoryHomePage
+                .openAccountDropDown()
+                .openSignInForm()
+                .setEmail("lizatestertest@mail.ru")
+                .setPassword("testing2019")
+                .logIn()
+                .clickFlightSearch()
+                .typeDepartureAirport("Minsk, Belarus (MSQ-All Airports)")
+                .typeDestinationAirport("Moscow, Russia (MOW-All Airports)")
+                .selectDepartingDate(30)
+                .selectReturningDate(45)
+                .selectTwoAdults()
+                .submitForm()
+                .checkMoreThanOneResult()
+                .assertPricesHigher(100);
+        Thread.sleep(10000);
+    }
+
 
     @AfterMethod
     public void tearDownDriver(){
