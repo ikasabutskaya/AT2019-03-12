@@ -57,9 +57,9 @@ public class TaskA {
         assertNotNull(startPage);
     }
 
-    @When("^Set Date Current Plus Thirty Days$")
-    public void setDateCurrentDays() throws Throwable {
-        startPage.setDepartingDate(30);
+    @When("^Set Date Current Plus (\\d+) Days$")
+    public void setDateCurrentDays(int num) throws Throwable {
+        startPage.setDepartingDate(num);
         assertNotNull(startPage);
     }
 

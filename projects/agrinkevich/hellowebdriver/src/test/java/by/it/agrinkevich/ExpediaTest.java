@@ -49,7 +49,7 @@ public class ExpediaTest {
 
     @Test (groups = {"at28"})
     public void taskB() throws InterruptedException, ParseException {
-        driver.get("https://www.expedia.com/");
+        driver.get("https://www.expedia.com");
 
         FactoryStartPage factoryStartPage = new FactoryStartPage(driver);
 
