@@ -1,7 +1,6 @@
 package by.it.simanovich.at21;
 
 import by.it.simanovich.at21.beans.User;
-import by.it.udalyou.at21.beans.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

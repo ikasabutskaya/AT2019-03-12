@@ -1,6 +1,6 @@
 package by.it.simanovich.at21;
 
-import by.it.udalyou.at21.beans.User1;
+import by.it.simanovich.at21.beans.User1;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
