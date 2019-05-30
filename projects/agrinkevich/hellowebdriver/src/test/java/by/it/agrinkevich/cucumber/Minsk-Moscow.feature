@@ -1,7 +1,7 @@
 Feature: Find aircraft ticket Minsk-Moscow
   @success
   Scenario: Check Ticket Count
-    Given Home Page Airline Is Loaded From "https://www.expedia.com.my/"
+    Given Home Page Airline Is Loaded From "https://www.expedia.com"
     When User Set Flight Mode
     And User Set One Way Ticket
     And Set Origin "Minsk"
