@@ -1,29 +1,31 @@
 package by.it.ikasabutskaya.at27;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Market {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Market opened");
+        List<Thread> threads = new ArrayList<>();
 
-        Dispatcher.reset();
+        ExecutorService threadPool = Executors.newFixedThreadPool(5);
 
-
-        ExecutorService threadPool= Executors.newFixedThreadPool(2);
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 2 ; i++) {
             Cashier cashier = new Cashier(i);
             threadPool.execute(cashier);
         }
 
         threadPool.shutdown();
 
-        System.out.println("Market opened");
+
         while (Dispatcher.marketOpened()) {
-            Util.sleep(1000);
             int count = Util.random(2);
-            for (int i = 0; i <= count; i++) {
+            for (int i = 0; i < count; i++) {
                 if (Dispatcher.marketOpened()) {
                     Buyer buyer = new Buyer(Dispatcher.buyerIn());
+                    threads.add(buyer);
                     buyer.start();
                 }
             }
@@ -33,7 +35,10 @@ public class Market {
             Util.sleep(10);
         }
 
-        System.out.println("Market close");
+        System.out.println("Market closed");
 
     }
+
+
 }
+
