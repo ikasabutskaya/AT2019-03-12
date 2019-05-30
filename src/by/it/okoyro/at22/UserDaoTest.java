@@ -1,6 +1,7 @@
 package by.it.okoyro.at22;
 
 import by.it.okoyro.at22.beans.User;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Timestamp;
@@ -14,11 +15,15 @@ import static org.junit.Assert.assertNull;
 
 public class UserDaoTest {
 
-	Dao dao = new Dao(H2);
+	Dao dao;
 	Date date = Timestamp.valueOf(LocalDateTime.now());
 
+	@Before public void init (){
+		dao = new Dao(H2);
+	}
 
 	@Test(timeout = 5000)
+//	@Ignore
 	public void userDaoCreateUser() throws Exception {
 		User user = new User(1, "NEW_LOGIN", "NEW_PASSWORD", "NEW_EMAIL", date);
 		dao.user.create(user);
