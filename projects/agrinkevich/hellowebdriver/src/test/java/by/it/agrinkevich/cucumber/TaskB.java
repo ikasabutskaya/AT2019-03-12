@@ -42,7 +42,7 @@ public class TaskB {
         assertNotNull(factoryStartPage);
     }
 
-    @Когда("^Пользователь открывает выпадающий список аккаунт$")
+  /*  @Когда("^Пользователь открывает выпадающий список аккаунт$")
     public void пользователь_открывает_выпадающий_список_аккаунт() throws Throwable {
         factoryStartPage.openAccountDropDown();
         assertNotNull(factoryStartPage);
@@ -72,7 +72,7 @@ public class TaskB {
         loginPage.doLogin();
         assertNotNull(loginPage);
     }
-
+*/
     @Когда("^Выбирает режим самолета$")
     public void выбирает_режим_самолета() throws Throwable {
         factoryStartPage.selectSearchFlightMode();

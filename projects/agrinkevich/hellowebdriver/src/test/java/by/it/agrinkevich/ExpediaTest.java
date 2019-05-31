@@ -53,12 +53,12 @@ public class ExpediaTest {
 
         FactoryStartPage factoryStartPage = new FactoryStartPage(driver);
 
-        factoryStartPage
+        factoryStartPage/*
                 .openAccountDropDown()
                 .openSignInForm()
                 .setEmail("ylp0u@wimsg.com")
                 .setPassword("Aaaa1111")
-                .doLogin()
+                .doLogin()*/
                 .selectSearchFlightMode()
                 .selectRoundTrip()
                 .setOrigin("Minsk, Belarus (MSQ-All Airports)")
