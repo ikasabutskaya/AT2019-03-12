@@ -1,5 +1,6 @@
-package by.it.romanova;
+package by.it.romanova.pages;
 
+import by.it.romanova.tools.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

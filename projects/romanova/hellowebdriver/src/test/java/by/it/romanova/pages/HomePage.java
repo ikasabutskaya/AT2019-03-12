@@ -1,11 +1,15 @@
-package by.it.romanova;
+package by.it.romanova.pages;
 
+import by.it.romanova.tools.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 public class HomePage extends Util {
 
-    protected HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
@@ -34,13 +38,21 @@ public class HomePage extends Util {
     }
 
     public void selectDepartingDate(){
-        waitForElementAndClick(DEPARTURE_DATE_FIELD);
-        waitForElementAndClick(DEPARTURE_DATE);
+        String date = getCurrentDate();
+        waitForElementAndSendKeys(DEPARTURE_DATE_FIELD,date);
     }
 
-    public void selectReturningDate(){
+    public void selectDepartingDate(int days){
+        String date = getFutureDate(days);
+        waitForElementAndSendKeys(DEPARTURE_DATE_FIELD,date);
+    }
+
+    public void selectReturningDate(int days) throws InterruptedException {
         waitForElementAndClick(RETURNING_DATE_FIELD);
-        waitForElementAndClick(RETURNING_DATE);
+        shortWait(driver);
+        waitForElementAndClear(RETURNING_DATE_FIELD);
+        String date = getFutureDate(days);
+        waitForElementAndSendKeys(RETURNING_DATE_FIELD, date);
     }
 
     public void submitForm(){
