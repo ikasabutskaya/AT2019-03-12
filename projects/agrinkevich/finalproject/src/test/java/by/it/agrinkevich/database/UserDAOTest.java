@@ -1,14 +1,16 @@
-package by.it.agrinkevich.at22;
+package by.it.agrinkevich.database;
 
-import by.it.agrinkevich.at22.beans.User;
+import by.it.agrinkevich.webcalculator.database.DAO;
+import by.it.agrinkevich.webcalculator.database.beans.User;
 import org.junit.Test;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-import static by.it.agrinkevich.at22.DAO.TypeDAO.H2;
-import static org.junit.Assert.assertEquals;
+import static by.it.agrinkevich.webcalculator.database.DAO.TypeDAO.H2;
+import static org.testng.AssertJUnit.assertEquals;
+
 
 public class UserDAOTest {
 
@@ -17,7 +19,7 @@ public class UserDAOTest {
     User user = new User(0, "Sam", "12345", "test2@domain.com", date);
 
     @Test(timeout = 5000)
-    public void userDAOCreateTest() throws Exception{
+    public void userDAOCreateTest() throws Exception {
         dao.user.create(user);
         User user2 = dao.user.read(user.getId());
         assertEquals(user,user2);
@@ -25,7 +27,7 @@ public class UserDAOTest {
     }
 
     @Test(timeout = 5000)
-    public void userDAOUpdateTest() throws Exception{
+    public void userDAOUpdateTest() throws Exception {
         user.setUsername("Masha");
         dao.user.update(user);
         user = dao.user.read(user.getId());
