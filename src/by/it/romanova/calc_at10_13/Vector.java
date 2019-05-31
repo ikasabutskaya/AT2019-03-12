@@ -38,7 +38,7 @@ class Vector extends Var {
 
         }
         else if (other instanceof Vector){
-            if (this.value.length == ((Vector) other).value.length) {
+            if(this.value.length == ((Vector) other).value.length) {
                 double[] result = Arrays.copyOf(value, value.length);
                 for (int i = 0; i < result.length; i++) {
                     result[i] = result[i] + ((Vector) other).value[i];
