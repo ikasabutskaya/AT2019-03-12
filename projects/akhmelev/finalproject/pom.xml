@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>by.it.akhmelev</groupId>
-  <artifactId>hellowebdriver</artifactId>
+  <artifactId>finalproject</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>hellowebdriver</name>
-  <url>http://www.example.com</url>
+  <name>finalproject</name>
+  <url>http://akhmelev.by.it</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,9 +17,15 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <aspectj.version>1.9.0</aspectj.version>
     <allure.version>2.7.0</allure.version>
+    <jettyVersion>7.2.0.v20101020</jettyVersion>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jettyVersion}</version>
+    </dependency>
 
     <dependency>
       <groupId>io.qameta.allure</groupId>
