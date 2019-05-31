@@ -38,14 +38,9 @@ public class ExpediaTest{
 
     @Test(groups = {"at28"})
     public void TaskB() throws Exception{
-        driver.get("https://www.expedia.com.my/");
+        driver.get("https://www.expedia.com/");
         FactoryHomePage factoryHomePage = new FactoryHomePage(driver);
         FactorySearchResultPage factorySearchResultPage = factoryHomePage
-                .openAccountDropDown()
-                .openSignInForm()
-                .setEmail("lizatestertest@mail.ru")
-                .setPassword("testing2019")
-                .logIn()
                 .clickFlightSearch()
                 .typeDepartureAirport("Minsk, Belarus (MSQ-All Airports)")
                 .typeDestinationAirport("Moscow, Russia (MOW-All Airports)")
@@ -55,7 +50,6 @@ public class ExpediaTest{
                 .submitForm()
                 .checkMoreThanOneResult()
                 .assertPricesHigher(100);
-        Thread.sleep(10000);
     }
 
 

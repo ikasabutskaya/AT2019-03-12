@@ -75,13 +75,13 @@ public class Util {
     }
 
     public String getCurrentDate(){
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/d/uuuu");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/dd/uuuu");
         LocalDate date = LocalDate.now().plusDays(1);
         return date.format(format);
     }
 
     public String getFutureDate(int days){
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/d/uuuu");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/dd/uuuu");
         LocalDate date = LocalDate.now().plusDays(days+1);
         return date.format(format);
     }
