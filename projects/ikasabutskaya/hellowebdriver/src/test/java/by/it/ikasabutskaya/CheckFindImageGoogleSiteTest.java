@@ -1,18 +1,24 @@
 package by.it.ikasabutskaya;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
+import static org.testng.AssertJUnit.assertTrue;
+
 
 public class CheckFindImageGoogleSiteTest {
 
@@ -23,47 +29,101 @@ public class CheckFindImageGoogleSiteTest {
                 .until(ExpectedConditions.presenceOfElementLocated(queryLocator));
     }
 
-    @Before
+    @BeforeMethod
     public void setUpBrowser() {
         driver = new ChromeDriver();
-        //		driver.manage().window().maximize(); //doesn't work WebDriverException: unknown error: failed to change window state to maximized, current state is normal
+        driver.manage().window().maximize();
     }
 
     @Test
     public void taskA() throws Exception {
-        driver.get("https://google.com");
-        By bySearchInputField = By.cssSelector("input.gLFyf.gsfi");
-        WebElement searchInputField = waitAndGetWebElement(driver, bySearchInputField);
-        searchInputField.sendKeys("seleniumhq\n");
-        (new WebDriverWait(driver, 5))
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("td.cur"))); // wait for footer with "Google"
+        driver.get("https://www.google.com");
+        // Engish page
+        // driver.get("https://www.google.com/webhp?hl=en");
+        By byQueryInput = By.xpath("//input[@class='gLFyf gsfi']");
+        WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
+        queryInput.sendKeys("seleniumhq\n");
 
-        By byimagesLink = By.cssSelector("div#hdtb-msb-vis  a.q.qs[href*='isch']");
-        WebElement imagesLink = waitAndGetWebElement(driver, byimagesLink);
-        imagesLink.click();
-        (new WebDriverWait(driver, 5))
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span.S3Wjs"))); // wait for photo camera image
+        By byLinkImagesSearch = By.xpath("//a[@class='q qs'][contains(@href,'tbm=isch')]");
+        WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
+        linkImagesSearch.click();
 
-        By byFirstImageLink = By.xpath("//*[@class='rg_bx rg_di rg_el ivg-i'][@data-ri='0']");
-        WebElement firstImageLink = waitAndGetWebElement(driver, byFirstImageLink);
-        firstImageLink.click();
+        By byLinkResultFirstImage = By.xpath("//*[@class='rg_bx rg_di rg_el ivg-i'][@data-ri='0']");
+        WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
+        linkResultFirstImage.click();
 
-        By byVisitLink = By.xpath("//a[@class='irc_vpl i3599 irc_lth'][@tabindex=0]");
-        WebElement visitLink = waitAndGetWebElement(driver, byVisitLink);
-        visitLink.click();  // page is opened in a separate browser tab
+        By byLinkResultSite = By.xpath("//a[@class='irc_vpl i3599 irc_lth'][@tabindex=0]");
+        WebElement linkResultSite = waitAndGetWebElement(driver, byLinkResultSite);
 
+        //shortWait rendering (но лучше проверить это явно)
+        Thread.sleep(333);
+        linkResultSite.click();
+
+        //open a new tab and check url at the last tab
         Set<String> handles = driver.getWindowHandles();
-        ArrayList<String> handlsList = new ArrayList<>(handles);
-        String newTab = handlsList.get(handlsList.size() - 1);
+        List<String> handlesList = new ArrayList<>(handles);
+        String newTab = handlesList.get(handlesList.size() - 1);
+
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Thread.sleep(3333);
+
+
+
+        // switch to new tab
         driver.switchTo().window(newTab);
-        (new WebDriverWait(driver, 5))
-                .until(ExpectedConditions.urlToBe("https://www.seleniumhq.org/"));
-        String tabUrl = driver.getCurrentUrl();
-        Assert.assertTrue("", tabUrl.startsWith("https://www.seleniumhq.org/"));
+
+        String url = driver.getCurrentUrl();
+        assertTrue("not complete find", url.startsWith("https://www.seleniumhq.org"));
     }
 
-    @After
-    public void tearDown() {
+    @Test
+    public void taskB() throws Exception {
+
+        driver.get("https://www.google.com");
+        // Engish page
+        // driver.get("https://www.google.com/webhp?hl=en");
+        By byQueryInput = By.xpath("//input[@name='q']");
+        WebElement queryInput = waitAndGetWebElement(driver, byQueryInput);
+        queryInput.sendKeys("seleniumhq\n");
+
+        By byLinkImagesSearch = By.xpath("//a[@class='q qs'][contains(@href,'tbm=isch')]");
+        WebElement linkImagesSearch = waitAndGetWebElement(driver, byLinkImagesSearch);
+        linkImagesSearch.click();
+
+        By byLinkResultFirstImage = By.xpath("//img[@class='rg_ic rg_i'][@data-atf=1]");
+        WebElement linkResultFirstImage = waitAndGetWebElement(driver, byLinkResultFirstImage);
+        //linkResultFirstImage.click();
+
+        Actions actions = new Actions(driver);
+        WebElement photoButton = waitAndGetWebElement(driver, By.xpath("//span[@class='S3Wjs']"));
+        photoButton.click();;
+        actions.pause(Duration.ofMillis(555)).perform();
+
+        WebElement target = waitAndGetWebElement(driver, By.xpath("//div[@id='qbp']"));
+        target.click();;
+
+        WebElement from = waitAndGetWebElement(driver, By.xpath("//*[@id='i48MSmX01sE18M:']"));
+//        from.click();
+
+        actions
+                .clickAndHold(from)
+                .release(target)
+                .build()
+                .perform();
+
+
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("alert('Focus window');");
+        Thread.sleep(1000);
+        driver.switchTo().alert().accept();
+        Thread.sleep(1000);
+
+    }
+
+    @AfterMethod
+    public void tearDownBrowser() {
         driver.quit();
     }
+
+
 }

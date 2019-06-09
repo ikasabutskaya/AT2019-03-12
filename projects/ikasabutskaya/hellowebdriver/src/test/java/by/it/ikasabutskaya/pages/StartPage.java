@@ -1,6 +1,6 @@
 package by.it.ikasabutskaya.pages;
 
-
+import by.it.ikasabutskaya.tools.Util;
 import by.it.ikasabutskaya.tools.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +13,7 @@ public class StartPage {
     public StartPage(WebDriver driver) {
         this.driver = driver;
     }
+
 
     private By byButtonFlight = By.id("tab-flight-tab-hp");
     private By byButtonOneWay = By.id("flight-type-one-way-label-hp-flight");
