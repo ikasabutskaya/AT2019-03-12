@@ -69,7 +69,7 @@ public class TaskA {
     @Step("Set Date")
     public void setDate(int dd, int mm, int yyyy) throws Throwable {
         String stringDate = String.format("%02d/%02d/%04d/", dd, mm, yyyy);
-        startPage.setDepartingDate("6/6/2019");
+        startPage.setDepartingDate("7/7/2019");
         assertNotNull(startPage);
     }
 

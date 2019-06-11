@@ -31,6 +31,7 @@ public class CheckFindImageGoogleSiteTest {
 
     @BeforeMethod
     public void setUpBrowser() {
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

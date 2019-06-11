@@ -30,7 +30,7 @@ public class ExpediaTest {
                 .selectOneWay()
                 .setOrigin("Minsk, Belarus (MSQ-All Airports)")
                 .setDestination("Moscow, Russia (MOW-All Airports)")
-                .setDepartingDate("6/6/2019")
+                .setDepartingDate("7/7/2019")
                 .getSearch();
 
         int resultSearchCount = resultPage.getResultSearchCount();

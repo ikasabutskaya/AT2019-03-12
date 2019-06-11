@@ -6,7 +6,7 @@ Feature: Find aicraft ticket Minsk-Moscow
  And User set One Way Ticket
  And Set Origin "Minsk"
  And Set Destination "Moscow"
- And Set Date 6/6/2019
+ And Set Date 7/7/2019
  And Click Search
  And User seen List with result
  Then Count if results more 1
